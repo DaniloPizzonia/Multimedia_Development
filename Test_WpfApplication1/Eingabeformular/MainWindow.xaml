@@ -10,8 +10,8 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="10*"/>
             <RowDefinition Height="23*"/>
-            <RowDefinition Height="139*"/>
-            <RowDefinition Height="131*"/>
+            <RowDefinition Height="144*"/>
+            <RowDefinition Height="126*"/>
             <RowDefinition Height="24*"/>
             <RowDefinition Height="23*"/>
         </Grid.RowDefinitions>
@@ -27,13 +27,13 @@
         <Label x:Name="oLabelNachname" 
                Content="Name*" 
                HorizontalAlignment="Left" 
-               Margin="1.857,69.789,0,43.411" 
+               Margin="2,70,0,43" 
                Grid.Row="2" Width="48" Grid.Column="1"/>
         <TextBox x:Name="oTextBoxNachname"
                  Grid.Column="2" 
                  HorizontalAlignment="Left" 
                  Height="23" 
-                 Margin="4.779,72.789,0,0" 
+                 Margin="5,73,0,0" 
                  Grid.Row="2" 
                  TextWrapping="Wrap" 
                  Text="{Binding LastName}" 
@@ -42,7 +42,7 @@
         <Label x:Name="oLabelVorname" 
                Content="Vorname*" 
                HorizontalAlignment="Left" 
-               Margin="1.857,95.789,0,0" 
+               Margin="2,96,0,0" 
                Grid.Row="2" 
                VerticalAlignment="Top" 
                Height="26" Width="64" Grid.Column="1"/>
@@ -50,7 +50,7 @@
                  Grid.Column="2" 
                  HorizontalAlignment="Left" 
                  Height="23" 
-                 Margin="4.779,98.789,0,0" 
+                 Margin="5,99,0,0" 
                  Grid.Row="2" 
                  TextWrapping="Wrap" 
                  Text="{Binding FirstName}" 
@@ -66,7 +66,7 @@
         <Label x:Name="oLabelAnrede" 
                Content="Anrede" 
                HorizontalAlignment="Left" 
-               Margin="1.857,42.789,0,0" 
+               Margin="2,43,0,0" 
                Grid.Row="2" 
                VerticalAlignment="Top" 
                Height="26" 
@@ -75,7 +75,7 @@
         <ComboBox x:Name="oComboBoxAnrede" 
                   Grid.Column="2" 
                   HorizontalAlignment="Left" 
-                  Margin="4.779,45.789,0,0" 
+                  Margin="5,46,0,0" 
                   Grid.Row="2" 
                   VerticalAlignment="Top" 
                   Width="120" 
@@ -86,13 +86,13 @@
         <Image x:Name="oImageProfile" 
                HorizontalAlignment="Left" 
                Height="135" 
-               Margin="16,1.989,0,0" 
+               Margin="12,2,0,0" 
                VerticalAlignment="Top" 
-               Width="126" Grid.RowSpan="2" Grid.Row="1"/>
+               Width="126" Grid.RowSpan="2" Grid.Row="1" Source="Images/profilePic.jpg"/>
         <Button x:Name="oButtonUploadImage" 
                 Content="Bild Ändern" 
                 HorizontalAlignment="Left" 
-                Margin="16,117.789,0,0" 
+                Margin="12,118,0,0" 
                 Grid.Row="2" 
                 VerticalAlignment="Top" 
                 Width="126" 
@@ -100,7 +100,7 @@
         <Label x:Name="oProfileName" 
                Content="{Binding LastName}" 
                HorizontalAlignment="Left" 
-               Margin="0.857,7.789,0,0" 
+               Margin="1,8,0,0" 
                Grid.Row="2" 
                VerticalAlignment="Top" 
                Grid.Column="1" 
@@ -110,7 +110,7 @@
         <Label x:Name="oLabelHeaderTitel" 
             Content="Kontaktdaten"
             HorizontalAlignment="Left" 
-            Margin="0.857,7,0,0"
+            Margin="1,7,0,0"
             VerticalAlignment="Top" 
             Height="26" 
             Width="90" 
@@ -118,14 +118,14 @@
         <Button x:Name="oButtonSave"
             Content="Speichern"
             Grid.Column="5" 
-            Margin="58.242,23.439,19.158,0" 
+            Margin="58,23,19,0" 
             Grid.Row="4" 
             VerticalAlignment="Top" Grid.RowSpan="2" Click="oButtonSave_Click" Height="19"/>
         <Button x:Name="oButtonCancel" 
             Content="Cancel" 
             Grid.Column="5" 
             HorizontalAlignment="Left" 
-            Margin="126.242,23.439,0,0" 
+            Margin="126,23,0,0" 
             Grid.Row="4" 
             VerticalAlignment="Top" 
             Width="65" Grid.RowSpan="2" Grid.ColumnSpan="2" Click="oButtonCancel_Click" Height="19"/>

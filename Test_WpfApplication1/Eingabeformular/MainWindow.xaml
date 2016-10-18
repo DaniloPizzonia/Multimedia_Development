@@ -1,0 +1,75 @@
+﻿<Window x:Class="Eingabeformular.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Eingabeformular"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="800" Width="720">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="19*"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="91*"/>
+            <RowDefinition Height="506*"/>
+            <RowDefinition Height="53*"/>
+            <RowDefinition Height="51*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="163*"/>
+            <ColumnDefinition Width="86*"/>
+            <ColumnDefinition Width="142*"/>
+            <ColumnDefinition Width="34*"/>
+            <ColumnDefinition Width="86*"/>
+            <ColumnDefinition Width="142*"/>
+            <ColumnDefinition Width="60*"/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="oLabelHeaderTitel" 
+               Content="Profile Settings"
+               HorizontalAlignment="Left" 
+               Margin="163,9.8,0,0" 
+               Grid.Row="1"
+               VerticalAlignment="Top" 
+               Height="26" 
+               Width="90" 
+               RenderTransformOrigin="0.503,0.898" Grid.ColumnSpan="3"
+        />
+        <Label x:Name="oLabelLastname" 
+               Content="Name" 
+               HorizontalAlignment="Left" 
+               Margin="163,15,0,69.4" 
+               Grid.Row="3" Width="42" Grid.ColumnSpan="2"
+        />
+        <TextBox x:Name="oTextBoxLastname"
+                 Grid.Column="2" 
+                 HorizontalAlignment="Left" 
+                 Height="23" 
+                 Margin="0.4,15,0,0" 
+                 Grid.Row="3" 
+                 TextWrapping="Wrap" 
+                 Text="" 
+                 VerticalAlignment="Top" 
+                 Width="120"
+         />
+        <Label x:Name="oLabelFirstname" 
+               Content="Vorname" 
+               HorizontalAlignment="Left" 
+               Margin="163,55,0,0" 
+               Grid.Row="3" 
+               VerticalAlignment="Top" 
+               Height="26" Width="59" Grid.ColumnSpan="2"
+        />
+        <TextBox x:Name="oTextBoxFirstname" 
+                 Grid.Column="2" 
+                 HorizontalAlignment="Left" 
+                 Height="23" 
+                 Margin="0.4,58,0,0" 
+                 Grid.Row="3" 
+                 TextWrapping="Wrap" 
+                 Text="" 
+                 VerticalAlignment="Top" 
+                 Width="120"
+        />
+
+    </Grid>
+</Window>

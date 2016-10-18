@@ -33,13 +33,13 @@ namespace FirstTryApplication
 
             try
             {
-                int quersumme = 0;
+                int iQuersumme = 0;
                 for (int i = 0; i < sInputText.Length; i++){
-                    quersumme += sInputText[i] - 48; // Convert.ToInt32(sInputText[i].ToString());
+                    iQuersumme += sInputText[i] - 48; // Convert.ToInt32(sInputText[i].ToString());
                 }
                 int iValue = Convert.ToInt32(sInputText);
-                MessageBox.Show(sMsgBoxString + iValue);
-                //MessageBox.Show(); 
+                // MessageBox.Show(sMsgBoxString + iValue);
+                MessageBox.Show("Die Quersumme aller eingegeben Zahlen ist: "+iQuersumme); 
             }
             catch (Exception){
                 MessageBox.Show("Die Eingabe " + sInputText + " ist falsch!",

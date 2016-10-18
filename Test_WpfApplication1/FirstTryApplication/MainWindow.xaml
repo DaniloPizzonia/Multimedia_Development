@@ -8,24 +8,24 @@
         Title="First Application" Height="350" Width="525">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="64*"/>
-            <ColumnDefinition Width="95*"/>
+            <ColumnDefinition Width="70*"/>
+            <ColumnDefinition Width="92*"/>
             <ColumnDefinition Width="226*"/>
-            <ColumnDefinition Width="123*"/>
+            <ColumnDefinition Width="122*"/>
             <ColumnDefinition Width="9*"/>
         </Grid.ColumnDefinitions>
         <Button x:Name="oButton_CreateProject" 
                 Content="Create Project" 
                 HorizontalAlignment="Right" 
-                Margin="0,20,11,0" 
+                Margin="0,123,3.4,0" 
                 VerticalAlignment="Top" 
                 Width="88" 
                 Click="oButton_CreateProject_Click" 
-                Grid.Column="3" Height="22"
+                Grid.Column="1" Height="22"
          />
         <TextBox x:Name="oTextBox_ProjectName"
                  HorizontalAlignment="Left" 
-                 Height="23" Margin="36,82,0,0" 
+                 Height="23" Margin="31,82,0,0" 
                  TextWrapping="Wrap" 
                  Text="" 
                  VerticalAlignment="Top" 
@@ -33,7 +33,8 @@
                  TextChanged="oTextBox_ProjectName_TextChanged" 
                  TextAlignment="Right" Grid.ColumnSpan="2"
         />
-        <Label x:Name="label" Content="Label" HorizontalAlignment="Left" Margin="36,51,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.067,-0.19" Grid.ColumnSpan="2" Height="26" Width="38"/>
+        <Label x:Name="label"
+               Content="Label" HorizontalAlignment="Left" Margin="31,51,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.067,-0.19" Height="26" Width="38"/>
 
     </Grid>
 </Window>

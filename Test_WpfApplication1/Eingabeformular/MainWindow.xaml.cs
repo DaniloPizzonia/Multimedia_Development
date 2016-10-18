@@ -18,11 +18,14 @@ namespace Eingabeformular
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
-    {
-        public MainWindow()
-        {
+    public partial class MainWindow : Window {
+        public MainWindow(){
             InitializeComponent();
         }
+
+        private void oButtonUploadImage_Click(object sender, RoutedEventArgs e){
+            MessageBox.Show("Open a dialog to upload a profile image!");
+        }
+        
     }
 }

@@ -1,0 +1,39 @@
+﻿<Window x:Class="FirstTryApplication.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FirstTryApplication"
+        mc:Ignorable="d"
+        Title="First Application" Height="350" Width="525">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="64*"/>
+            <ColumnDefinition Width="95*"/>
+            <ColumnDefinition Width="226*"/>
+            <ColumnDefinition Width="123*"/>
+            <ColumnDefinition Width="9*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="oButton_CreateProject" 
+                Content="Create Project" 
+                HorizontalAlignment="Right" 
+                Margin="0,20,11,0" 
+                VerticalAlignment="Top" 
+                Width="88" 
+                Click="oButton_CreateProject_Click" 
+                Grid.Column="3" Height="22"
+         />
+        <TextBox x:Name="oTextBox_ProjectName"
+                 HorizontalAlignment="Left" 
+                 Height="23" Margin="36,82,0,0" 
+                 TextWrapping="Wrap" 
+                 Text="" 
+                 VerticalAlignment="Top" 
+                 Width="120" 
+                 TextChanged="oTextBox_ProjectName_TextChanged" 
+                 TextAlignment="Right" Grid.ColumnSpan="2"
+        />
+        <Label x:Name="label" Content="Label" HorizontalAlignment="Left" Margin="36,51,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.067,-0.19" Grid.ColumnSpan="2" Height="26" Width="38"/>
+
+    </Grid>
+</Window>

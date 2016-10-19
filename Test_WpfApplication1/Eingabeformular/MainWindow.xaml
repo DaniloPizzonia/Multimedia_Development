@@ -98,7 +98,7 @@
                 Width="126" 
                 Height="19" Click="oButtonUploadImage_Click"/>
         <Label x:Name="oProfileName" 
-               Content="Danilo Pizzonia" 
+               Content="{Binding LastName}" 
                HorizontalAlignment="Left" 
                Margin="0.857,7.789,0,0" 
                Grid.Row="2" 

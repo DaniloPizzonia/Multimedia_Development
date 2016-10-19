@@ -39,11 +39,11 @@ namespace FirstTryApplication
                 }
                 int iValue = Convert.ToInt32(sInputText);
                 // MessageBox.Show(sMsgBoxString + iValue);
-                MessageBox.Show("Die Quersumme aller eingegeben Zahlen ist: "+iQuersumme); 
+                MessageBox.Show("Die Quersumme aller eingegeben Zahlen ist: " + iQuersumme); 
             }
             catch (Exception){
                 MessageBox.Show("Die Eingabe " + sInputText + " ist falsch!",
-                    "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
+                    "Fehler", MessageBoxButton.OK, MessageBoxImage.Error, error.ToString);
     
             }
             

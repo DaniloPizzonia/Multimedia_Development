@@ -23,17 +23,24 @@ namespace Eingabeformular {
         }
 
         private void oButtonUploadImage_Click(object sender, RoutedEventArgs e){
+            var sFirstName = oTextBoxVorname.Text;
             try {
-                var sValue = this.addition(12, 13);
-                MessageBox.Show("" + sValue);
-            } catch(Exception error) {
-                MessageBox.Show("Error has Occured: {0}",  error.ToString());
-            }
-           
+                Convert.ToInt32(sFirstName);
+                MessageBox.Show("", sFirstName);
+                
+            } catch(Exception ex) {
+                MessageBox.Show("An Exception has catched up: " + ex.Message,
+                    "Exception Sample", MessageBoxButton.OK, MessageBoxImage.Error);
+            } 
         }
-        private int addition(int a, int b) {
-            return a + b;
+
+        private void oButtonSave_Click(object sender, RoutedEventArgs e) {
+            MessageBox.Show("Eroflgreich gespeichert!");
         }
-        
+
+        private void oButtonCancel_Click(object sender, RoutedEventArgs e) {
+            
+            MessageBox.Show("Einagben erfolgreich verworfen!");
+        }
     }
 }

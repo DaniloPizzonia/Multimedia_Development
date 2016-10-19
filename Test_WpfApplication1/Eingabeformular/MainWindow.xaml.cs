@@ -27,13 +27,13 @@ namespace Eingabeformular {
 
         private void oButtonUploadImage_Click(object sender, RoutedEventArgs e){
             var sFirstName = oEmployee.FirstName;
-            try {
+            try{
                 MessageBox.Show("", sFirstName);
                 
-            } catch(Exception ex) {
+            } catch(Exception ex){
                 MessageBox.Show("An Exception has catched up: " + ex.Message,
                     "Exception Sample", MessageBoxButton.OK, MessageBoxImage.Error);
-            } 
+            }
         }
 
         private void oButtonSave_Click(object sender, RoutedEventArgs e) {
@@ -45,7 +45,8 @@ namespace Eingabeformular {
         }
 
         private void oButtonCancel_Click(object sender, RoutedEventArgs e) {
-
+            oEmployee.LastName = ""; oEmployee.FirstName = ""; oEmployee.Title = "";
+            oTextBoxNachname.Text = ""; oTextBoxVorname.Text = "";
             MessageBox.Show("Einagben erfolgreich verworfen!");
         }
     }

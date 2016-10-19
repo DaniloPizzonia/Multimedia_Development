@@ -13,8 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Eingabeformular
-{
+namespace Eingabeformular {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -24,7 +23,16 @@ namespace Eingabeformular
         }
 
         private void oButtonUploadImage_Click(object sender, RoutedEventArgs e){
-            MessageBox.Show("Open a dialog to upload a profile image!");
+            try {
+                var sValue = this.addition(12, 13);
+                MessageBox.Show("" + sValue);
+            } catch(Exception error) {
+                MessageBox.Show("Error has Occured: {0}",  error.ToString());
+            }
+           
+        }
+        private int addition(int a, int b) {
+            return a + b;
         }
         
     }

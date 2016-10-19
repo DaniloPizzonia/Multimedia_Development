@@ -21,14 +21,13 @@ namespace Eingabeformular {
         private Employee oEmployee;
         public MainWindow(){
             InitializeComponent();
-            oEmployee = new Employee { FirstName = "Danilo", LastName = "Pizzonia", Title = "Herr" };
+            oEmployee = new Employee { FirstName = "", LastName = "", Title = "" };
             this.DataContext = oEmployee;
         }
 
         private void oButtonUploadImage_Click(object sender, RoutedEventArgs e){
-            var sFirstName = oTextBoxVorname.Text;
+            var sFirstName = oEmployee.FirstName;
             try {
-                Convert.ToInt32(sFirstName);
                 MessageBox.Show("", sFirstName);
                 
             } catch(Exception ex) {
@@ -38,13 +37,11 @@ namespace Eingabeformular {
         }
 
         private void oButtonSave_Click(object sender, RoutedEventArgs e) {
-            var sFirstName = oTextBoxVorname.Text;
-            var sLastName = oTextBoxNachname.Text;
-            var oComboBox = oComboBoxAnrede.Text;
-
-            // use this variables to bind it into the oProfileName control
-
-            MessageBox.Show("Eroflgreich gespeichert! " + sFirstName + " " + sLastName);
+            oEmployee.LastName = oTextBoxNachname.Text;
+            oEmployee.FirstName = oTextBoxVorname.Text;
+            oEmployee.Title = oComboBoxAnrede.Text;
+     
+            MessageBox.Show("Eroflgreich gespeichert! " + oEmployee.FirstName + " " + oEmployee.LastName);
         }
 
         private void oButtonCancel_Click(object sender, RoutedEventArgs e) {

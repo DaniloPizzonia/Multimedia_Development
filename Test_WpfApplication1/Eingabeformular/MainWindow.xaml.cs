@@ -18,8 +18,11 @@ namespace Eingabeformular {
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window {
+        private Employee oEmployee;
         public MainWindow(){
             InitializeComponent();
+            oEmployee = new Employee { FirstName = "Danilo", LastName = "Pizzonia", Title = "Herr" };
+            this.DataContext = oEmployee;
         }
 
         private void oButtonUploadImage_Click(object sender, RoutedEventArgs e){
@@ -35,11 +38,17 @@ namespace Eingabeformular {
         }
 
         private void oButtonSave_Click(object sender, RoutedEventArgs e) {
-            MessageBox.Show("Eroflgreich gespeichert!");
+            var sFirstName = oTextBoxVorname.Text;
+            var sLastName = oTextBoxNachname.Text;
+            var oComboBox = oComboBoxAnrede.Text;
+
+            // use this variables to bind it into the oProfileName control
+
+            MessageBox.Show("Eroflgreich gespeichert! " + sFirstName + " " + sLastName);
         }
 
         private void oButtonCancel_Click(object sender, RoutedEventArgs e) {
-            
+
             MessageBox.Show("Einagben erfolgreich verworfen!");
         }
     }

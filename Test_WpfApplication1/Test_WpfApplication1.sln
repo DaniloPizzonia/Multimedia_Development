@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eingabeformular", "Eingabef
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VorlesungsUebung_2", "VorlesungsUebung_2\VorlesungsUebung_2.csproj", "{3DB70BE0-5A89-4BA4-A952-EB11E07C7A25}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EinHandler", "EinHandler\EinHandler.csproj", "{D97E25E6-908B-4A61-847A-7991430C0918}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{3DB70BE0-5A89-4BA4-A952-EB11E07C7A25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3DB70BE0-5A89-4BA4-A952-EB11E07C7A25}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3DB70BE0-5A89-4BA4-A952-EB11E07C7A25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D97E25E6-908B-4A61-847A-7991430C0918}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D97E25E6-908B-4A61-847A-7991430C0918}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D97E25E6-908B-4A61-847A-7991430C0918}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D97E25E6-908B-4A61-847A-7991430C0918}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,44 @@
+﻿<Window x:Class="EinHandler.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EinHandler"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid Name="oGrid_Layout">
+        <Ellipse Name ="oElipse_Red" 
+                 Fill="#ff0000" 
+                 HorizontalAlignment="Left" 
+                 Height="94" 
+                 Margin="61,29,0,0" 
+                 Stroke="Black" 
+                 VerticalAlignment="Top" 
+                 Width="97" MouseUp="oElipse_MouseUp"/>
+        <Ellipse x:Name ="oElipse_Blue" 
+            Fill="#0000ff" 
+            HorizontalAlignment="Left" 
+            Height="94" 
+            Margin="375,29,0,0" 
+            Stroke="Black" 
+            VerticalAlignment="Top" 
+            Width="97" MouseUp="oElipse_MouseUp"/>
+        <Ellipse x:Name ="oElipse_Green" 
+            Fill="#00ff00" 
+            HorizontalAlignment="Left" 
+            Height="94" 
+            Margin="215,29,0,0" 
+            Stroke="Black" 
+            VerticalAlignment="Top" 
+            Width="97" MouseUp="oElipse_MouseUp"/>
+        <TextBox x:Name="oTextBox_Ellipse" 
+                 HorizontalAlignment="Left" 
+                 Height="23" 
+                 Margin="133,209,0,0" 
+                 TextWrapping="Wrap" 
+                 Text="" 
+                 VerticalAlignment="Top" 
+                 Width="120" 
+                 KeyDown="oTextBox_Ellipse_KeyDown"/>
+    </Grid>
+</Window>

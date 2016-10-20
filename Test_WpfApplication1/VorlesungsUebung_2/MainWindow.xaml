@@ -13,23 +13,24 @@
             <ColumnDefinition Width="129*"/>
             <ColumnDefinition Width="134*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Margin="26,74,24,102" Orientation="Vertical">
+        <StackPanel Margin="26,74,24,88" Orientation="Vertical">
             <ListBox x:Name="oListBox_Kontakte" 
                 FontSize="11"
                 DisplayMemberPath="firstName"
                 HorizontalAlignment="Left" 
-                Height="364" 
+                Height="362" 
                 VerticalAlignment="Top" 
-                Width="190"
+                Width="190" SelectionChanged="oListBox_Kontakte_SelectionChanged"
                  />
             <StackPanel Margin = "0.6" Orientation ="Horizontal">
                 <Button x:Name="Add" Content="+" FontSize="15" FontWeight="Bold" Width="30" Click="Add_Click" ></Button>
                 <Button x:Name="Del" Foreground="Red" Margin = "5,0,0,0" Content="-" FontSize="15" FontWeight="Bold" Width="30" Click="Del_Click" ></Button>
             </StackPanel>
         </StackPanel>
-        <StackPanel DataContext = "{Binding ElementName = oListBox_Kontakte, Path  =SelectedItem}" Grid.Column="1" Margin="0,5,0,0" Orientation="Vertical">
+        <StackPanel DataContext = "{Binding ElementName = oListBox_Kontakte, Path  =SelectedItem}" Grid.Column="1" Margin="0,70,0,0" Orientation="Vertical">
             <StackPanel  Margin="0,5,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal" Width="350">
                 <TextBlock x:Name="oTextBlock_Vorname" 
+                           Style="{StaticResource fmt_Titel}"
                            HorizontalAlignment="Left" 
                            TextWrapping="Wrap" 
                            Text="Vorname" 
@@ -44,6 +45,55 @@
                          VerticalAlignment="Top" 
                          Width="64"/>
             </StackPanel>
+            <StackPanel  Margin="0,5,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal" Width="350">
+                <TextBlock x:Name="oTextBlock_Nachname"
+                           Style="{StaticResource fmt_Titel}"
+                           HorizontalAlignment="Left" 
+                           TextWrapping="Wrap" 
+                           Text="Nachname" 
+                           VerticalAlignment="Top"
+                           Width="65" />
+                <TextBox x:Name="oTextBox_Nachname"
+                         HorizontalAlignment="Left" 
+                         Height="23" 
+                         Margin="0,0,0,0"
+                         TextWrapping="Wrap" 
+                         Text="{Binding lastName}" 
+                         VerticalAlignment="Top" 
+                         Width="64"/>
+            </StackPanel>
+            <StackPanel  Margin="0,5,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal" Width="350">
+                <TextBlock x:Name="oTextBlock_Age" 
+                           Style="{StaticResource fmt_Titel}"
+                           HorizontalAlignment="Left" 
+                           TextWrapping="Wrap" 
+                           Text="Alter" 
+                           VerticalAlignment="Top"
+                           Width="65" />
+                <TextBox x:Name="oTextBox_Age"
+                         HorizontalAlignment="Left" 
+                         Height="23" 
+                         Margin="0,0,0,0"
+                         TextWrapping="Wrap" 
+                         Text="{Binding age}" 
+                         VerticalAlignment="Top" 
+                         Width="64"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Column="2" Margin="43,20,45,306" Orientation="Vertical">
+            <Image x:Name="oImage_ProfilPicture" 
+                   HorizontalAlignment="Left" 
+                   Height="196" 
+                   VerticalAlignment="Top" 
+                   Width="193"/>
+            <Button x:Name="oButton_AddImage" 
+                    Content="Bild Hinzufügen" 
+                    HorizontalAlignment="Left" 
+                    Margin="43,5,0,0"
+                    VerticalAlignment="Top" 
+                    Width="109" 
+                    Height="32" 
+                    Click="oButton_AddImage_Click"/>
         </StackPanel>
 
     </Grid>

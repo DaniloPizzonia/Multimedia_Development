@@ -4,6 +4,8 @@
              xmlns:local="clr-namespace:VorlesungsUebung_2"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style x:Key="fmt_Titel" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="DarkGray" />
+        </Style>
     </Application.Resources>
 </Application>

@@ -14,7 +14,8 @@
                  Margin="61,29,0,0" 
                  Stroke="Black" 
                  VerticalAlignment="Top" 
-                 Width="97" MouseUp="oElipse_MouseUp"/>
+                 Width="97" 
+                 MouseUp="oElipse_MouseUp"/>
         <Ellipse x:Name ="oElipse_Blue" 
             Fill="#0000ff" 
             HorizontalAlignment="Left" 
@@ -22,7 +23,8 @@
             Margin="375,29,0,0" 
             Stroke="Black" 
             VerticalAlignment="Top" 
-            Width="97" MouseUp="oElipse_MouseUp"/>
+            Width="97" 
+            MouseUp="oElipse_MouseUp"/>
         <Ellipse x:Name ="oElipse_Green" 
             Fill="#00ff00" 
             HorizontalAlignment="Left" 
@@ -30,7 +32,8 @@
             Margin="215,29,0,0" 
             Stroke="Black" 
             VerticalAlignment="Top" 
-            Width="97" MouseUp="oElipse_MouseUp"/>
+            Width="97"
+            MouseUp="oElipse_MouseUp"/>
         <TextBox x:Name="oTextBox_Ellipse" 
                  HorizontalAlignment="Left" 
                  Height="23" 

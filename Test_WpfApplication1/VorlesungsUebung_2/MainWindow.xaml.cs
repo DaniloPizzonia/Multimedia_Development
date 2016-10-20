@@ -34,6 +34,11 @@ namespace VorlesungsUebung_2 {
             oListBox_Kontakte.ItemsSource = lKontakte;
         }
 
+        private void initListBox() {
+            oListBox_Kontakte.ItemsSource = null;
+            oListBox_Kontakte.ItemsSource = lKontakte;
+        }
+
         private void Add_Click(object sender, RoutedEventArgs e) {
             lKontakte.Add(new Employee { firstName = "Bitte Eintragen", lastName = "", title = "", profileUri = "" });
             initListBox();
@@ -47,12 +52,9 @@ namespace VorlesungsUebung_2 {
             lKontakte.Remove(oSelectedItem as Employee);
             initListBox();
         }
-        private void initListBox() {
-            oListBox_Kontakte.ItemsSource = null;
-            oListBox_Kontakte.ItemsSource = lKontakte;
-        }
 
         private void oButton_AddImage_Click(object sender, RoutedEventArgs e) {
+            var oKontakte = oListBox_Kontakte.SelectedItem as Employee;
             OpenFileDialog oFileDialog = new OpenFileDialog();
             oFileDialog.Title = "Select a picture";
             oFileDialog.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
@@ -61,13 +63,12 @@ namespace VorlesungsUebung_2 {
             try {
                 if (oFileDialog.ShowDialog() == true) {
                     var oProfileUri = new Uri(oFileDialog.FileName);
-                    var oKontakte = oListBox_Kontakte.SelectedItem as Employee;
-
                     oKontakte.profileUri = oFileDialog.FileName;
                     oImage_ProfilPicture.Source = new BitmapImage(oProfileUri);
                 }
             }
             catch (Exception ex) {
+                oKontakte.profileUri = "profilePic.jpg";
                 MessageBox.Show("An exception has catched up: " + ex.Message,
                     "Exception Sample", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -77,15 +78,21 @@ namespace VorlesungsUebung_2 {
             BitmapImage oImage = new BitmapImage();
             var oKontakte = oListBox_Kontakte.SelectedItem as Employee;
             try {
-                using (FileStream oStream = File.OpenRead(oKontakte.profileUri)) {
-                    oImage.BeginInit();
-                    oImage.StreamSource = oStream;
-                    oImage.CacheOption = BitmapCacheOption.OnLoad;
-                    oImage.EndInit();
+                if (oKontakte != null) {
+                    if (oKontakte.profileUri == "") {
+                        oKontakte.profileUri = "Images/profilePic.jpg";
+                    }
+                    using (FileStream oStream = File.OpenRead(oKontakte.profileUri)) {
+                        oImage.BeginInit();
+                        oImage.StreamSource = oStream;
+                        oImage.CacheOption = BitmapCacheOption.OnLoad;
+                        oImage.EndInit();
+                    }
                 }
-            }
-            catch (Exception ex) {
-                MessageBox.Show("", ex.Message);
+                
+            } catch(Exception ex) {
+               
+                MessageBox.Show(ex.Message, "Error Report");
             }
             oImage_ProfilPicture.Source = oImage;
         }

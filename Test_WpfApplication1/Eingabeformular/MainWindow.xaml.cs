@@ -22,21 +22,23 @@ namespace Eingabeformular {
         private Employee oEmployee;
         public MainWindow(){
             InitializeComponent();
-            oEmployee = new Employee { FirstName = "", LastName = "", Title = "" };
-            this.DataContext = oEmployee;
+            oEmployee = new Employee { FirstName = "Danilo", LastName = "Pizzonia", Title = "" };
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e) {
+            oGridData.DataContext = oEmployee;
         }
 
         private void oButtonUploadImage_Click(object sender, RoutedEventArgs e){
-            OpenFileDialog op = new OpenFileDialog();
-            op.Title = "Select a picture";
-            op.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
+            OpenFileDialog oFileDialog = new OpenFileDialog();
+            oFileDialog.Title = "Select a picture";
+            oFileDialog.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
               "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
               "Portable Network Graphic (*.png)|*.png";
             try{
-                if (op.ShowDialog() == true){
-                    oImageProfile.Source = new BitmapImage(new Uri(op.FileName));
+                if (oFileDialog.ShowDialog() == true){
+                    oImageProfile.Source = new BitmapImage(new Uri(oFileDialog.FileName));
                 }
-
             } catch(Exception ex){
                 MessageBox.Show("An exception has catched up: " + ex.Message,
                     "Exception Sample", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -58,5 +60,6 @@ namespace Eingabeformular {
             
             MessageBox.Show("Einagben erfolgreich verworfen!");
         }
+
     }
 }

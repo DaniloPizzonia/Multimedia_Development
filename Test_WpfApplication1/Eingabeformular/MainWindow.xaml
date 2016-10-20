@@ -1,12 +1,13 @@
-﻿<Window x:Class="Eingabeformular.MainWindow"
+﻿ <Window x:Class="Eingabeformular.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Eingabeformular"
         mc:Ignorable="d"
+        Loaded="Window_Loaded"
         Title="MainWindow" Height="380" Width="720">
-    <Grid>
+    <Grid Name = "oGridData" TextElement.FontSize="11">
         <Grid.RowDefinitions>
             <RowDefinition Height="10*"/>
             <RowDefinition Height="23"/>
@@ -140,6 +141,25 @@
             Grid.Row="4" 
             VerticalAlignment="Top" 
             Width="65" Grid.RowSpan="2" Grid.ColumnSpan="2" Click="oButtonCancel_Click" Height="19"/>
+        <Label x:Name="oLabel_Passwort" 
+               Content="Passwort" 
+               Grid.Column="1" 
+               HorizontalAlignment="Left" 
+               Margin="2,127,0,0" 
+               Grid.Row="2" 
+               VerticalAlignment="Top" 
+               Width="64"/>
+        <TextBox x:Name="oTextBox_Passwort" 
+                 Grid.ColumnSpan="2" 
+                 Grid.Column="2" 
+                 HorizontalAlignment="Left" 
+                 Height="23" 
+                 Margin="5,130,0,0" 
+                 Grid.Row="2" 
+                 TextWrapping="Wrap" 
+                 Text="TextBox" 
+                 VerticalAlignment="Top" 
+                 Width="120"/>
 
     </Grid>
 </Window>

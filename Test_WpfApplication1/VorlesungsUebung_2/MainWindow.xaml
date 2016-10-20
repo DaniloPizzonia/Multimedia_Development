@@ -43,7 +43,7 @@
                          TextWrapping="Wrap" 
                          Text="{Binding firstName}" 
                          VerticalAlignment="Top" 
-                         Width="64"/>
+                         Width="100"/>
             </StackPanel>
             <StackPanel  Margin="0,5,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal" Width="350">
                 <TextBlock x:Name="oTextBlock_Nachname"
@@ -60,7 +60,7 @@
                          TextWrapping="Wrap" 
                          Text="{Binding lastName}" 
                          VerticalAlignment="Top" 
-                         Width="64"/>
+                         Width="100"/>
             </StackPanel>
             <StackPanel  Margin="0,5,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal" Width="350">
                 <TextBlock x:Name="oTextBlock_Age" 
@@ -77,7 +77,7 @@
                          TextWrapping="Wrap" 
                          Text="{Binding age}" 
                          VerticalAlignment="Top" 
-                         Width="64"/>
+                         Width="100"/>
             </StackPanel>
         </StackPanel>
         <StackPanel Grid.Column="2" Margin="43,20,45,306" Orientation="Vertical">

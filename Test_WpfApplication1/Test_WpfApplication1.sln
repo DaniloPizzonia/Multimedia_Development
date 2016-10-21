@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VorlesungsUebung_2", "Vorle
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EinHandler", "EinHandler\EinHandler.csproj", "{D97E25E6-908B-4A61-847A-7991430C0918}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BspDependancy", "BspDependancy\BspDependancy.csproj", "{B2278F46-CC01-4943-9210-CC7769A9E812}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{D97E25E6-908B-4A61-847A-7991430C0918}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D97E25E6-908B-4A61-847A-7991430C0918}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D97E25E6-908B-4A61-847A-7991430C0918}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2278F46-CC01-4943-9210-CC7769A9E812}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2278F46-CC01-4943-9210-CC7769A9E812}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2278F46-CC01-4943-9210-CC7769A9E812}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2278F46-CC01-4943-9210-CC7769A9E812}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

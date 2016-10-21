@@ -20,17 +20,19 @@ namespace VorlesungsUebung_2 {
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window {
-        private Employee oEmployee;
         List<Employee> lKontakte = new List<Employee>();
         public MainWindow(){
             InitializeComponent();
-            oEmployee = new Employee { firstName = "Danilo", lastName = "Pizzonia", title = "", age = 23, profileUri = "" };
-            lKontakte.Add(oEmployee);
-            
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) {
+            Save oSave = new Save();
+            oSave.saveObject(lKontakte, "test.txt");
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
-            //oGrid_Layout.DataContext = oEmployee;
+            Save oSave = new Save();
+            lKontakte = oSave.readDataFile<List<Employee>>("test.txt");
             oListBox_Kontakte.ItemsSource = lKontakte;
         }
 
@@ -96,5 +98,6 @@ namespace VorlesungsUebung_2 {
             }
             oImage_ProfilPicture.Source = oImage;
         }
+
     }
 }

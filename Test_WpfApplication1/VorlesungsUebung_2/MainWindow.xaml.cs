@@ -42,7 +42,13 @@ namespace VorlesungsUebung_2 {
         }
 
         private void Add_Click(object sender, RoutedEventArgs e) {
-            lKontakte.Add(new Employee { firstName = "Bitte Eintragen", lastName = "", title = "", profileUri = "" });
+            if(lKontakte != null) {
+                addDummy();
+            } else {
+                lKontakte = new List<Employee>();
+                addDummy();
+            }
+            
             initListBox();
         }
 
@@ -75,6 +81,9 @@ namespace VorlesungsUebung_2 {
                     "Exception Sample", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+        private void addDummy() {
+            lKontakte.Add(new Employee { firstName = "Bitte Eintragen", lastName = "", title = "", profileUri = "" });
+        }
 
         private void oListBox_Kontakte_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             BitmapImage oImage = new BitmapImage();
@@ -100,4 +109,5 @@ namespace VorlesungsUebung_2 {
         }
 
     }
+
 }

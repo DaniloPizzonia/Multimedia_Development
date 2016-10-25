@@ -37,7 +37,6 @@ namespace VorlesungsUebung_2 {
                 return default(T);
                 throw;
             }
-                
         }
     }
 }

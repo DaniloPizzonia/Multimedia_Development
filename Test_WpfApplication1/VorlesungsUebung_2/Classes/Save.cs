@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace VorlesungsUebung_2 {
     public class Save {
@@ -17,8 +18,8 @@ namespace VorlesungsUebung_2 {
                 bf.Serialize(fs, obj);
                 fs.Close();
             }
-            catch(Exception) {
-               
+            catch(Exception ex) {
+                MessageBox.Show(ex.Message);
             }
         }
 

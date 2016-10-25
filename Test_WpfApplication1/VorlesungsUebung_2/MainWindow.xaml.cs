@@ -64,8 +64,9 @@ namespace VorlesungsUebung_2 {
               "Portable Network Graphic (*.png)|*.png";
             try {
                 if (oFileDialog.ShowDialog() == true) {
-                    var oProfileUri = new Uri(oFileDialog.FileName, UriKind.RelativeOrAbsolute);
-                    oKontakte.profileUri = oFileDialog.FileName;
+                    var sFileName = oFileDialog.FileName;
+                    var oProfileUri = new Uri(sFileName, UriKind.RelativeOrAbsolute);
+                    oKontakte.profileUri = sFileName;
                     oImage_ProfilPicture.Source = new BitmapImage(oProfileUri);
                 }
             }

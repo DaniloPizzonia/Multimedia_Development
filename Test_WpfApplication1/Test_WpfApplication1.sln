@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EinHandler", "EinHandler\Ei
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BspDependancy", "BspDependancy\BspDependancy.csproj", "{B2278F46-CC01-4943-9210-CC7769A9E812}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChickenRun", "ChickenRun\ChickenRun.csproj", "{ACDBF7D5-D204-4687-85F8-7D812B56B698}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{B2278F46-CC01-4943-9210-CC7769A9E812}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2278F46-CC01-4943-9210-CC7769A9E812}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2278F46-CC01-4943-9210-CC7769A9E812}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACDBF7D5-D204-4687-85F8-7D812B56B698}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACDBF7D5-D204-4687-85F8-7D812B56B698}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACDBF7D5-D204-4687-85F8-7D812B56B698}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACDBF7D5-D204-4687-85F8-7D812B56B698}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

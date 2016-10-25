@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:ChickenRun"
         mc:Ignorable="d"
         Loaded="Window_Loaded"
+        Closed="Window_Closed"
         Title="MainWindow" Height="600" Width="800">
     <Grid Background="Goldenrod">
         <Canvas Name="oCanvas_Road" 
@@ -13,11 +14,16 @@
                 Height="200"
                 Width="800"
                 Canvas.Left="20">
-            <Image x:Name="oImage_ChickenOne"
+            <Image x:Name="oImage_Chicken0"
                    Canvas.Top="20"
                    Canvas.Left="0"
                    Height="50" 
-                   Source="Images/chicken.jpg" />
+                   Source="Images/Chicki_0.jpg" />
+            <Image x:Name="oImage_Chicken1"
+                   Canvas.Top="80"
+                   Canvas.Left="0"
+                   Height="50" 
+                   Source="Images/Lulu_0.jpg" />
             <Rectangle x:Name="oRectangle_Goal" 
                        Fill="#FFF4F4F5" 
                        Height="200" 

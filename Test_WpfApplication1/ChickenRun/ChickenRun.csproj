@@ -65,6 +65,7 @@
     </Compile>
     <Compile Include="Classes\Chicken.cs" />
     <Compile Include="Classes\Player.cs" />
+    <Compile Include="Classes\Save.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -98,7 +99,28 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\chicken.jpg" />
+    <Resource Include="Images\Chicki_0.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Lulu_1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Chicki_1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Lulu_0.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Mr. Wing_0.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Mr. Wing_1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Mr. Nugget_0.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Mr. Nugget_1.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -72,11 +72,13 @@ namespace ChickenRun {
                 for(int i = 0; i < 4; i++) {
                     Image oImage = oCanvas_Road.FindName("oImage_Chicken" + i) as Image;
                     var oChicken = new Chicken(i, oImage);
+                    oImage.ToolTip = oChicken.getName;
                     lChicken.Add(oChicken);
                 }
             } else {
                 for(int i = 0; i < lChicken.Count; i++) {
                     lChicken[i].getImageChicken = oCanvas_Road.FindName("oImage_Chicken" + i) as Image;
+                    lChicken[i].getImageChicken.ToolTip = lChicken[i].getName;
                 }
             }
             

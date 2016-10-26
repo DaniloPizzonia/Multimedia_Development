@@ -11,5 +11,13 @@ namespace ChickenRun {
     /// Interaction logic for App.xaml
     /// </summary>
     public partial class App : Application {
+        public static Game _gameData;
+
+        private void Application_Startup(object sender, StartupEventArgs e) {
+            _gameData = Save.readDataFile<Game>("GameData.txt");
+            if(_gameData == null){
+                _gameData = new Game();
+            }
+        }
     }
 }

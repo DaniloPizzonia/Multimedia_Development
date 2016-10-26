@@ -8,11 +8,13 @@
         Loaded="Window_Loaded"
         Closed="Window_Closed"
         Title="MainWindow" Height="600" Width="800">
-    <Grid Background="Goldenrod">
+    <Grid Name="oGrid_Game" 
+          Background="Goldenrod">
         <Canvas Name="oCanvas_Road" 
                 Background="Gray" 
+                SizeChanged="oCanvas_Road_SizeChanged"
                 Height="200"
-                Width="800"
+                Width="{Binding ElementName = oGrid_Game, Path = ActualWidth}"
                 Canvas.Left="20">
             <Image x:Name="oImage_Chicken0"
                    Canvas.Top="20"
@@ -27,26 +29,84 @@
             <Rectangle x:Name="oRectangle_Goal" 
                        Fill="#FFF4F4F5" 
                        Height="200" 
-                       Canvas.Left="448" 
+                       Canvas.Right="50" 
                        Stroke="Black" 
                        Width="14"/>
         </Canvas>
         <Button x:Name="oButton_Start" 
                 Content="Start" 
                 HorizontalAlignment="Left" 
-                Margin="238,390,0,0" 
+                Margin="658,390,0,0" 
                 VerticalAlignment="Top" 
-                Width="218" 
-                Height="49" 
+                Width="124" 
+                Height="28" 
                 Click="oButton_Start_Click"/>
         <Button x:Name="oButton_NewGame" 
                 Content="New Game" 
                 HorizontalAlignment="Left" 
-                Margin="238,466,0,0" 
+                Margin="658,433,0,0" 
                 VerticalAlignment="Top" 
-                Width="218" 
-                Height="49" 
+                Width="124" 
+                Height="28" 
                 IsEnabled="False"
                 Click="oButton_NewGame_Click" />
+        <GroupBox x:Name="oGroupBox_BettingShop" 
+                  Header="Wettbüro" 
+                  Height="150"
+                  Width="400"
+                  HorizontalAlignment="Left" 
+                  Margin="24,402,0,0" 
+                  VerticalAlignment="Top">
+            <Grid Name="oGrid_BettingShop">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <ComboBox x:Name="oComboBox_Player0" 
+                          Grid.Column="0"
+                          Grid.Row="0"
+                          HorizontalAlignment="Center"
+                          Margin="0,0,0,0" 
+                          VerticalAlignment="Top" 
+                          Height="25"
+                          Width="80"
+                          DisplayMemberPath="getSetName"/>
+                <TextBlock Name="oTextBox_MoneyAmount" 
+                     Grid.Column="1"
+                     Grid.Row="0"
+                     Width="100"
+                     Height="49"
+                     Text="{Binding ElementName=oComboBox_Player0, Path=SelectedItem.getSetMoneyAmount}"
+                     TextAlignment="Right"/>
+
+            </Grid>
+        </GroupBox>
+        <StackPanel 
+            HorizontalAlignment="Left"
+            Height="100"
+            Margin="451,462,0,0"
+            VerticalAlignment="Top"
+            Orientation="Horizontal">
+            <TextBlock Text="Neuer Spieler"
+                       VerticalAlignment="Center"/>
+            <TextBox Name="oTextBox_AddNewPlayer" 
+                     Width="100"
+                     Height="49"
+                     Text=""/>
+            <Button x:Name="oButton_Add" 
+                Content="Hinzufügen" 
+                Margin="0,0,0,0" 
+                Width="100" 
+                Height="49" 
+                Click="oButton_Add_Click" />
+        </StackPanel>
     </Grid>
 </Window>

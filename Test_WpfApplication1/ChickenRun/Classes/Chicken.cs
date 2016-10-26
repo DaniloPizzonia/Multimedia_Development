@@ -7,11 +7,10 @@ using System.Windows.Controls;
 
 namespace ChickenRun {
     [Serializable]
-    class Chicken {
+    public class Chicken {
         public Chicken() { }
-        public Chicken(int chickenNumber, Image oUiImage) {
-            getImageChicken = oUiImage;
-            getName = chickenName[chickenNumber];
+        public Chicken(string sName) {
+            getName = sName;
         }
 
         public string getName { get; set; }        
@@ -21,11 +20,5 @@ namespace ChickenRun {
         public bool imageChanged;
         [NonSerialized]
         public Image getImageChicken;
-
-        [NonSerialized]
-        List<string> chickenName = new List<string>() {
-            "Chicki", "Lulu"
-        };
-
     }
 }

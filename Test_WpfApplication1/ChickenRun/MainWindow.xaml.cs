@@ -21,11 +21,12 @@ namespace ChickenRun {
     public partial class MainWindow : Window {
         DispatcherTimer oTimer = new DispatcherTimer();
         Random oRandom = new Random();
-        List<Chicken> lChicken = new List<Chicken>();
+        List<Chicken> lChicken;
         double oGoal;
         
         public MainWindow() {
             InitializeComponent();
+            lChicken = App._gameData.lChicken;
             oTimer.Interval = TimeSpan.FromSeconds(0.1);
             oTimer.Tick += TimerTick;
         }
@@ -65,23 +66,13 @@ namespace ChickenRun {
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
-           oGoal= (double) oRectangle_Goal.GetValue(Canvas.LeftProperty);
-            lChicken = Save.readDataFile <List<Chicken>>("storage.txt");
-            if(lChicken == null) {
-                lChicken = new List<Chicken>();
-                for(int i = 0; i < 4; i++) {
-                    Image oImage = oCanvas_Road.FindName("oImage_Chicken" + i) as Image;
-                    var oChicken = new Chicken(i, oImage);
-                    oImage.ToolTip = oChicken.getName;
-                    lChicken.Add(oChicken);
-                }
-            } else {
-                for(int i = 0; i < lChicken.Count; i++) {
-                    lChicken[i].getImageChicken = oCanvas_Road.FindName("oImage_Chicken" + i) as Image;
-                    lChicken[i].getImageChicken.ToolTip = lChicken[i].getName;
-                }
+            oGoal= oCanvas_Road.ActualWidth - (double) oRectangle_Goal.GetValue(Canvas.RightProperty);
+
+            for(int i = 0; i < lChicken.Count; i++) {
+                lChicken[i].getImageChicken = oCanvas_Road.FindName("oImage_Chicken" + i) as Image;
+                lChicken[i].getImageChicken.ToolTip = lChicken[i].getName;
             }
-            
+            oComboBox_Player0.ItemsSource = App._gameData.lPlayer;
         }
 
         private void oButton_NewGame_Click(object sender, RoutedEventArgs e) {
@@ -109,7 +100,44 @@ namespace ChickenRun {
         }
 
         private void Window_Closed(object sender, EventArgs e) {
-            Save.saveObject<List<Chicken>>(lChicken, "storage.txt");
+            App._gameData.lChicken[0].getNumberRuns = 20;
+            Save.saveObject<Game>(App._gameData, "GameData.txt");
+        }
+
+        private void oCanvas_Road_SizeChanged(object sender, SizeChangedEventArgs e) {
+            oGoal = oCanvas_Road.ActualWidth - (double)oRectangle_Goal.GetValue(Canvas.RightProperty);
+        }
+
+        private void oButton_Add_Click(object sender, RoutedEventArgs e) {
+            var sPlayerName = oTextBox_AddNewPlayer.Text;
+            //else if(!this.isPlayerAvailable(sPlayerName)) {
+            //    MessageBox.Show("Spieler existiert schon");
+            //}
+            if(sPlayerName == "") {
+                MessageBox.Show("Bitte Name eingeben");
+            }  else {
+                var oIsPlayerAvailable = (from s in App._gameData.lPlayer
+                            where s.getSetName == sPlayerName
+                            select s ).FirstOrDefault();
+                if(oIsPlayerAvailable == null) {
+                    var oPlayer = new Player(sPlayerName, false);
+                    App._gameData.lPlayer.Add(oPlayer);
+                    oTextBox_AddNewPlayer.Text = "";
+                    MessageBox.Show("Spieler " + sPlayerName + " wurde erfolgreich hinzugefügt!");
+                } else {
+                    MessageBox.Show("Spieler " + sPlayerName + " existiert schon, bitte neuen Name eingeben!");
+                }
+                
+            }
+        }
+        private bool isPlayerAvailable(string sPlayerName) {
+            var bReturn = true;
+            for(int i = 0; i < App._gameData.lPlayer.Count; i++) {
+                if(App._gameData.lPlayer[i].getSetName == sPlayerName) {
+                    bReturn = false;
+                }
+            }
+            return bReturn;
         }
     }
 }

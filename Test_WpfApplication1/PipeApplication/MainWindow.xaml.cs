@@ -21,5 +21,13 @@ namespace PipeApplication {
         public MainWindow() {
             InitializeComponent();
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e) {
+
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) {
+
+        }
     }
 }

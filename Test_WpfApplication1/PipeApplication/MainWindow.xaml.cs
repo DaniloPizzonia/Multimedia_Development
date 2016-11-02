@@ -18,16 +18,17 @@ namespace PipeApplication {
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow:Window {
+        List<Pipe> lPipes = new List<Pipe>();
         public MainWindow() {
             InitializeComponent();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
-
+            
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) {
-
+            
         }
     }
 }

@@ -7,9 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace ChickenRun {
-    public class Save {
-
+namespace PipeApplication {
+    class Save {
         public static void saveObject<T>(T obj, string dataFileName) {
             BinaryFormatter bf = new BinaryFormatter();
             FileStream fs;
@@ -17,8 +16,7 @@ namespace ChickenRun {
                 fs = new FileStream(dataFileName, FileMode.Create);
                 bf.Serialize(fs, obj);
                 fs.Close();
-            }
-            catch(Exception ex) {
+            } catch(Exception ex) {
                 MessageBox.Show(ex.Message);
             }
         }
@@ -28,12 +26,11 @@ namespace ChickenRun {
             FileStream fs;
             BinaryFormatter bf;
             try {
-                fs =  new FileStream(dataName, FileMode.Open);
+                fs = new FileStream(dataName, FileMode.Open);
                 bf = new BinaryFormatter();
                 data = (T)bf.Deserialize(fs);
                 return data;
-            }
-            catch(Exception) {
+            } catch(Exception) {
                 return default(T);
                 throw;
             }

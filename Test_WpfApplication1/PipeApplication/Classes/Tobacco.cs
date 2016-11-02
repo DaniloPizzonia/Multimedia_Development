@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace PipeApplication {
     class Tobacco {
+        
+        public Tobacco() { }
+        public Tobacco(string sName) {
+            this.Name = sName;
+        }
+
         /// <summary>
         /// Getter and Setter Methods
         /// </summary>
@@ -22,8 +28,5 @@ namespace PipeApplication {
         public int Taste { get; set; }
         public int RoomNote { get; set; }
         public int SmokedBowls { get; set; }
-
-
-
     }
 }

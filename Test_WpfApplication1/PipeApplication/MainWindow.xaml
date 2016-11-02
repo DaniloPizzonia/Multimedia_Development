@@ -18,5 +18,21 @@
             <ColumnDefinition Width="163*"/>
             <ColumnDefinition Width="178*"/>
         </Grid.ColumnDefinitions>
+        <StackPanel Name="oStackPanel_OverviewPage">
+            <TextBlock x:Name="oTextBlock_Nachname"
+                HorizontalAlignment="Left" 
+                TextWrapping="Wrap" 
+                Text="Pipes" 
+                VerticalAlignment="Top"
+                Width="65" />
+            <TextBlock x:Name="oTextBox_Nachname"
+                HorizontalAlignment="Left" 
+                Height="23" 
+                Margin="0,0,0,0"
+                TextWrapping="Wrap" 
+                Text="{Binding PipeCount}" 
+                VerticalAlignment="Top" 
+                Width="100"/>
+        </StackPanel>
     </Grid>
 </Window>

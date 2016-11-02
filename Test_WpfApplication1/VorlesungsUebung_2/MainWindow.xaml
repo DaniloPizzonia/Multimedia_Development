@@ -21,8 +21,8 @@
                 HorizontalAlignment="Left" 
                 Height="362" 
                 VerticalAlignment="Top" 
-                Width="190" SelectionChanged="oListBox_Kontakte_SelectionChanged"
-                 />
+                Width="190" 
+                SelectionChanged="oListBox_Kontakte_SelectionChanged" />
             <StackPanel Margin = "0.6" Orientation ="Horizontal">
                 <Button x:Name="Add" Content="+" FontSize="15" FontWeight="Bold" Width="30" Click="Add_Click" ></Button>
                 <Button x:Name="Del" Foreground="Red" Margin = "5,0,0,0" Content="-" FontSize="15" FontWeight="Bold" Width="30" Click="Del_Click" ></Button>

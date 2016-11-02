@@ -12,7 +12,7 @@ namespace PipeApplication {
         public int PurchaseDate { get; set; }
         public int SmokedBowls { get; set; }
         public int Price { get; set; }
-        public string ReservedForFlavor { get; set; }
+        public string ReservedForFlavor { get; set; } 
 
     }
 }

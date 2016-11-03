@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace PipeApplication {
-    class Tobacco {
+    public class Tobacco {
         
         public Tobacco() { }
         public Tobacco(string sName) {

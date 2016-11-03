@@ -34,5 +34,21 @@
                 VerticalAlignment="Top" 
                 Width="100"/>
         </StackPanel>
+        <StackPanel Grid.Column="2" 
+                    HorizontalAlignment="Left" 
+                    Height="53" 
+                    Margin="45,80,0,0" 
+                    Grid.Row="1" 
+                    VerticalAlignment="Top"
+                    Width="122">
+            <Button x:Name="oButton_Pfeifen" 
+                    Content="Pfeifen"
+                    Grid.Column="2"
+                    Grid.Row="1"/>
+            <Button x:Name="oButton_Tabak"
+                    Content="Tabak"
+                    Grid.Column="2"
+                    Grid.Row="1"/>
+        </StackPanel>
     </Grid>
 </Window>

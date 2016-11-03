@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace PipeApplication {
-    class Pipe {
+    public class Pipe {
         // test
         public string Name { get; set; }
         public string PipeMaker { get; set; }

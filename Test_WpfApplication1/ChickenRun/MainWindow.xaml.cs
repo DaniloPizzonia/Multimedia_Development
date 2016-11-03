@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Speech.Synthesis;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,7 +25,9 @@ namespace ChickenRun {
         Random oRandom = new Random();
         List<Chicken> lChicken;
         double oGoal;
-        
+        static string sSoundPath = Environment.CurrentDirectory;
+        SoundPlayer oSoundPlayer = new SoundPlayer(sSoundPath + @"\Media\wave.wav");
+         
         public MainWindow() {
             InitializeComponent();
             lChicken = App._gameData.lChicken;
@@ -44,9 +48,14 @@ namespace ChickenRun {
                 if(lWinner.Count >0) {
                     oTimer.Stop();
                     newGame();
-                    MessageBox.Show(sMessage + lChicken[i].getName);
+                    MessageBox.Show(sMessage += lChicken[i].getName);
+                    speechOutput(sMessage);
                 }
             }
+        }
+        private void speechOutput(string message) {
+            SpeechSynthesizer oSpeech = new SpeechSynthesizer();
+            oSpeech.SpeakAsync(new Prompt(message));
         }
 
         private void newGame() {
@@ -80,7 +89,7 @@ namespace ChickenRun {
             oButton_Start.IsEnabled = true;
             resetChickenPosition();
         }
-
+ 
         private void resetChickenPosition() {
             for(int i = 0; i < lChicken.Count; i++) {
                 Image oImage = oCanvas_Road.FindName("oImage_Chicken" + i) as Image;
@@ -110,9 +119,6 @@ namespace ChickenRun {
 
         private void oButton_Add_Click(object sender, RoutedEventArgs e) {
             var sPlayerName = oTextBox_AddNewPlayer.Text;
-            //else if(!this.isPlayerAvailable(sPlayerName)) {
-            //    MessageBox.Show("Spieler existiert schon");
-            //}
             if(sPlayerName == "") {
                 MessageBox.Show("Bitte Name eingeben");
             }  else {

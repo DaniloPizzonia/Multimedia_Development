@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 
 namespace PipeApplication {
-    class Save {
+    public class Save {
         public static void saveObject<T>(T obj, string dataFileName) {
             BinaryFormatter bf = new BinaryFormatter();
             FileStream fs;

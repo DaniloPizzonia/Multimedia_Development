@@ -32,6 +32,7 @@ namespace DataGenerator {
             lFirstName_m = Save.readXML<List<string>>("FirstName_w.xml");
             lFamilyName = Save.readXML<List<string>>("FamName.xml");
         }
+
         private void oButton_GenerateData_Click(object sender, RoutedEventArgs e) {
             string sMsg = "";
             try {

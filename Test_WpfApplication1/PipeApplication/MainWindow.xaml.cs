@@ -19,16 +19,22 @@ namespace PipeApplication {
     /// </summary>
     public partial class MainWindow:Window {
         List<Pipe> lPipes = new List<Pipe>();
+        List<User> lUser = new List<User>();
+
+        User oUser;
         public MainWindow() {
             InitializeComponent();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
-            
+            oUser = new User("Danilo", 45, 120);
+            oTextBlock_Pipe.Text ="Pipes " + oUser.PipesCounter;
+            oTextBlock_Tobacco.Text = "Tobacco " + oUser.TobaccoCounter;
+
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) {
-            
+            Save.saveObject<List<User>>(lUser, "storage.dat");
         }
     }
 }

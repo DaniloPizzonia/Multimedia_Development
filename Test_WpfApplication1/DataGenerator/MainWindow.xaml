@@ -59,7 +59,7 @@
                     TextAlignment="Right"
                     Width="99"
                     Padding="5"
-                    Text="2000" Margin="0,11" Height="30"/>
+                    Text="50" Margin="0,11" Height="30"/>
                 <TextBlock 
                     VerticalAlignment="Center"
                     Text="%"

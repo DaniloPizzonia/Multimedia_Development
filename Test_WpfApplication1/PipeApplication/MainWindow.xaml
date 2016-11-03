@@ -9,46 +9,57 @@
         Closing="Window_Closing"
         Title="Pipe Application" Height="350" Width="525">
     <Grid Name="oGrid_Layout">
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="176.8"/>
-            <ColumnDefinition Width="163*"/>
-            <ColumnDefinition Width="178*"/>
-        </Grid.ColumnDefinitions>
-        <StackPanel Name="oStackPanel_OverviewPage">
-            <TextBlock x:Name="oTextBlock_Nachname"
-                HorizontalAlignment="Left" 
-                TextWrapping="Wrap" 
-                Text="Pipes" 
-                VerticalAlignment="Top"
-                Width="65" />
-            <TextBlock x:Name="oTextBox_Nachname"
-                HorizontalAlignment="Left" 
-                Height="23" 
-                Margin="0,0,0,0"
-                TextWrapping="Wrap" 
-                Text="{Binding PipeCount}" 
-                VerticalAlignment="Top" 
-                Width="100"/>
-        </StackPanel>
-        <StackPanel Grid.Column="2" 
-                    HorizontalAlignment="Left" 
-                    Height="53" 
-                    Margin="45,80,0,0" 
-                    Grid.Row="1" 
-                    VerticalAlignment="Top"
-                    Width="122">
-            <Button x:Name="oButton_Pfeifen" 
-                    Content="Pfeifen"
-                    Grid.Column="2"
-                    Grid.Row="1"/>
-            <Button x:Name="oButton_Tabak"
-                    Content="Tabak"
-                    Grid.Column="2"
-                    Grid.Row="1"/>
-        </StackPanel>
+        <TabControl x:Name="tabControl" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="320" Width="517"  >
+            <TabItem Name="oTabItem_Inventory" Header="Inventory">
+                <Grid Background="#FFF">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="37*"/>
+                        <RowDefinition Height="51*"/>
+                        <RowDefinition Height="56*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="176.8"/>
+                        <ColumnDefinition Width="163*"/>
+                        <ColumnDefinition Width="178*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Name="oStackPanel_OverviewPage" Grid.Column="1" Grid.Row="1">
+                        <TextBlock x:Name="oTextBlock_Pipe"
+                            Margin="0,30,0,0"
+                            HorizontalAlignment="Center" 
+                            TextWrapping="Wrap" 
+                            Text=""
+                            VerticalAlignment="Center"
+                            Width="100" />
+                        <TextBlock x:Name="oTextBlock_Tobacco"
+                            HorizontalAlignment="Center" 
+                            TextWrapping="Wrap" 
+                            Text="" 
+                            VerticalAlignment="Top"
+                            Width="100" />
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Name="oTabItem_Pipes" Header="Pfeifen">
+                <Grid Background="#FFF">
+                    <StackPanel HorizontalAlignment="Left" Height="253" VerticalAlignment="Top" Width="174" Margin="10,10,0,0">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Name="oTextBlock_FilterBar" Text="Search" Width="42" HorizontalAlignment="Left" Margin="5,0,10,0"/>
+                            <TextBox Name="oTextBox_FilterBar" Width="115" HorizontalAlignment="Right" Margin="2,0,0,0"/>
+                        </StackPanel>
+                        <ListBox x:Name="oListBox_Pipes" Height="203" Margin="0,5,0,0"/>
+                        <StackPanel Orientation="Vertical">
+
+                        </StackPanel>
+                    </StackPanel>
+
+                </Grid>
+            </TabItem>
+            <TabItem Name="oTabItem_Tobacco" Header="Tabak">
+                <Grid Background="#FFF">
+
+                </Grid>
+            </TabItem>
+        </TabControl>
+
     </Grid>
 </Window>

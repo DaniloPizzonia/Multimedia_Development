@@ -5,10 +5,122 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DataGenerator"
         Loaded="Window_Loaded"
+        Closing="Window_Closing"
         mc:Ignorable="d"
-        Title="Window_ShowData" Height="350" Width="525">
+        Title="Window_ShowData" Height="350" Width="800" WindowStartupLocation="CenterOwner">
     <Grid>
-        <ListBox x:Name="oListBox_Files" HorizontalAlignment="Left" Height="266" VerticalAlignment="Top" Width="180" Margin="10,26,0,0"/>
+        <Grid.Resources>
+            <local:GetFilename x:Key="kFileName"/>
+        </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="215"/>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="239*"/>
+        </Grid.ColumnDefinitions>
+        <ListBox x:Name="oListBox_Files" HorizontalAlignment="Left" Height="266" VerticalAlignment="Top" Width="180" Margin="18,32,0,0" SelectionChanged="oListBox_Files_SelectionChanged" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Converter={StaticResource kFileName}}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <StackPanel Name="oStackPanel_Details" Margin="4,16,0,10" Orientation="Vertical" Grid.Column="1">
+            <StackPanel 
+                Orientation="Horizontal"
+                HorizontalAlignment="Left" 
+                Height="52" 
+                VerticalAlignment="Top" 
+                Width="298" >
+                <TextBlock 
+                    VerticalAlignment="Center"
+                    Text="Anzahl Objekte"
+                    Margin="0,18,10,18"
+                    Width="82"/>
+                <TextBlock 
+                    VerticalAlignment="Center"
+                    TextAlignment="Right"
+                    Width="42"
+                    Padding="5"
+                    Text="{Binding CountObjects}"
+                    Margin="0,11"/>
+                <TextBlock 
+                    VerticalAlignment="Center"
+                    Text="Weiblich"
+                    Margin="10,18,10,18"
+                    Width="52" Height="16"/>
+                <TextBlock 
+                    VerticalAlignment="Center"
+                    TextAlignment="Right"
+                    Width="64"
+                    Padding="5"
+                    Text="{Binding PercentFemale}" 
+                    Margin="0,11" 
+                    Height="30"/>
+                <TextBlock 
+                    VerticalAlignment="Center"
+                    Text="%"
+                    Margin="0,18,10,18"
+                    Width="16"/>
+            </StackPanel>
+            <StackPanel 
+                Orientation="Horizontal"
+                HorizontalAlignment="Left" 
+                Height="52" 
+                VerticalAlignment="Top" 
+                Width="300" >
+                <TextBlock 
+                    VerticalAlignment="Center"
+                    Text="Bezeichnung"
+                    Margin="0,18,10,18"
+                    Width="81"/>
+                <TextBlock 
+                    Text="{Binding Title}"
+                    VerticalAlignment="Center"
+                    TextAlignment="Left"
+                    Width="191"
+                    Padding="5"
+                    Margin="0,11,0,11"
+                    />
+            </StackPanel>
+            <StackPanel 
+                Orientation="Horizontal"
+                HorizontalAlignment="Left" 
+                Height="71" 
+                VerticalAlignment="Top" 
+                Width="300" Margin="0,0,-4,0" >
+                <TextBlock 
+                    VerticalAlignment="Top"
+                    Text="Beschreibung"
+                    Margin="0,0,10,0"
+                    Width="80"/>
+                <TextBlock 
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    TextAlignment="Left"
+                    Width="190"
+                    Height="67"
+                    Padding="5"
+                    Text="{Binding Description}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,2" >
+                <TextBlock Text="Text eingeben" />
+                <TextBox Name="oTextBox_Filter" Width="199" Margin="10,0,0,0" TextChanged="oTextBox_Filter_TextChanged" />
+            </StackPanel>
+            <ListBox Name="oListBox_Persons" ItemsSource="{Binding lPersons}" Width="286" Height="90" Margin="0,0,0,30" HorizontalAlignment="Left" SelectionChanged="oListBox_Persons_SelectionChanged">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock FontSize="13" FontWeight="Bold">
+                                <Run Text="{Binding FirstName}"/>
+                                <Run Text=" " />
+                                <Run Text="{Binding LastName}" />
+                            </TextBlock>
+                            <TextBlock Text="{Binding Birthday}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
 
     </Grid>
 </Window>

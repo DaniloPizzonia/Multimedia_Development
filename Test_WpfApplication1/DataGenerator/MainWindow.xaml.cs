@@ -20,7 +20,7 @@ namespace DataGenerator {
     /// </summary>
     public partial class MainWindow:Window {
         List<string> lFirstName_w, lFirstName_m, lFamilyName;
-        List<Person> lPersons;
+        GenData oData;
         int iObjects, iPercFemale;
         string sFileName;
         Random rnd = new Random();
@@ -53,19 +53,21 @@ namespace DataGenerator {
         }
 
         private void oButton_ShowData_Click(object sender, RoutedEventArgs e) {
-            var oWindows = new Window_ShowData();
-            oWindows.Show();
+            var oWindow = new Window_ShowData();
+            oWindow.Owner = this;
+            this.Visibility = Visibility.Hidden;
+            oWindow.ShowDialog();
+
         }
 
         private void generateData(int iObjects) {
             int iFemaleCount = (iObjects * iPercFemale) / 100;
-            lPersons = new List<Person>();
-            var oPerson = new Person();
-            lPersons.Add(oPerson);
+            oData = new GenData { CountObjects = iObjects, TimeStamp_Generated = DateTime.Now, PercentFemale = iPercFemale, Title= oTextBox_Filename.Text, Description = oTextBox_Description.Text};
 
             for(int i = 0; i < iObjects; i++) {
+                var oPerson = new Person();
                 oPerson.LastName = lFamilyName[rnd.Next(lFamilyName.Count)];
-                lPersons.Add(oPerson);
+                oData.lPersons.Add(oPerson);
                 if(iFemaleCount > 0) {
                     iFemaleCount--;
                     oPerson.Female = true;
@@ -77,7 +79,7 @@ namespace DataGenerator {
                 oPerson.Birthday = new DateTime(rnd.Next(DateTime.Today.Year - 99, DateTime.Today.Year - 16), rnd.Next(1, 13), rnd.Next(1, 18));
             }
             sFileName = sPath + oTextBox_Filename.Text + ".xml";
-            Save.saveXML<List<Person>>(lPersons, sFileName);
+            Save.saveXML<GenData>(oData, sFileName);
         }
     }
 }

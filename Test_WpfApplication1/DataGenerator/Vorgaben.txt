@@ -1,0 +1,8 @@
+﻿-Daten von Studierenden(aktiv) generieren
+-Welche
+	-Name(Vor und nachname)
+	-Geschlecht(M oder W)
+	-Semester
+	-BA oder MA B.Sc (t/f)
+	-Geburtsdatum
+	-MatrNummer(7 Stellen; beginnt mit 1000001)

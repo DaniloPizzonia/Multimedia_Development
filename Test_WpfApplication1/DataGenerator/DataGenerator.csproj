@@ -55,6 +55,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\Converter.cs" />
+    <Compile Include="Classes\GenData.cs" />
     <Compile Include="Window_ShowData.xaml.cs">
       <DependentUpon>Window_ShowData.xaml</DependentUpon>
     </Compile>

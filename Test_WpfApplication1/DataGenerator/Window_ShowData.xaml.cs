@@ -19,6 +19,7 @@ namespace DataGenerator {
     /// </summary>
     public partial class Window_ShowData:Window {
         string sPath = Directory.GetCurrentDirectory() + @"\Generierte_Daten\";
+        GenData oData;
         public Window_ShowData() {
             InitializeComponent();
         }
@@ -26,6 +27,29 @@ namespace DataGenerator {
         private void Window_Loaded(object sender, RoutedEventArgs e) {
             var oFiles = Directory.GetFiles(sPath);
             oListBox_Files.ItemsSource = oFiles;
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) {
+            this.Owner.Visibility = Visibility.Visible;
+        }
+
+        private void oListBox_Files_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+           string sFilePath =  ((sender as ListBox).SelectedItem.ToString());
+            oData = Save.readXML<GenData>(sFilePath);
+            oListBox_Persons.ItemsSource = oData.lPersons;
+            oStackPanel_Details.DataContext = oData;
+        }
+
+        private void oListBox_Persons_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+
+        }
+
+        private void oTextBox_Filter_TextChanged(object sender, TextChangedEventArgs e) {
+            var erg = from p in oData.lPersons
+                      where p.LastName.StartsWith(oTextBox_Filter.Text, StringComparison.InvariantCultureIgnoreCase)
+                      select p;
+            oListBox_Persons.ItemsSource = null;
+            oListBox_Persons.ItemsSource = erg;
         }
     }
 }

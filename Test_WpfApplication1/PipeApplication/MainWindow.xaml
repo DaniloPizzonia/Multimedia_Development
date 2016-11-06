@@ -41,12 +41,25 @@
             </TabItem>
             <TabItem Name="oTabItem_Pipes" Header="Pfeifen">
                 <Grid Background="#FFF">
-                    <StackPanel HorizontalAlignment="Left" Height="253" VerticalAlignment="Top" Width="174" Margin="10,10,0,0">
+                    <StackPanel Name="oStackPanel_Details" HorizontalAlignment="Left" Height="253" VerticalAlignment="Top" Width="174" Margin="10,10,0,0">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Name="oTextBlock_FilterBar" Text="Search" Width="42" HorizontalAlignment="Left" Margin="5,0,10,0"/>
                             <TextBox Name="oTextBox_FilterBar" Width="115" HorizontalAlignment="Right" Margin="2,0,0,0"/>
                         </StackPanel>
-                        <ListBox x:Name="oListBox_Pipes" Height="203" Margin="0,5,0,0"/>
+                        <ListBox x:Name="oListBox_Pipes" ItemsSource="{Binding lPipes}" Height="203" Margin="0,5,0,0">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock FontSize="13" FontWeight="Bold">
+                                            <Run Text="{Binding Name}"/>
+                                            <Run Text=" " />
+                                            <Run Text="{Binding PipeMaker}" />
+                                        </TextBlock>
+                                        <TextBlock Text="{Binding Price}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
                         <StackPanel Orientation="Vertical">
 
                         </StackPanel>

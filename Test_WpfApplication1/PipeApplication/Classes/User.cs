@@ -17,7 +17,7 @@ namespace PipeApplication {
         public int PipesCounter { get; set; }
         public int TobaccoCounter { get; set; }
         /// <summary>
-        /// Contructers with some overloads
+        /// Contructors with some overloads
         /// </summary>
         public User() {
             this.lPipes = new List<Pipe>();

@@ -39,6 +39,8 @@ namespace PipeApplication {
             oTextBlock_Pipe.Text = "Pipes " + oUser.PipesCounter;
             oTextBlock_Tobacco.Text = "Tobacco " + oUser.TobaccoCounter;
             oListBox_Pipes.ItemsSource = null;
+            oListBox_Pipes.ItemsSource = oUser.lPipes;
+            oStackPanel_Details.DataContext = oUser;
 
         }
 
@@ -49,7 +51,6 @@ namespace PipeApplication {
             }
             
             Save.saveXML<User>(oUser, sPath + "user.xml");
-            //Save.saveObject<List<User>>(lUser, "storage.text");
         }
     }
 }

@@ -62,10 +62,16 @@ namespace DataGenerator {
 
         private void generateData(int iObjects) {
             int iFemaleCount = (iObjects * iPercFemale) / 100;
-            oData = new GenData { CountObjects = iObjects, TimeStamp_Generated = DateTime.Now, PercentFemale = iPercFemale, Title= oTextBox_Filename.Text, Description = oTextBox_Description.Text};
-
+            oData = new GenData {
+                CountObjects = iObjects,
+                TimeStamp_Generated = DateTime.Now,
+                PercentFemale = iPercFemale,
+                Title = oTextBox_Filename.Text,
+                Description = oTextBox_Description.Text
+            };
+            Person oPerson;
             for(int i = 0; i < iObjects; i++) {
-                var oPerson = new Person();
+                oPerson = new Person();
                 oPerson.LastName = lFamilyName[rnd.Next(lFamilyName.Count)];
                 oData.lPersons.Add(oPerson);
                 if(iFemaleCount > 0) {

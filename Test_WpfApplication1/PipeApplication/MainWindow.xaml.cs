@@ -19,38 +19,58 @@ namespace PipeApplication {
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow:Window {
-        List<Pipe> lPipes = new List<Pipe>();
-        List<User> lUser = new List<User>();
-        string sPath = Directory.GetCurrentDirectory() + @"\UserData\";
-        
+
         User oUser;
+        string sPath = Directory.GetCurrentDirectory() + @"\UserData\";
+
         public MainWindow() {
             InitializeComponent();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
-
             if(oUser == null) {
-                oUser = Save.readXML<User>(sPath + "user.xml");
-            } else {
-                // when no file exists
-                oUser = new User("Default Name", 0, 0);
+                if(Save.readXML<User>(sPath + "user.xml") == null) {
+                    oUser = new User("Default Name", 0, 0);
+                } else {
+                    oUser = Save.readXML<User>(sPath + "user.xml");
+                }
+                
             }
             oTextBlock_Pipe.Text = "Pipes " + oUser.PipesCounter;
             oTextBlock_Tobacco.Text = "Tobacco " + oUser.TobaccoCounter;
-            oListBox_Pipes.ItemsSource = null;
-            oListBox_Pipes.ItemsSource = oUser.lPipes;
-            oStackPanel_Details.DataContext = oUser;
 
+            iniPipesBinding();
+            iniTobaccoBinding();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) {
+
             Pipe oDefaultPipe = new Pipe();
             if(oUser.lPipes.Count == 0) {
                 oUser.lPipes.Add(oDefaultPipe);
             }
+            Tobacco oDefaultTobacco = new Tobacco();
+            if(oUser.lTobaccos.Count == 0) {
+                oUser.lTobaccos.Add(oDefaultTobacco);
+            }
             
             Save.saveXML<User>(oUser, sPath + "user.xml");
+        }
+        /// <summary>
+        /// is used for binding the Pipes in the Listbox 
+        /// </summary>
+        private void iniPipesBinding() {
+            oListBox_Pipes.ItemsSource = null;
+            oListBox_Pipes.ItemsSource = oUser.lPipes;
+            oStackPanel_Details.DataContext = oUser;
+        }
+        /// <summary>
+        /// is used for binding the Tobaccos in the Listbox 
+        /// </summary>
+        private void iniTobaccoBinding() {
+            oListBox_Tobacco.ItemsSource = null;
+            oListBox_Tobacco.ItemsSource = oUser.lTobaccos;
+            oStackPanel_DetailsTobacco.DataContext = oUser;
         }
     }
 }

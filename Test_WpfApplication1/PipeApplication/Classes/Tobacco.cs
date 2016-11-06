@@ -5,12 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace PipeApplication {
+    [Serializable]
     public class Tobacco {
         
-        public Tobacco() { }
-        public Tobacco(string sName) {
-            this.Name = sName;
+        public Tobacco() {
+            this.Name = "Default Tobacco";
+            this.Rating = 5;
         }
+        
 
         /// <summary>
         /// Getter and Setter Methods
@@ -28,5 +30,6 @@ namespace PipeApplication {
         public int Taste { get; set; }
         public int RoomNote { get; set; }
         public int SmokedBowls { get; set; }
+        public int Rating { get; set; }
     }
 }

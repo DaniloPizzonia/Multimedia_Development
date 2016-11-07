@@ -15,6 +15,9 @@ namespace PipeApplication {
             this.PurchaseDate = DateTime.Today;
             this.ReservedForFlavor = "Virginia";
             this.SmokedBowls = 0;
+            this.Comment = "Enter a Comment";
+            this.Pieces = 0;
+
         }
 
         public string Name { get; set; }
@@ -23,7 +26,8 @@ namespace PipeApplication {
         public DateTime PurchaseDate { get; set; }
         public int SmokedBowls { get; set; }
         public int Price { get; set; }
-        public string ReservedForFlavor { get; set; } 
-
+        public string ReservedForFlavor { get; set; }
+        public string Comment { get; set; }
+        public int Pieces { get; set; }
     }
 }

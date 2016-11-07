@@ -34,7 +34,6 @@ namespace PipeApplication {
                 } else {
                     oUser = Save.readXML<User>(sPath + "user.xml");
                 }
-                
             }
             oTextBlock_Pipe.Text = "Pipes " + oUser.PipesCounter;
             oTextBlock_Tobacco.Text = "Tobacco " + oUser.TobaccoCounter;
@@ -44,9 +43,7 @@ namespace PipeApplication {
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) {
-
             noItemsExist();
-            
             Save.saveXML<User>(oUser, sPath + "user.xml");
         }
 
@@ -69,7 +66,7 @@ namespace PipeApplication {
         /// <summary>
         /// is used for binding the Pipes in the Listbox 
         /// </summary>
-        private void iniPipesBinding() {
+        public void iniPipesBinding() {
             oListBox_Pipes.ItemsSource = null;
             oListBox_Pipes.ItemsSource = oUser.lPipes;
             oStackPanel_Details.DataContext = oUser;
@@ -77,7 +74,7 @@ namespace PipeApplication {
         /// <summary>
         /// is used for binding the Tobaccos in the Listbox 
         /// </summary>
-        private void iniTobaccoBinding() {
+        public void iniTobaccoBinding() {
             oListBox_Tobacco.ItemsSource = null;
             oListBox_Tobacco.ItemsSource = oUser.lTobaccos;
             oStackPanel_DetailsTobacco.DataContext = oUser;
@@ -116,11 +113,23 @@ namespace PipeApplication {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Add_Pipe_Click(object sender, RoutedEventArgs e) {
-            MessageBox.Show("Eine neue Pfeife wird angelegt, wenn Sie auf ok klicken", "Pfeife anlegen", MessageBoxButton.OK, MessageBoxImage.Question);
+            
+            MessageBoxResult oResult = MessageBox.Show("Eine neue Pfeife wird angelegt, wenn Sie auf ok klicken", "Pfeife anlegen", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            var iClickedIndex = oListBox_Pipes.SelectedIndex;
+
             // IDEA: open a new window to edit the pipe befor add to list
-            oUser.lPipes.Add(new Pipe());
-            iniPipesBinding();
+            if(oResult == MessageBoxResult.Yes) {
+                var oWindow = new Window_ShowEdit(oUser, iClickedIndex, this);
+                    oWindow.Owner = this;
+
+                this.Visibility = Visibility.Hidden;
+                oWindow.ShowDialog();
+            }
+
+            //oUser.lPipes.Add(new Pipe());
+            //iniPipesBinding();
+            //int iIndex = oUser.lPipes.Count - 1;
+            //oListBox_Pipes.SelectedIndex = iIndex;
         }
-        
     }
 }

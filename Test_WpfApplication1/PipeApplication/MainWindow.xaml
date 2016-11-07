@@ -41,6 +41,11 @@
             </TabItem>
             <TabItem Name="oTabItem_Pipes" Header="Pfeifen">
                 <Grid Background="#FFF">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="201"/>
+                        <ColumnDefinition Width="172"/>
+                        <ColumnDefinition Width="138"/>
+                    </Grid.ColumnDefinitions>
                     <StackPanel Name="oStackPanel_Details" HorizontalAlignment="Left" Height="253" VerticalAlignment="Top" Width="174" Margin="10,10,0,0">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Name="oTextBlock_FilterBarPipes" Text="Filter" Width="42" HorizontalAlignment="Left" Margin="5,0,10,0"/>
@@ -103,8 +108,8 @@
                         </StackPanel>
                     </StackPanel>
 
-    </Grid>
-    </TabItem>
+                </Grid>
+            </TabItem>
         </TabControl>
 
     </Grid>

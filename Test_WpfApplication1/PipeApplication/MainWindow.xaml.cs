@@ -45,17 +45,27 @@ namespace PipeApplication {
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) {
 
-            Pipe oDefaultPipe = new Pipe();
-            if(oUser.lPipes.Count == 0) {
-                oUser.lPipes.Add(oDefaultPipe);
-            }
-            Tobacco oDefaultTobacco = new Tobacco();
-            if(oUser.lTobaccos.Count == 0) {
-                oUser.lTobaccos.Add(oDefaultTobacco);
-            }
+            noItemsExist();
             
             Save.saveXML<User>(oUser, sPath + "user.xml");
         }
+
+        /// <summary>
+        /// When user has no items ins list an default item
+        /// will be added on each List for testing
+        /// </summary>
+        private void noItemsExist() {
+            if(oUser.lPipes.Count == 0) {
+                Pipe oDefaultPipe = new Pipe();
+                oUser.lPipes.Add(oDefaultPipe);
+            }
+
+            if(oUser.lTobaccos.Count == 0) {
+                Tobacco oDefaultTobacco = new Tobacco();
+                oUser.lTobaccos.Add(oDefaultTobacco);
+            }
+        }
+
         /// <summary>
         /// is used for binding the Pipes in the Listbox 
         /// </summary>
@@ -79,11 +89,11 @@ namespace PipeApplication {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void oTextBox_FilterBarTobacco_TextChanged(object sender, TextChangedEventArgs e) {
-            var erg = from p in oUser.lPipes
+            var qResult = from p in oUser.lPipes
             where p.Name.StartsWith(oTextBox_FilterBarTobacco.Text, StringComparison.InvariantCultureIgnoreCase)
                       select p;
-            oListBox_Tobacco.ItemsSource = null;
-            oListBox_Tobacco.ItemsSource = erg;
+            oListBox_Tobacco.ItemsSource = null;     // reset the ListBox entries
+            oListBox_Tobacco.ItemsSource = qResult;  // set the filter query results on the listbox
         }
 
         /// <summary>
@@ -92,11 +102,25 @@ namespace PipeApplication {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void oTextBox_FilterBarPipes_TextChanged(object sender, TextChangedEventArgs e) {
-            var erg = from p in oUser.lPipes
+            var qResult = from p in oUser.lPipes
                       where p.Name.StartsWith(oTextBox_FilterBarPipes.Text, StringComparison.InvariantCultureIgnoreCase)
                       select p;
-            oListBox_Pipes.ItemsSource = null;
-            oListBox_Pipes.ItemsSource = erg;
+
+            oListBox_Pipes.ItemsSource = null;    // resets the ListBox entries
+            oListBox_Pipes.ItemsSource = qResult; // set the filter query results on the listbox
         }
+
+        /// <summary>
+        /// Add a new Pipe entry to the pipe list box 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Add_Pipe_Click(object sender, RoutedEventArgs e) {
+            MessageBox.Show("Eine neue Pfeife wird angelegt, wenn Sie auf ok klicken", "Pfeife anlegen", MessageBoxButton.OK, MessageBoxImage.Question);
+            // IDEA: open a new window to edit the pipe befor add to list
+            oUser.lPipes.Add(new Pipe());
+            iniPipesBinding();
+        }
+        
     }
 }

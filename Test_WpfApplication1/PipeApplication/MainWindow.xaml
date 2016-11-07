@@ -60,8 +60,19 @@
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
                         </ListBox>
-                        <StackPanel Orientation="Vertical">
-
+                        <StackPanel Margin = "0.9" Orientation ="Horizontal" HorizontalAlignment="Right">
+                            <Button x:Name="Add_Pipe" 
+                                    Content="+" 
+                                    FontSize="15" 
+                                    FontWeight="Bold" 
+                                    Width="30" Click="Add_Pipe_Click" />
+                            <Button x:Name="Del_Pipe" 
+                                    Foreground="Red" 
+                                    Margin = "5,0,0,0" 
+                                    Content="-" 
+                                    FontSize="15" 
+                                    FontWeight="Bold" 
+                                    Width="30" />
                         </StackPanel>
                     </StackPanel>
 

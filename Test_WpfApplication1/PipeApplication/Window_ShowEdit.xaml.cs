@@ -70,9 +70,7 @@ namespace PipeApplication {
             try {
                 if(oFileDialog.ShowDialog() == true) {
                     string sFileName = oFileDialog.FileName;
-                    Uri oProfileUri = new Uri(sFileName, UriKind.RelativeOrAbsolute);
-                             
-                    oPipe.profileUri = sFileName;  // saves the filename in pipe to search for the right pic in relative folder
+                    oPipe.profileUri = sFileName;               // saves the filename in pipe to search for the right pic in relative folder
 
                     if(!Directory.Exists(sPathImages)) {        // proofs if a directory exists 
                         Directory.CreateDirectory(sPathImages); // if no dir excist with the pre defined path create one

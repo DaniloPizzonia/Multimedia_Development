@@ -17,7 +17,7 @@ namespace PipeApplication {
             this.SmokedBowls = 0;
             this.Comment = "Enter a Comment";
             this.Pieces = 0;
-
+            this.profileUri = "";
         }
 
         public string Name { get; set; }
@@ -29,5 +29,6 @@ namespace PipeApplication {
         public string ReservedForFlavor { get; set; }
         public string Comment { get; set; }
         public int Pieces { get; set; }
+        public string profileUri { get; set; }
     }
 }

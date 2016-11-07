@@ -43,8 +43,8 @@
                 <Grid Background="#FFF">
                     <StackPanel Name="oStackPanel_Details" HorizontalAlignment="Left" Height="253" VerticalAlignment="Top" Width="174" Margin="10,10,0,0">
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Name="oTextBlock_FilterBar" Text="Search" Width="42" HorizontalAlignment="Left" Margin="5,0,10,0"/>
-                            <TextBox Name="oTextBox_FilterBar" Width="115" HorizontalAlignment="Right" Margin="2,0,0,0"/>
+                            <TextBlock Name="oTextBlock_FilterBarPipes" Text="Filter" Width="42" HorizontalAlignment="Left" Margin="5,0,10,0"/>
+                            <TextBox Name="oTextBox_FilterBarPipes" Width="115" HorizontalAlignment="Right" Margin="2,0,0,0" TextChanged="oTextBox_FilterBarPipes_TextChanged"/>
                         </StackPanel>
                         <ListBox x:Name="oListBox_Pipes" ItemsSource="{Binding lPipes}" Height="203" Margin="0,5,0,0">
                             <ListBox.ItemTemplate>
@@ -72,7 +72,7 @@
                     <StackPanel Name="oStackPanel_DetailsTobacco" HorizontalAlignment="Left" Height="253" VerticalAlignment="Top" Width="174" Margin="10,10,0,0">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Name="oTextBlock_FilterBarTobacco" Text="Search" Width="42" HorizontalAlignment="Left" Margin="5,0,10,0"/>
-                            <TextBox Name="oTextBox_FilterBarTobacco" Width="115" HorizontalAlignment="Right" Margin="2,0,0,0"/>
+                            <TextBox Name="oTextBox_FilterBarTobacco" Width="115" HorizontalAlignment="Right" Margin="2,0,0,0" TextChanged="oTextBox_FilterBarTobacco_TextChanged"/>
                         </StackPanel>
                         <ListBox x:Name="oListBox_Tobacco" ItemsSource="{Binding lTobaccos}" Height="203" Margin="0,5,0,0">
                             <ListBox.ItemTemplate>

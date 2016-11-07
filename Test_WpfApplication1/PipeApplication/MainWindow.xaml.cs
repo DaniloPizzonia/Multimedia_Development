@@ -72,5 +72,31 @@ namespace PipeApplication {
             oListBox_Tobacco.ItemsSource = oUser.lTobaccos;
             oStackPanel_DetailsTobacco.DataContext = oUser;
         }
+
+        /// <summary>
+        /// Filter for Tobaccos - create filter query an sets to the listbox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void oTextBox_FilterBarTobacco_TextChanged(object sender, TextChangedEventArgs e) {
+            var erg = from p in oUser.lPipes
+            where p.Name.StartsWith(oTextBox_FilterBarTobacco.Text, StringComparison.InvariantCultureIgnoreCase)
+                      select p;
+            oListBox_Tobacco.ItemsSource = null;
+            oListBox_Tobacco.ItemsSource = erg;
+        }
+
+        /// <summary>
+        /// Filter for Tobaccos - create filter query an sets to the listbox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void oTextBox_FilterBarPipes_TextChanged(object sender, TextChangedEventArgs e) {
+            var erg = from p in oUser.lPipes
+                      where p.Name.StartsWith(oTextBox_FilterBarPipes.Text, StringComparison.InvariantCultureIgnoreCase)
+                      select p;
+            oListBox_Pipes.ItemsSource = null;
+            oListBox_Pipes.ItemsSource = erg;
+        }
     }
 }

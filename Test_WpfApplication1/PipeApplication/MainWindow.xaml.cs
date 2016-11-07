@@ -125,11 +125,6 @@ namespace PipeApplication {
                 this.Visibility = Visibility.Hidden;
                 oWindow.ShowDialog();
             }
-
-            //oUser.lPipes.Add(new Pipe());
-            //iniPipesBinding();
-            //int iIndex = oUser.lPipes.Count - 1;
-            //oListBox_Pipes.SelectedIndex = iIndex;
         }
     }
 }

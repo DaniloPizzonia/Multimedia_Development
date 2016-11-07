@@ -32,7 +32,7 @@ namespace PipeApplication {
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
-            
+            oPipe = new Pipe();
         }
 
         private void Window_Closed(object sender, EventArgs e) {
@@ -45,7 +45,7 @@ namespace PipeApplication {
             string sMassage = "Wollen Sie die Pfeife wirklich speichern?", sCaption="Speichern";
             MessageBoxResult eResult = MessageBox.Show(sMassage, sCaption, MessageBoxButton.YesNo, MessageBoxImage.Question);
             if(eResult == MessageBoxResult.Yes) {
-                oPipe = new Pipe();
+                
                 oPipe.Name = oTextBox_PipeName.Text;
                 oPipe.PipeMaker = oTextBox_PipeMaker.Text;
                 oPipe.ReservedForFlavor = oTextBox_Tabakrichtung.Text;
@@ -71,8 +71,7 @@ namespace PipeApplication {
                 if(oFileDialog.ShowDialog() == true) {
                     string sFileName = oFileDialog.FileName;
                     Uri oProfileUri = new Uri(sFileName, UriKind.RelativeOrAbsolute);
-
-                    oPipe = new Pipe();             
+                             
                     oPipe.profileUri = sFileName;  // saves the filename in pipe to search for the right pic in relative folder
 
                     if(!Directory.Exists(sPathImages)) {        // proofs if a directory exists 

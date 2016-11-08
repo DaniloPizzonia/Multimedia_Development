@@ -73,7 +73,7 @@ namespace PipeApplication {
                     oPipe.profileUri = sFileName;               // saves the filename in pipe to search for the right pic in relative folder
 
                     if(!Directory.Exists(sPathImages)) {        // proofs if a directory exists 
-                        Directory.CreateDirectory(sPathImages); // if no dir excist with the pre defined path create one
+                        Directory.CreateDirectory(sPathImages); // if dir does not excist with the pre defined path create one
                     }
                     string sFilePath = sPathImages + System.IO.Path.GetFileName(sFileName); // Filepath for copy procedure
                     File.Copy(sFileName, sFilePath, true);                                  // copy the image to the right directory

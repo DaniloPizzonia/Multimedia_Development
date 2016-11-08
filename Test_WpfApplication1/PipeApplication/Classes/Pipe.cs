@@ -30,5 +30,6 @@ namespace PipeApplication {
         public string Comment { get; set; }
         public int Pieces { get; set; }
         public string profileUri { get; set; }
+        public string State { get; set; }
     }
 }

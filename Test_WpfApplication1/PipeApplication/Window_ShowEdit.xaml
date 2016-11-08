@@ -36,7 +36,7 @@
                     Height="32" Click="oButton_AddImage_Click"/>
         </StackPanel>
 
-        <StackPanel Margin="10,0,0,0" Orientation="Vertical" Grid.Column="0" Grid.Row="1">
+        <StackPanel Margin="10,0,198,0" Orientation="Vertical" Grid.Column="0" Grid.Row="1">
             <StackPanel 
                     Orientation="Horizontal"
                     HorizontalAlignment="Left" 
@@ -100,7 +100,7 @@
                     Width="245" >
                 <TextBlock 
                         VerticalAlignment="Center"
-                        Text="Anzahl"
+                        Text="Anzahl Pfeifen"
                         Margin="0,0,10,0"
                         Width="90"/>
                 <Slider x:Name="oSlider_PipeAmount"
@@ -111,7 +111,7 @@
                             Maximum="10"
                             TickFrequency="1"
                             IsSnapToTickEnabled="True"/>
-                <TextBlock Text="{Binding ElementName=oSlider_PipeAmount, Path=Value}" Width="30" VerticalAlignment="Center" TextAlignment="Right"/>
+                <TextBlock Text="{Binding ElementName=oSlider_PipeAmount, Path=Value}" Width="30" VerticalAlignment="Center" TextAlignment="Right" Margin="0,18"/>
             </StackPanel>
         </StackPanel>
         <StackPanel 
@@ -140,6 +140,61 @@
                     Text=""/>
         </StackPanel>
         <Button x:Name="oButton_SavePipe" Content="Speichern" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" Margin="0,175,40,0"  VerticalAlignment="Top" Width="109" Height="32" Click="oButton_SavePipe_Click"/>
+        <StackPanel Margin="230,0,492,0" Orientation="Vertical" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="52" VerticalAlignment="Top" Width="194" >
+                <TextBlock 
+                    VerticalAlignment="Center"
+                    Text="Preis"
+                    Margin="0,18,10,18"
+                    Width="90"/>
+                <TextBox x:Name="oTextBox_Price"
+                    VerticalAlignment="Center"
+                    TextAlignment="Right"
+                    Width="90"
+                    Padding="5"
+                    Text="" 
+                    Margin="0,11"/>
+            </StackPanel>
+            <StackPanel 
+                Orientation="Horizontal"
+                HorizontalAlignment="Left" 
+                Height="55" 
+                VerticalAlignment="Top" 
+                Width="220" >
+                <TextBlock 
+                    VerticalAlignment="Center"
+                    Text="Gekauft am: "
+                    Margin="0,0,10,0"
+                    Width="90"/>
+                <DatePicker x:Name ="oTextBox_PurchaseDate" 
+                            Grid.Column="1" 
+                            Grid.Row="2"
+                            HorizontalAlignment="Left" 
+                            VerticalAlignment="Center"
+                            FontSize="10"
+                            Height="25"
+                            Margin="0,14" 
+                            Width="90"  />
+            </StackPanel>
+            <StackPanel 
+                Orientation="Horizontal"
+                HorizontalAlignment="Left" 
+                Height="52" 
+                VerticalAlignment="Top" 
+                Width="194" >
+                <TextBlock 
+                    VerticalAlignment="Center"
+                    Text="Zustand: "
+                    Margin="0,0,10,0"
+                    Width="90"/>
+                <ComboBox x:Name="oTextBox_State" Text="Neu" Height="25" Width="90">
+                    <ComboBoxItem Content="Neu"/>
+                    <ComboBoxItem Content="Gebraucht"/>
+                    <ComboBoxItem Content="Verschenkt"/>
+                </ComboBox>
+            </StackPanel>
+        </StackPanel>
+
 
     </Grid>
 </Window>

@@ -44,8 +44,8 @@ namespace PipeApplication {
             // strings for messageBox
             string sMassage = "Wollen Sie die Pfeife wirklich speichern?", sCaption="Speichern";
             MessageBoxResult eResult = MessageBox.Show(sMassage, sCaption, MessageBoxButton.YesNo, MessageBoxImage.Question);
+
             if(eResult == MessageBoxResult.Yes) {
-                
                 oPipe.Name = oTextBox_PipeName.Text;
                 oPipe.PipeMaker = oTextBox_PipeMaker.Text;
                 oPipe.ReservedForFlavor = oTextBox_Tabakrichtung.Text;

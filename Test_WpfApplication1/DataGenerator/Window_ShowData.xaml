@@ -115,7 +115,7 @@
                                 <Run Text=" " />
                                 <Run Text="{Binding LastName}" />
                             </TextBlock>
-                            <TextBlock Text="{Binding Birthday}"/>
+                            <TextBlock Text="{Binding Birthday, StringFormat=dd.MM.yyy}"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>

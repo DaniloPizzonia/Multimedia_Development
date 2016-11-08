@@ -116,8 +116,7 @@ namespace PipeApplication {
             
             MessageBoxResult oResult = MessageBox.Show("Eine neue Pfeife wird angelegt, wenn Sie auf ok klicken", "Pfeife anlegen", MessageBoxButton.YesNo, MessageBoxImage.Question);
             var iClickedIndex = oListBox_Pipes.SelectedIndex;
-
-            // IDEA: open a new window to edit the pipe befor add to list
+            
             if(oResult == MessageBoxResult.Yes) {
                 var oWindow = new Window_ShowEdit(oUser, iClickedIndex, this);
                     oWindow.Owner = this;

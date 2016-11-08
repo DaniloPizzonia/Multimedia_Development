@@ -38,6 +38,8 @@ namespace DataGenerator {
             oData = Save.readXML<GenData>(sFilePath);
             oListBox_Persons.ItemsSource = oData.lPersons;
             oStackPanel_Details.DataContext = oData;
+            var qSorted = from oItem in oData.lPersons orderby oItem.LastName select oItem;
+            oListBox_Persons.ItemsSource = qSorted;
         }
 
         private void oListBox_Persons_SelectionChanged(object sender, SelectionChangedEventArgs e) {
@@ -45,11 +47,15 @@ namespace DataGenerator {
         }
 
         private void oTextBox_Filter_TextChanged(object sender, TextChangedEventArgs e) {
-            var erg = from p in oData.lPersons
+            var qStartsResult = (from p in oData.lPersons
                       where p.LastName.StartsWith(oTextBox_Filter.Text, StringComparison.InvariantCultureIgnoreCase)
-                      select p;
+                      select p).ToList();
+                qStartsResult = (from p in qStartsResult orderby p.LastName select p).ToList();
+
+            var qContainsResult = (from p in oData.lPersons where p.LastName.ToUpper().Contains(oTextBox_Filter.Text.ToUpper()) select p).ToList();
+            qStartsResult.AddRange(qContainsResult);
             oListBox_Persons.ItemsSource = null;
-            oListBox_Persons.ItemsSource = erg;
+            oListBox_Persons.ItemsSource = qStartsResult;
         }
     }
 }

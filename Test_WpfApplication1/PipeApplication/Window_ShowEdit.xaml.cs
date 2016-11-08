@@ -51,7 +51,14 @@ namespace PipeApplication {
                 oPipe.ReservedForFlavor = oTextBox_Tabakrichtung.Text;
                 oPipe.Description = oTextBox_Description.Text;
                 oPipe.Pieces = Convert.ToInt32(oSlider_PipeAmount.Value);
-
+                try {
+                    oPipe.Price = Convert.ToInt32(oTextBox_Price.Text);
+                } catch(Exception ex) {
+                    MessageBox.Show("Bitte eine numerische Zahl eingeben", "Preis Fehler!!!");
+                    return;
+                }
+                oPipe.PurchaseDate = oDatePicker_PurchaseDate.SelectedDate;
+                oPipe.State = oComboBox_State.SelectionBoxItem.ToString();
                 oUser.lPipes.Add(oPipe);
                 oParentWindow.iniPipesBinding();
                 int iIndex = oUser.lPipes.Count - 1;

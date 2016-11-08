@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Loaded="Window_Loaded"
         Closed="Window_Closed"
-        Title="Window_ShowEdit" Height="540" Width="960">
+        Title="Window_ShowEdit" Height="540" Width="900">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="29*"/>
@@ -15,28 +15,28 @@
             <RowDefinition Height="109*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="239*"/>
-            <ColumnDefinition Width="278*"/>
+            <ColumnDefinition Width="121*"/>
+            <ColumnDefinition Width="102*"/>
         </Grid.ColumnDefinitions>
         <StackPanel>
             <TextBlock Text="Pfeife Anlegen" Margin="10,10,0,0" FontSize="20"/>
         </StackPanel>
-        <StackPanel Grid.Column="2" Grid.Row="1" Margin="0,0,40,0" Orientation="Vertical" HorizontalAlignment="Right" >
+        <StackPanel Grid.Column="1" Grid.Row="1" Margin="0,0,40,0" Orientation="Vertical" HorizontalAlignment="Right" Width="358" >
             <Image x:Name="oImage_PipePicture" 
-                   HorizontalAlignment="Left" 
-                   Height="196" 
+                   HorizontalAlignment="Right" 
+                   Height="189" 
                    VerticalAlignment="Top" 
-                   Width="193"/>
+                   Width="300"/>
             <Button x:Name="oButton_AddImage" 
                     Content="Bild Hinzufügen" 
                     HorizontalAlignment="Right"
-                    Margin="0,0,0,0"
+                    Margin="0,10,0,0"
                     VerticalAlignment="Top" 
                     Width="109" 
                     Height="32" Click="oButton_AddImage_Click"/>
         </StackPanel>
 
-        <StackPanel Margin="10,0,198,0" Orientation="Vertical" Grid.Column="0" Grid.Row="1">
+        <StackPanel Margin="10,48,198,10" Orientation="Vertical" Grid.Column="0" Grid.RowSpan="2">
             <StackPanel 
                     Orientation="Horizontal"
                     HorizontalAlignment="Left" 
@@ -140,7 +140,7 @@
                     Text=""/>
         </StackPanel>
         <Button x:Name="oButton_SavePipe" Content="Speichern" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" Margin="0,175,40,0"  VerticalAlignment="Top" Width="109" Height="32" Click="oButton_SavePipe_Click"/>
-        <StackPanel Margin="230,0,492,0" Orientation="Vertical" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2">
+        <StackPanel Margin="230,48,25,10" Orientation="Vertical" Grid.Column="0" Grid.RowSpan="2">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="52" VerticalAlignment="Top" Width="194" >
                 <TextBlock 
                     VerticalAlignment="Center"
@@ -166,7 +166,7 @@
                     Text="Gekauft am: "
                     Margin="0,0,10,0"
                     Width="90"/>
-                <DatePicker x:Name ="oTextBox_PurchaseDate" 
+                <DatePicker x:Name ="oDatePicker_PurchaseDate" 
                             Grid.Column="1" 
                             Grid.Row="2"
                             HorizontalAlignment="Left" 
@@ -187,7 +187,7 @@
                     Text="Zustand: "
                     Margin="0,0,10,0"
                     Width="90"/>
-                <ComboBox x:Name="oTextBox_State" Text="Neu" Height="25" Width="90">
+                <ComboBox x:Name="oComboBox_State" Text="Neu" Height="25" Width="90">
                     <ComboBoxItem Content="Neu"/>
                     <ComboBoxItem Content="Gebraucht"/>
                     <ComboBoxItem Content="Verschenkt"/>

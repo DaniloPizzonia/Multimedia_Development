@@ -21,7 +21,8 @@ namespace PipeApplication {
     public partial class MainWindow:Window {
 
         User oUser;
-        string sPath = Directory.GetCurrentDirectory() + @"\UserData\";
+        string sPathUserData = Directory.GetCurrentDirectory() + @"\UserData\";
+        string sPathImages = Directory.GetCurrentDirectory() + @"\Images\";
 
         public MainWindow() {
             InitializeComponent();
@@ -29,10 +30,10 @@ namespace PipeApplication {
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
             if(oUser == null) {
-                if(Save.readXML<User>(sPath + "user.xml") == null) {
+                if(Save.readXML<User>(sPathUserData + "user.xml") == null) {
                     oUser = new User("Default Name", 0, 0);
                 } else {
-                    oUser = Save.readXML<User>(sPath + "user.xml");
+                    oUser = Save.readXML<User>(sPathUserData + "user.xml");
                 }
             }
             oTextBlock_Pipe.Text = "Pipes " + oUser.PipesCounter;
@@ -44,7 +45,7 @@ namespace PipeApplication {
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) {
             noItemsExist();
-            Save.saveXML<User>(oUser, sPath + "user.xml");
+            Save.saveXML<User>(oUser, sPathUserData + "user.xml");
         }
 
         /// <summary>
@@ -124,6 +125,28 @@ namespace PipeApplication {
                 this.Visibility = Visibility.Hidden;
                 oWindow.ShowDialog();
             }
+        }
+
+        private void oListBox_Pipes_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            BitmapImage oImage = new BitmapImage();
+            var oPipeSelected = oListBox_Pipes.SelectedItem as Pipe;
+            try {
+                if(oPipeSelected != null) {
+                    if(oPipeSelected.profileUri == "") {
+                        oPipeSelected.profileUri = sPathImages + "profilePic.jpg";
+                    }
+                    using(FileStream oStream = File.OpenRead(oPipeSelected.profileUri)) {
+                        oImage.BeginInit();
+                        oImage.StreamSource = oStream;
+                        oImage.CacheOption = BitmapCacheOption.OnLoad;
+                        oImage.EndInit();
+                    }
+                }
+
+            } catch(Exception ex) {
+                MessageBox.Show(ex.Message, "Error Report");
+            }
+            oImage_PipePicture.Source = oImage;
         }
     }
 }

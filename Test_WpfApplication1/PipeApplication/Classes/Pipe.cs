@@ -13,7 +13,7 @@ namespace PipeApplication {
             this.PipeMaker = "Danilo";
             this.Price = 100;
             this.PurchaseDate = DateTime.Today;
-            this.ReservedForFlavor = "Virginia";
+            this.ReservedForFlavor = "";
             this.SmokedBowls = 0;
             this.Comment = "Enter a Comment";
             this.Pieces = 0;

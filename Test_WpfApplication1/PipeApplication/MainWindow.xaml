@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Loaded="Window_Loaded"
         Closing="Window_Closing"
-        Title="Pipe Application" Height="350" Width="525">
+        Title="Pipe Application" Height="540" Width="900">
     <Grid Name="oGrid_Layout">
         <TabControl x:Name="tabControl" HorizontalAlignment="Left" VerticalAlignment="Top" Height="{Binding ElementName=oGrid_Layout, Path=ActualHeight}" Width="{Binding ElementName=oGrid_Layout, Path=ActualWidth}"  >
             <TabItem Name="oTabItem_Inventory" Header="Inventory">
@@ -42,16 +42,16 @@
             <TabItem Name="oTabItem_Pipes" Header="Pfeifen">
                 <Grid Background="#FFF">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="201"/>
-                        <ColumnDefinition Width="172"/>
-                        <ColumnDefinition Width="138"/>
+                        <ColumnDefinition Width="258"/>
+                        <ColumnDefinition Width="273"/>
+                        <ColumnDefinition Width="258"/>
                     </Grid.ColumnDefinitions>
-                    <StackPanel Name="oStackPanel_Details" HorizontalAlignment="Left" Height="253" VerticalAlignment="Top" Width="174" Margin="10,10,0,0">
-                        <StackPanel Orientation="Horizontal">
+                    <StackPanel Name="oStackPanel_Details" HorizontalAlignment="Left" Height="458" VerticalAlignment="Top" Width="174" Margin="10,10,0,0">
+                        <StackPanel Orientation="Horizontal" Margin="0,10">
                             <TextBlock Name="oTextBlock_FilterBarPipes" Text="Filter" Width="42" HorizontalAlignment="Left" Margin="5,0,10,0"/>
                             <TextBox Name="oTextBox_FilterBarPipes" Width="115" HorizontalAlignment="Right" Margin="2,0,0,0" TextChanged="oTextBox_FilterBarPipes_TextChanged"/>
                         </StackPanel>
-                        <ListBox x:Name="oListBox_Pipes" ItemsSource="{Binding lPipes}" Height="203" Margin="0,5,0,0">
+                        <ListBox x:Name="oListBox_Pipes" ItemsSource="{Binding lPipes}" Height="380" Margin="0,5,0,0" SelectionChanged="oListBox_Pipes_SelectionChanged">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel>
@@ -79,8 +79,33 @@
                                     FontWeight="Bold" 
                                     Width="30" />
                         </StackPanel>
-                    </StackPanel>
 
+                    </StackPanel>
+                    <StackPanel DataContext = "{Binding ElementName = oListBox_Pipes, Path = SelectedItem}" Grid.Column="1" Height="413" Orientation="Vertical" VerticalAlignment="Top">
+                        <StackPanel Grid.Column="1" Height="41" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,055,0,0">
+                            <TextBlock Text="Modell: " Width="90" Height="20" VerticalAlignment="Center"/>
+                            <TextBlock Name="oTextBlock_Modell" Text="{Binding Name}" Width="164" Height="20" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" Height="41" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,0,0,0">
+                            <TextBlock Text="Pfeifenmachen: " Width="90" Height="20" VerticalAlignment="Center" Margin="0,10,0,11"/>
+                            <TextBlock Name="oTextBlock_PipeMaker" Text="{Binding PipeMaker}" Width="164" Height="20" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" Height="41" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,0,0,0">
+                            <TextBlock Text="Tabakrichtung: " Width="90" Height="20" VerticalAlignment="Center"/>
+                            <TextBlock Name="oTextBlock_ReservedForFlavor" Text="{Binding ReservedForFlavor}" Width="164" Height="20" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" Height="41" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,0,0,0">
+                            <TextBlock Text="Zustand: " Width="90" Height="20" VerticalAlignment="Center"/>
+                            <TextBlock Name="oTextBlock_State" Text="{Binding State}" Width="164" Height="20" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Grid.Column="2" Margin="0,20,-80,224" Orientation="Horizontal" HorizontalAlignment="Right" Width="273">
+                        <Image x:Name="oImage_PipePicture" 
+                                HorizontalAlignment="Right" 
+                                Height="224"
+                                Width="266"
+                                VerticalAlignment="Top"/>
+                    </StackPanel>
                 </Grid>
             </TabItem>
             <TabItem Name="oTabItem_Tobacco" Header="Tabak">

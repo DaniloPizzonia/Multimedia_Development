@@ -25,7 +25,7 @@ namespace PipeApplication {
         public string Description { get; set; }
         public DateTime? PurchaseDate { get; set; }
         public int SmokedBowls { get; set; }
-        public int Price { get; set; }
+        public double Price { get; set; }
         public string ReservedForFlavor { get; set; }
         public string Comment { get; set; }
         public int Pieces { get; set; }

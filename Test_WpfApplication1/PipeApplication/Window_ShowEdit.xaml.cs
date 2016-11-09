@@ -52,7 +52,7 @@ namespace PipeApplication {
                 oPipe.Description = oTextBox_Description.Text;
                 oPipe.Pieces = Convert.ToInt32(oSlider_PipeAmount.Value);
                 try {
-                    oPipe.Price = Convert.ToInt32(oTextBox_Price.Text);
+                    oPipe.Price = Convert.ToDouble(oTextBox_Price.Text);
                 } catch(Exception ex) {
                     MessageBox.Show("Bitte eine numerische Zahl eingeben", "Preis Fehler!!!");
                     return;

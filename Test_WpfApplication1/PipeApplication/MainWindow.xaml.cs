@@ -87,9 +87,13 @@ namespace PipeApplication {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void oTextBox_FilterBarTobacco_TextChanged(object sender, TextChangedEventArgs e) {
-            var qResult = from p in oUser.lPipes
+            var qResult = (from p in oUser.lTobaccos
             where p.Name.StartsWith(oTextBox_FilterBarTobacco.Text, StringComparison.InvariantCultureIgnoreCase)
-                      select p;
+                      select p).ToList();
+            qResult = (from p in qResult orderby p.Name select p).ToList();
+
+            var qContainsResult = (from p in oUser.lTobaccos where p.Name.ToUpper().Contains(oTextBox_FilterBarTobacco.Text.ToUpper()) select p).ToList();
+            qResult.AddRange(qContainsResult);
             oListBox_Tobacco.ItemsSource = null;     // reset the ListBox entries
             oListBox_Tobacco.ItemsSource = qResult;  // set the filter query results on the listbox
         }
@@ -100,10 +104,14 @@ namespace PipeApplication {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void oTextBox_FilterBarPipes_TextChanged(object sender, TextChangedEventArgs e) {
-            var qResult = from p in oUser.lPipes
-                      where p.Name.StartsWith(oTextBox_FilterBarPipes.Text, StringComparison.InvariantCultureIgnoreCase)
-                      select p;
+            var qResult = (from p in oUser.lPipes
+                           where p.Name.StartsWith(oTextBox_FilterBarPipes.Text, StringComparison.InvariantCultureIgnoreCase)
+                           select p).ToList();
+            qResult = (from p in qResult orderby p.Name select p).ToList();
 
+            var qContainsResult = (from p in oUser.lPipes where p.Name.ToUpper().Contains(oTextBox_FilterBarPipes.Text.ToUpper()) select p).ToList();
+            qResult.AddRange(qContainsResult);
+            qResult.Distinct();
             oListBox_Pipes.ItemsSource = null;    // resets the ListBox entries
             oListBox_Pipes.ItemsSource = qResult; // set the filter query results on the listbox
         }
@@ -121,7 +129,6 @@ namespace PipeApplication {
             if(oResult == MessageBoxResult.Yes) {
                 var oWindow = new Window_ShowEdit(oUser, iClickedIndex, this);
                     oWindow.Owner = this;
-
                 this.Visibility = Visibility.Hidden;
                 oWindow.ShowDialog();
             }
@@ -130,23 +137,33 @@ namespace PipeApplication {
         private void oListBox_Pipes_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             BitmapImage oImage = new BitmapImage();
             var oPipeSelected = oListBox_Pipes.SelectedItem as Pipe;
+            
             try {
+                var uriPipe = oPipeSelected.profileUri;
                 if(oPipeSelected != null) {
-                    if(oPipeSelected.profileUri == "") {
-                        oPipeSelected.profileUri = sPathImages + "profilePic.jpg";
+                    if(uriPipe == "") {
+                        uriPipe = sPathImages + "profilePic.jpg";
                     }
-                    using(FileStream oStream = File.OpenRead(oPipeSelected.profileUri)) {
+                    using(FileStream oStream = File.OpenRead(uriPipe)) {
                         oImage.BeginInit();
                         oImage.StreamSource = oStream;
                         oImage.CacheOption = BitmapCacheOption.OnLoad;
                         oImage.EndInit();
                     }
                 }
-
             } catch(Exception ex) {
-                MessageBox.Show(ex.Message, "Error Report");
+                //MessageBox.Show(ex.Message, "Error");
+                return;
             }
             oImage_PipePicture.Source = oImage;
+        }
+
+        private void Delete_Pipe_Click(object sender, RoutedEventArgs e) {
+            var oPipeSelected = oListBox_Pipes.SelectedItem as Pipe;
+            oUser.lPipes.Remove(oPipeSelected);
+            oListBox_Pipes.ItemsSource = null;
+            oListBox_Pipes.ItemsSource = oUser.lPipes;
+            //oListBox_Pipes.SelectedIndex = oUser.lPipes.Count - 1;
         }
     }
 }

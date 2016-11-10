@@ -43,12 +43,21 @@ namespace PipeApplication {
                 oTextBox_Description.Text = oClickedPipe.Description;
                 oSlider_PipeAmount.Value = oClickedPipe.Pieces;
                 oTextBox_Price.Text = oClickedPipe.Price.ToString();
+                oTextBlock_Rating_1.Text = oClickedPipe.UniCode1;
+                oTextBlock_Rating_2.Text = oClickedPipe.UniCode2;
+                oTextBlock_Rating_3.Text = oClickedPipe.UniCode3;
+                oTextBlock_Rating_4.Text = oClickedPipe.UniCode4;
+                oTextBlock_Rating_5.Text = oClickedPipe.UniCode5;
                 oTextBlock_Title.Text = "Pfeife Bearbeiten";
                 BitmapImage oImage = new BitmapImage();
                 try {
                     var uriPipe = oClickedPipe.profileUri;
                     if(uriPipe == "") {
-                        uriPipe = sPathImages + "profilePic.jpg";
+                        try {
+                            uriPipe = sPathImages + "profilePic.jpg";
+                        } catch(Exception) {
+                            uriPipe = "";
+                        }
                     }
                     using(FileStream oStream = File.OpenRead(uriPipe)) {
                         oImage.BeginInit();
@@ -61,6 +70,12 @@ namespace PipeApplication {
                     //return;
                 }
                 oImage_PipePicture.Source = oImage;
+            } else {
+                oTextBlock_Rating_1.Text = "\u2606";
+                oTextBlock_Rating_2.Text = "\u2606";
+                oTextBlock_Rating_3.Text = "\u2606";
+                oTextBlock_Rating_4.Text = "\u2606";
+                oTextBlock_Rating_5.Text = "\u2606";
             }
         }
 
@@ -150,20 +165,20 @@ namespace PipeApplication {
             const int iMaxStars = 6;
             try {
                 iStarIndex = Convert.ToInt32(sStarName.Substring(sStarName.LastIndexOf("_") + 1));
-                if(bPipeEditAddMode == false) {
-                    oPipe.Rating = iStarIndex;           
-                } else {
-                    oClickedPipe.Rating = iStarIndex;    
-                }
             } catch(Exception ex) {
                 MessageBox.Show(ex.Message);
             }
-           
+            
+            if(bPipeEditAddMode == false) {
+                oClickedPipe = oPipe;
+            }
+            oClickedPipe.Rating = iStarIndex;
             List<TextBlock> lRating = new List<TextBlock>();
             for(int i = 0; i < iStarIndex + 1; i++) {
                 if(i!=0) {
                     var s = oStackPanel_Rating.FindName("oTextBlock_Rating_" + i);
                     lRating.Add(s as TextBlock);
+                    
                     switch(i) {
                         case 1:
                             oClickedPipe.UniCode1 = "\u2605";
@@ -181,7 +196,6 @@ namespace PipeApplication {
                             oClickedPipe.UniCode5 = "\u2605";
                             break;
                         default:
-                           
                             break;
                     }
                 }

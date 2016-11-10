@@ -19,11 +19,10 @@ namespace PipeApplication {
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow:Window {
-
         User oUser;
         string sPathUserData = Directory.GetCurrentDirectory() + @"\UserData\";
         string sPathImages = Directory.GetCurrentDirectory() + @"\Images\";
-
+        bool bEditAddMode;
         public MainWindow() {
             InitializeComponent();
         }
@@ -122,12 +121,12 @@ namespace PipeApplication {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Add_Pipe_Click(object sender, RoutedEventArgs e) {
-            
             MessageBoxResult oResult = MessageBox.Show("Eine neue Pfeife wird angelegt, wenn Sie auf ok klicken", "Pfeife anlegen", MessageBoxButton.YesNo, MessageBoxImage.Question);
             var iClickedIndex = oListBox_Pipes.SelectedIndex;
             
             if(oResult == MessageBoxResult.Yes) {
-                var oWindow = new Window_ShowEdit(oUser, iClickedIndex, this);
+                bEditAddMode = true;
+                var oWindow = new Window_ShowEdit(oUser, iClickedIndex, this, bEditAddMode);
                     oWindow.Owner = this;
                 this.Visibility = Visibility.Hidden;
                 oWindow.ShowDialog();
@@ -159,11 +158,25 @@ namespace PipeApplication {
         }
 
         private void Delete_Pipe_Click(object sender, RoutedEventArgs e) {
+            bEditAddMode = !bEditAddMode;
             var oPipeSelected = oListBox_Pipes.SelectedItem as Pipe;
             oUser.lPipes.Remove(oPipeSelected);
             oListBox_Pipes.ItemsSource = null;
             oListBox_Pipes.ItemsSource = oUser.lPipes;
             //oListBox_Pipes.SelectedIndex = oUser.lPipes.Count - 1;
+        }
+
+        private void oButton_EditPipe_Click(object sender, RoutedEventArgs e) {
+            MessageBoxResult oResult = MessageBox.Show("Wollen Sie diese Pfeife bearbeiten?", "Pfeife bearbeiten", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            var iClickedIndex = oListBox_Pipes.SelectedIndex;
+
+            if(oResult == MessageBoxResult.Yes) {
+                bEditAddMode = false;
+                var oWindow = new Window_ShowEdit(oUser, iClickedIndex, this, bEditAddMode);
+                oWindow.Owner = this;
+                this.Visibility = Visibility.Hidden;
+                oWindow.ShowDialog();
+            }
         }
     }
 }

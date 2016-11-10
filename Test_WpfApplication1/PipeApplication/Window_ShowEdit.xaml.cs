@@ -71,11 +71,7 @@ namespace PipeApplication {
                 }
                 oImage_PipePicture.Source = oImage;
             } else {
-                oTextBlock_Rating_1.Text = "\u2606";
-                oTextBlock_Rating_2.Text = "\u2606";
-                oTextBlock_Rating_3.Text = "\u2606";
-                oTextBlock_Rating_4.Text = "\u2606";
-                oTextBlock_Rating_5.Text = "\u2606";
+                oTextBlock_Rating_1.Text = "\u2606"; oTextBlock_Rating_2.Text = "\u2606"; oTextBlock_Rating_3.Text = "\u2606"; oTextBlock_Rating_4.Text = "\u2606"; oTextBlock_Rating_5.Text = "\u2606";
             }
         }
 
@@ -178,7 +174,6 @@ namespace PipeApplication {
                 if(i!=0) {
                     var s = oStackPanel_Rating.FindName("oTextBlock_Rating_" + i);
                     lRating.Add(s as TextBlock);
-                    
                     switch(i) {
                         case 1:
                             oClickedPipe.UniCode1 = "\u2605";

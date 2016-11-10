@@ -126,10 +126,10 @@
                             <TextBlock Name="oTextBlock_Pieces" Text="{Binding Pieces}" Width="164" Height="20" VerticalAlignment="Center"/>
                         </StackPanel>
                     </StackPanel>
-                    <StackPanel DataContext = "{Binding ElementName = oListBox_Pipes, Path = SelectedItem}" Grid.Row="1" Height="158" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="258,1.2,-80.6,0" Width="613" Grid.ColumnSpan="3">
+                    <StackPanel DataContext = "{Binding ElementName = oListBox_Pipes, Path = SelectedItem}" Grid.Row="1" Height="158" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="258,1.2,-86.6,0" Width="619" Grid.ColumnSpan="3">
                         <TextBlock Text="Beschreibung: " Width="90" Height="20" HorizontalAlignment="Left"/>
-                        <TextBlock Name="oTextBlock_Description" Text="{Binding Description}" Width="518" Height="114" HorizontalAlignment="Left" TextWrapping="Wrap"/>
-                        <Button Name="oButton_EditPipe" Content="Bearbeiten" Width="80" Height="20" HorizontalAlignment="Right" Margin="0,0,10,0" Click="oButton_EditPipe_Click"/>
+                        <TextBlock Name="oTextBlock_Description" Text="{Binding Description}" Width="504" Height="96" HorizontalAlignment="Left" TextWrapping="Wrap"/>
+                        <Button x:Name="oButton_EditPipe" Content="Bearbeiten" Width="95" Height="37" HorizontalAlignment="Right" Margin="0,0,10.2,0" Click="oButton_EditPipe_Click"/>
                     </StackPanel>
                     <StackPanel Grid.Column="2" Margin="0,20,-79.6,15.8" Orientation="Horizontal" HorizontalAlignment="Right" Width="334">
                         <Image x:Name="oImage_PipePicture" 

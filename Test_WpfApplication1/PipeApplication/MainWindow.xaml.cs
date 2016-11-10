@@ -69,6 +69,7 @@ namespace PipeApplication {
         public void iniPipesBinding() {
             oListBox_Pipes.ItemsSource = null;
             oListBox_Pipes.ItemsSource = oUser.lPipes;
+            oListBox_Pipes.SelectedIndex = 0;
             oStackPanel_Details.DataContext = oUser;
         }
         /// <summary>
@@ -110,7 +111,7 @@ namespace PipeApplication {
 
             var qContainsResult = (from p in oUser.lPipes where p.Name.ToUpper().Contains(oTextBox_FilterBarPipes.Text.ToUpper()) select p).ToList();
             qResult.AddRange(qContainsResult);
-            qResult.Distinct();
+            qResult.Select(s => s.Name).Distinct();
             oListBox_Pipes.ItemsSource = null;    // resets the ListBox entries
             oListBox_Pipes.ItemsSource = qResult; // set the filter query results on the listbox
         }
@@ -163,7 +164,7 @@ namespace PipeApplication {
             oUser.lPipes.Remove(oPipeSelected);
             oListBox_Pipes.ItemsSource = null;
             oListBox_Pipes.ItemsSource = oUser.lPipes;
-            //oListBox_Pipes.SelectedIndex = oUser.lPipes.Count - 1;
+            oListBox_Pipes.SelectedIndex = oUser.lPipes.Count - 1;
         }
 
         private void oButton_EditPipe_Click(object sender, RoutedEventArgs e) {

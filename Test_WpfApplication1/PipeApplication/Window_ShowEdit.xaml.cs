@@ -38,7 +38,7 @@ namespace PipeApplication {
             oPipe = new Pipe();
 
             if(bPipeEditAddMode == false) {
-                var oClickedPipe = oUser.lPipes[iClickedIndex - 1];
+                var oClickedPipe = oUser.lPipes[iClickedIndex];
                 oTextBox_PipeName.Text = oClickedPipe.Name;
                 oTextBox_PipeMaker.Text = oClickedPipe.PipeMaker;
                 oTextBox_Tabakrichtung.Text = oClickedPipe.ReservedForFlavor;

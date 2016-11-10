@@ -13,7 +13,7 @@ namespace PipeApplication {
             this.PipeMaker = "Danilo";
             this.Price = 100;
             this.PurchaseDate = DateTime.Today;
-            this.ReservedForFlavor = "Virginia";
+            this.ReservedForFlavor = "";
             this.SmokedBowls = 0;
             this.Comment = "Enter a Comment";
             this.Pieces = 0;
@@ -23,12 +23,13 @@ namespace PipeApplication {
         public string Name { get; set; }
         public string PipeMaker { get; set; }
         public string Description { get; set; }
-        public DateTime PurchaseDate { get; set; }
+        public DateTime? PurchaseDate { get; set; }
         public int SmokedBowls { get; set; }
-        public int Price { get; set; }
+        public double Price { get; set; }
         public string ReservedForFlavor { get; set; }
         public string Comment { get; set; }
         public int Pieces { get; set; }
         public string profileUri { get; set; }
+        public string State { get; set; }
     }
 }

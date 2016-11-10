@@ -22,17 +22,46 @@ namespace PipeApplication {
         User oUser;
         Pipe oPipe;
         MainWindow oParentWindow;
+        bool bPipeEditAddMode;
         string sPathImages = Directory.GetCurrentDirectory() + @"\Images\";
         int iClickedIndex;
-        public Window_ShowEdit(User oUserCommit, int iIndexCommit, MainWindow oParentWindowCommit) {
+        public Window_ShowEdit(User oUserCommit, int iIndexCommit, MainWindow oParentWindowCommit, bool bPipeMode) {
             // initiilize variables for using 
             oUser = oUserCommit; iClickedIndex = iIndexCommit; oParentWindow = oParentWindowCommit;
-            InitializeComponent();
 
+            bPipeEditAddMode = bPipeMode;
+
+            InitializeComponent();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
             oPipe = new Pipe();
+
+            if(bPipeEditAddMode == false) {
+                var oClickedPipe = oUser.lPipes[iClickedIndex];
+                oTextBox_PipeName.Text = oClickedPipe.Name;
+                oTextBox_PipeMaker.Text = oClickedPipe.PipeMaker;
+                oTextBox_Tabakrichtung.Text = oClickedPipe.ReservedForFlavor;
+                oTextBox_Description.Text = oClickedPipe.Description;
+                oSlider_PipeAmount.Value = oClickedPipe.Pieces;
+                BitmapImage oImage = new BitmapImage();
+                try {
+                    var uriPipe = oClickedPipe.profileUri;
+                    if(uriPipe == "") {
+                        uriPipe = sPathImages + "profilePic.jpg";
+                    }
+                    using(FileStream oStream = File.OpenRead(uriPipe)) {
+                        oImage.BeginInit();
+                        oImage.StreamSource = oStream;
+                        oImage.CacheOption = BitmapCacheOption.OnLoad;
+                        oImage.EndInit();
+                    }
+                } catch(Exception ex) {
+                    MessageBox.Show(ex.Message, "Error");
+                    //return;
+                }
+                oImage_PipePicture.Source = oImage;
+            }
         }
 
         private void Window_Closed(object sender, EventArgs e) {
@@ -44,18 +73,27 @@ namespace PipeApplication {
             // strings for messageBox
             string sMassage = "Wollen Sie die Pfeife wirklich speichern?", sCaption="Speichern";
             MessageBoxResult eResult = MessageBox.Show(sMassage, sCaption, MessageBoxButton.YesNo, MessageBoxImage.Question);
+
             if(eResult == MessageBoxResult.Yes) {
-                
                 oPipe.Name = oTextBox_PipeName.Text;
                 oPipe.PipeMaker = oTextBox_PipeMaker.Text;
                 oPipe.ReservedForFlavor = oTextBox_Tabakrichtung.Text;
                 oPipe.Description = oTextBox_Description.Text;
                 oPipe.Pieces = Convert.ToInt32(oSlider_PipeAmount.Value);
-
-                oUser.lPipes.Add(oPipe);
-                oParentWindow.iniPipesBinding();
-                int iIndex = oUser.lPipes.Count - 1;
-                oParentWindow.oListBox_Pipes.SelectedIndex = iIndex;
+                try {
+                    oPipe.Price = Convert.ToDouble(oTextBox_Price.Text);
+                } catch(Exception ex) {
+                    MessageBox.Show("Bitte eine numerische Zahl eingeben", "Preis Fehler!!!");
+                    return;
+                }
+                oPipe.PurchaseDate = oDatePicker_PurchaseDate.SelectedDate;
+                oPipe.State = oComboBox_State.SelectionBoxItem.ToString();
+                if(bPipeEditAddMode == true) {
+                    oUser.lPipes.Add(oPipe);
+                    oParentWindow.iniPipesBinding();
+                    int iIndex = oUser.lPipes.Count - 1;
+                    oParentWindow.oListBox_Pipes.SelectedIndex = iIndex;
+                }
                 this.Owner.Visibility = Visibility.Visible;
                 this.Close();
             }

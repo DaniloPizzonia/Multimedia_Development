@@ -1,0 +1,28 @@
+﻿To Do List
+
+work like a peon -arbeit arbeit
+
+2. Technische MAchbarkeit
+	a. Falls es länger dauert; Desing mi Annahme beginnen
+3. Design-Entscheidungen
+	a. Kreativität anregen ( was gibt es an beispieleen)
+	b. Falls 1.a 1.b erfüllt sind
+		1. Stadt; haus; sterne; himmel mit sternen
+		2. schließen
+		3. Bewegen, egal welche stelle
+		4. Klick auf stern: info auf dem objekt, mittig darstellen objekt schließbar
+		5. Türchen Inhalte:
+			1. 24er immer oben; Rest neu verteielen (Außnahme: geöffnet)
+			2. Alle Jahre; nur Dez verwendwar
+			3. Geöffnete Türen sind oft erkennbar
+			4. Texte werden mit sprachunterstützung ausgegeben
+			4. Inhalte:
+				a. Quiz: Thema (Wheichnten/Geshcichte...) jeweils 3 prop thema
+				b. Witz
+				c. Fakt
+				d. Bild
+				e. V1
+				f) Musik(immer gleich)
+	c. Falls 1.1-1b nicht erfüllt(je nachdem)
+		1. zB Projekt wird nicht realisiert
+		2. Design entsprechend neu erstellt

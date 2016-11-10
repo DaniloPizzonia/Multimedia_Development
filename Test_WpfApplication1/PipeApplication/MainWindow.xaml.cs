@@ -19,20 +19,20 @@ namespace PipeApplication {
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow:Window {
-
         User oUser;
-        string sPath = Directory.GetCurrentDirectory() + @"\UserData\";
-
+        string sPathUserData = Directory.GetCurrentDirectory() + @"\UserData\";
+        string sPathImages = Directory.GetCurrentDirectory() + @"\Images\";
+        bool bEditAddMode;
         public MainWindow() {
             InitializeComponent();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
             if(oUser == null) {
-                if(Save.readXML<User>(sPath + "user.xml") == null) {
+                if(Save.readXML<User>(sPathUserData + "user.xml") == null) {
                     oUser = new User("Default Name", 0, 0);
                 } else {
-                    oUser = Save.readXML<User>(sPath + "user.xml");
+                    oUser = Save.readXML<User>(sPathUserData + "user.xml");
                 }
             }
             oTextBlock_Pipe.Text = "Pipes " + oUser.PipesCounter;
@@ -44,7 +44,7 @@ namespace PipeApplication {
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) {
             noItemsExist();
-            Save.saveXML<User>(oUser, sPath + "user.xml");
+            Save.saveXML<User>(oUser, sPathUserData + "user.xml");
         }
 
         /// <summary>
@@ -86,9 +86,13 @@ namespace PipeApplication {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void oTextBox_FilterBarTobacco_TextChanged(object sender, TextChangedEventArgs e) {
-            var qResult = from p in oUser.lPipes
+            var qResult = (from p in oUser.lTobaccos
             where p.Name.StartsWith(oTextBox_FilterBarTobacco.Text, StringComparison.InvariantCultureIgnoreCase)
-                      select p;
+                      select p).ToList();
+            qResult = (from p in qResult orderby p.Name select p).ToList();
+
+            var qContainsResult = (from p in oUser.lTobaccos where p.Name.ToUpper().Contains(oTextBox_FilterBarTobacco.Text.ToUpper()) select p).ToList();
+            qResult.AddRange(qContainsResult);
             oListBox_Tobacco.ItemsSource = null;     // reset the ListBox entries
             oListBox_Tobacco.ItemsSource = qResult;  // set the filter query results on the listbox
         }
@@ -99,10 +103,14 @@ namespace PipeApplication {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void oTextBox_FilterBarPipes_TextChanged(object sender, TextChangedEventArgs e) {
-            var qResult = from p in oUser.lPipes
-                      where p.Name.StartsWith(oTextBox_FilterBarPipes.Text, StringComparison.InvariantCultureIgnoreCase)
-                      select p;
+            var qResult = (from p in oUser.lPipes
+                           where p.Name.StartsWith(oTextBox_FilterBarPipes.Text, StringComparison.InvariantCultureIgnoreCase)
+                           select p).ToList();
+            qResult = (from p in qResult orderby p.Name select p).ToList();
 
+            var qContainsResult = (from p in oUser.lPipes where p.Name.ToUpper().Contains(oTextBox_FilterBarPipes.Text.ToUpper()) select p).ToList();
+            qResult.AddRange(qContainsResult);
+            qResult.Distinct();
             oListBox_Pipes.ItemsSource = null;    // resets the ListBox entries
             oListBox_Pipes.ItemsSource = qResult; // set the filter query results on the listbox
         }
@@ -113,14 +121,59 @@ namespace PipeApplication {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Add_Pipe_Click(object sender, RoutedEventArgs e) {
-            
             MessageBoxResult oResult = MessageBox.Show("Eine neue Pfeife wird angelegt, wenn Sie auf ok klicken", "Pfeife anlegen", MessageBoxButton.YesNo, MessageBoxImage.Question);
             var iClickedIndex = oListBox_Pipes.SelectedIndex;
             
             if(oResult == MessageBoxResult.Yes) {
-                var oWindow = new Window_ShowEdit(oUser, iClickedIndex, this);
+                bEditAddMode = true;
+                var oWindow = new Window_ShowEdit(oUser, iClickedIndex, this, bEditAddMode);
                     oWindow.Owner = this;
+                this.Visibility = Visibility.Hidden;
+                oWindow.ShowDialog();
+            }
+        }
 
+        private void oListBox_Pipes_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            BitmapImage oImage = new BitmapImage();
+            var oPipeSelected = oListBox_Pipes.SelectedItem as Pipe;
+            
+            try {
+                var uriPipe = oPipeSelected.profileUri;
+                if(oPipeSelected != null) {
+                    if(uriPipe == "") {
+                        uriPipe = sPathImages + "profilePic.jpg";
+                    }
+                    using(FileStream oStream = File.OpenRead(uriPipe)) {
+                        oImage.BeginInit();
+                        oImage.StreamSource = oStream;
+                        oImage.CacheOption = BitmapCacheOption.OnLoad;
+                        oImage.EndInit();
+                    }
+                }
+            } catch(Exception ex) {
+                //MessageBox.Show(ex.Message, "Error");
+                return;
+            }
+            oImage_PipePicture.Source = oImage;
+        }
+
+        private void Delete_Pipe_Click(object sender, RoutedEventArgs e) {
+            bEditAddMode = !bEditAddMode;
+            var oPipeSelected = oListBox_Pipes.SelectedItem as Pipe;
+            oUser.lPipes.Remove(oPipeSelected);
+            oListBox_Pipes.ItemsSource = null;
+            oListBox_Pipes.ItemsSource = oUser.lPipes;
+            //oListBox_Pipes.SelectedIndex = oUser.lPipes.Count - 1;
+        }
+
+        private void oButton_EditPipe_Click(object sender, RoutedEventArgs e) {
+            MessageBoxResult oResult = MessageBox.Show("Wollen Sie diese Pfeife bearbeiten?", "Pfeife bearbeiten", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            var iClickedIndex = oListBox_Pipes.SelectedIndex;
+
+            if(oResult == MessageBoxResult.Yes) {
+                bEditAddMode = false;
+                var oWindow = new Window_ShowEdit(oUser, iClickedIndex, this, bEditAddMode);
+                oWindow.Owner = this;
                 this.Visibility = Visibility.Hidden;
                 oWindow.ShowDialog();
             }

@@ -23,7 +23,7 @@ namespace PipeApplication {
         Pipe oPipe;
         Pipe oClickedPipe;
         MainWindow oParentWindow;
-        bool bPipeEditAddMode;
+        bool bPipeEditAddMode; // editMode := true; addMode := false;
         string sPathImages = Directory.GetCurrentDirectory() + @"\Images\";
         int iClickedIndex;
         public Window_ShowEdit(User oUserCommit, int iIndexCommit, MainWindow oParentWindowCommit, bool bPipeMode) {
@@ -66,14 +66,13 @@ namespace PipeApplication {
         private void Window_Closed(object sender, EventArgs e) {
             this.Owner.Visibility = Visibility.Visible;
         }
-
         
         private void oButton_SavePipe_Click(object sender, RoutedEventArgs e) {
             // strings for messageBox
             string sMassage = "Wollen Sie die Pfeife wirklich speichern?", sCaption="Speichern";
             MessageBoxResult eResult = MessageBox.Show(sMassage, sCaption, MessageBoxButton.YesNo, MessageBoxImage.Question);
             if(bPipeEditAddMode == false) {
-                oClickedPipe = new Pipe();
+                oClickedPipe = oPipe;
             }
             if(eResult == MessageBoxResult.Yes) {
                 oClickedPipe.Name = oTextBox_PipeName.Text;
@@ -113,8 +112,12 @@ namespace PipeApplication {
             try {
                 if(oFileDialog.ShowDialog() == true) {
                     string sFileName = oFileDialog.FileName;
-                    oPipe.profileUri = sFileName;               // saves the filename in pipe to search for the right pic in relative folder
-
+                    if(bPipeEditAddMode == false) {
+                        oPipe.profileUri = sFileName;               // saves the filename in pipe to search for the right pic in relative folder
+                    } else {
+                        oClickedPipe.profileUri = sFileName;
+                    }
+                    
                     if(!Directory.Exists(sPathImages)) {        // proofs if a directory exists 
                         Directory.CreateDirectory(sPathImages); // if dir does not excist with the pre defined path create one
                     }

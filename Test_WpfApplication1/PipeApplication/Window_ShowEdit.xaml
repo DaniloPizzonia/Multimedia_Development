@@ -10,18 +10,18 @@
         Title="Window_ShowEdit" Height="540" Width="900">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="29*"/>
-            <RowDefinition Height="117*"/>
-            <RowDefinition Height="109*"/>
+            <RowDefinition Height="38*"/>
+            <RowDefinition Height="253*"/>
+            <RowDefinition Height="219*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="523*"/>
             <ColumnDefinition Width="370*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Margin="0,0,1.2,0.045">
+        <StackPanel Margin="0,0,1.2,4.4">
             <TextBlock Text="Pfeife Anlegen" Margin="10,10,0,0" FontSize="20"/>
         </StackPanel>
-        <StackPanel Margin="0,58,39.6,216.845" Orientation="Vertical" HorizontalAlignment="Right" Width="358" Grid.ColumnSpan="2" Grid.RowSpan="3" >
+        <StackPanel Margin="0,0.6,39.6,215.4" Orientation="Vertical" HorizontalAlignment="Right" Width="358" Grid.ColumnSpan="2" Grid.RowSpan="2" Grid.Row="1" >
             <Image x:Name="oImage_PipePicture" 
                    HorizontalAlignment="Right" 
                    Height="189" 
@@ -36,7 +36,7 @@
                     Height="32" Click="oButton_AddImage_Click"/>
         </StackPanel>
 
-        <StackPanel Margin="10,48,193.2,9.645" Orientation="Vertical" Grid.Column="0" Grid.RowSpan="2" >
+        <StackPanel Margin="10,0.6,193.2,9.2" Orientation="Vertical" Grid.Column="0" Grid.Row="1" >
 
             <StackPanel 
                     Orientation="Horizontal"
@@ -117,7 +117,7 @@
                 Height="208" 
                 VerticalAlignment="Bottom" 
                 Width="420" 
-            Margin="10,0,0,9.845"
+            Margin="10,0,0,8.4"
                 Grid.Column="0"
                 Grid.Row="2">
             <TextBlock 
@@ -136,21 +136,28 @@
                     Padding="5"
                     Text=""/>
         </StackPanel>
-        <Button x:Name="oButton_SavePipe" Content="Speichern" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" Margin="0,175.355,39.6,0"  VerticalAlignment="Top" Width="109" Height="32" Click="oButton_SavePipe_Click"/>
-        <StackPanel Margin="279,48,367.6,9.645" Orientation="Vertical" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="52" VerticalAlignment="Top" Width="237" >
+        <Button x:Name="oButton_SavePipe" Content="Speichern" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" Margin="0,175.8,39.6,0"  VerticalAlignment="Top" Width="109" Height="32" Click="oButton_SavePipe_Click"/>
+        <StackPanel Margin="279,0.6,367.6,9.2" Orientation="Vertical" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1">
+            <StackPanel 
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Left" 
+                    Height="52" 
+                    VerticalAlignment="Top" 
+                    Width="245" >
                 <TextBlock 
-                    VerticalAlignment="Center"
-                    Text="Preis"
-                    Margin="0,18,10,18"
-                    Width="90"/>
-                <TextBox x:Name="oTextBox_Price"
-                    VerticalAlignment="Center"
-                    TextAlignment="Right"
-                    Width="135"
-                    Padding="5"
-                    Text="" 
-                    Margin="0,12"/>
+                        VerticalAlignment="Center"
+                        Text="Anzahl Pfeifen"
+                        Margin="0,0,10,0"
+                        Width="90"/>
+                <Slider x:Name="oSlider_PipeAmount"
+                            Width="90"
+                            VerticalAlignment="Center"
+                            Margin="0,15"
+                            Minimum="0"
+                            Maximum="10"
+                            TickFrequency="1"
+                            IsSnapToTickEnabled="True"/>
+                <TextBlock Text="{Binding ElementName=oSlider_PipeAmount, Path=Value}" Width="30" VerticalAlignment="Center" TextAlignment="Right" Margin="0,18"/>
             </StackPanel>
             <StackPanel 
                 Orientation="Horizontal"
@@ -190,26 +197,19 @@
                     <ComboBoxItem Content="Verschenkt"/>
                 </ComboBox>
             </StackPanel>
-            <StackPanel 
-                    Orientation="Horizontal"
-                    HorizontalAlignment="Left" 
-                    Height="52" 
-                    VerticalAlignment="Top" 
-                    Width="245" >
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="52" VerticalAlignment="Top" Width="237" >
                 <TextBlock 
-                        VerticalAlignment="Center"
-                        Text="Anzahl Pfeifen"
-                        Margin="0,0,10,0"
-                        Width="90"/>
-                <Slider x:Name="oSlider_PipeAmount"
-                            Width="90"
-                            VerticalAlignment="Center"
-                            Margin="0,15"
-                            Minimum="0"
-                            Maximum="10"
-                            TickFrequency="1"
-                            IsSnapToTickEnabled="True"/>
-                <TextBlock Text="{Binding ElementName=oSlider_PipeAmount, Path=Value}" Width="30" VerticalAlignment="Center" TextAlignment="Right" Margin="0,18"/>
+                    VerticalAlignment="Center"
+                    Text="Preis"
+                    Margin="0,18,10,18"
+                    Width="90"/>
+                <TextBox x:Name="oTextBox_Price"
+                    VerticalAlignment="Center"
+                    TextAlignment="Right"
+                    Width="135"
+                    Padding="5"
+                    Text="" 
+                    Margin="0,12"/>
             </StackPanel>
         </StackPanel>
 

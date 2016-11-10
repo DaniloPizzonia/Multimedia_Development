@@ -113,9 +113,9 @@ namespace PipeApplication {
                 if(oFileDialog.ShowDialog() == true) {
                     string sFileName = oFileDialog.FileName;
                     if(bPipeEditAddMode == false) {
-                        oPipe.profileUri = sFileName;               // saves the filename in pipe to search for the right pic in relative folder
+                        oPipe.profileUri = sFileName;           // saves the filename in pipe to search for the right pic in relative folder
                     } else {
-                        oClickedPipe.profileUri = sFileName;
+                        oClickedPipe.profileUri = sFileName;    // -,,-
                     }
                     
                     if(!Directory.Exists(sPathImages)) {        // proofs if a directory exists 

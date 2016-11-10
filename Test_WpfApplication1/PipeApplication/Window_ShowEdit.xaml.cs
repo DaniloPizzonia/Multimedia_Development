@@ -43,6 +43,7 @@ namespace PipeApplication {
                 oTextBox_Description.Text = oClickedPipe.Description;
                 oSlider_PipeAmount.Value = oClickedPipe.Pieces;
                 oTextBox_Price.Text = oClickedPipe.Price.ToString();
+                oTextBlock_Title.Text = "Pfeife Bearbeiten";
                 BitmapImage oImage = new BitmapImage();
                 try {
                     var uriPipe = oClickedPipe.profileUri;
@@ -75,7 +76,13 @@ namespace PipeApplication {
                 oClickedPipe = oPipe;
             }
             if(eResult == MessageBoxResult.Yes) {
-                oClickedPipe.Name = oTextBox_PipeName.Text;
+                if(oTextBox_PipeName.Text == "") {
+                    MessageBox.Show("Bitte Name eingeben!");
+                    return;
+                } else {
+                    oClickedPipe.Name = oTextBox_PipeName.Text;
+                }
+                
                 oClickedPipe.PipeMaker = oTextBox_PipeMaker.Text;
                 oClickedPipe.ReservedForFlavor = oTextBox_Tabakrichtung.Text;
                 oClickedPipe.Description = oTextBox_Description.Text;
@@ -133,6 +140,43 @@ namespace PipeApplication {
             } catch(Exception ex) {
                 MessageBox.Show("An exception has catched up: " + ex.Message,
                     "Exception Sample", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void oTextBlock_Rating_MouseUp(object sender, MouseButtonEventArgs e) {
+            var oTextBlock = (sender as TextBlock);
+            var sStarName = oTextBlock.Name;
+            int iStarIndex = 0;
+            const int iMaxStars = 6;
+            try {
+                iStarIndex = Convert.ToInt32(sStarName.Substring(sStarName.LastIndexOf("_") + 1));
+                if(bPipeEditAddMode == false) {
+                    oPipe.Rating = iStarIndex;           
+                } else {
+                    oClickedPipe.Rating = iStarIndex;    
+                }
+            } catch(Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+           
+            List<TextBlock> lRating = new List<TextBlock>();
+            for(int i = 0; i < iStarIndex + 1; i++) {
+                if(i!=0) {
+                    var s = oStackPanel_Rating.FindName("oTextBlock_Rating_" + i);
+                    lRating.Add(s as TextBlock);
+                }
+            }
+            List<TextBlock> lRatingBlank = new List<TextBlock>();
+            for(int i = iStarIndex + 1; i < iMaxStars; i++) {
+                var s = oStackPanel_Rating.FindName("oTextBlock_Rating_" + i);
+                lRatingBlank.Add(s as TextBlock);
+            }
+
+            foreach(var oStar in lRating) {
+                oStar.Text = "\u2605";
+            }
+            foreach(var oStarBlank in lRatingBlank) {
+                oStarBlank.Text = "\u2606";
             }
         }
     }

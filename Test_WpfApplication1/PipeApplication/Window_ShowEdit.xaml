@@ -8,7 +8,7 @@
         Loaded="Window_Loaded"
         Closed="Window_Closed"
         Title="Window_ShowEdit" Height="540" Width="900">
-    <Grid>
+    <Grid Name="oGrid_Edit">
         <Grid.RowDefinitions>
             <RowDefinition Height="38*"/>
             <RowDefinition Height="253*"/>
@@ -19,14 +19,14 @@
             <ColumnDefinition Width="370*"/>
         </Grid.ColumnDefinitions>
         <StackPanel Margin="0,0,1.2,4.4">
-            <TextBlock Text="Pfeife Anlegen" Margin="10,10,0,0" FontSize="20"/>
+            <TextBlock Name="oTextBlock_Title" Text="Pfeife Anlegen" Margin="10,5,-0.4,0" FontSize="20" Height="35" VerticalAlignment="Top" />
         </StackPanel>
-        <StackPanel Margin="0,0.6,39.6,215.4" Orientation="Vertical" HorizontalAlignment="Right" Width="358" Grid.ColumnSpan="2" Grid.RowSpan="2" Grid.Row="1" >
+        <StackPanel Margin="0,0.6,39.6,205.4" Orientation="Vertical" HorizontalAlignment="Right" Width="358" Grid.ColumnSpan="2" Grid.RowSpan="2" Grid.Row="1" >
             <Image x:Name="oImage_PipePicture" 
                    HorizontalAlignment="Right" 
-                   Height="189" 
+                   Height="215" 
                    VerticalAlignment="Top" 
-                   Width="300"/>
+                   Width="319" Margin="0,0,0.4,0"/>
             <Button x:Name="oButton_AddImage" 
                     Content="Bild Hinzufügen" 
                     HorizontalAlignment="Right"
@@ -44,13 +44,13 @@
                     Height="52" 
                     VerticalAlignment="Top" 
                     Width="236" >
-                <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right" Width="235"  >
+                <StackPanel Name="oStackPanel_Rating" Orientation="Horizontal" HorizontalAlignment="Right" Width="235"  >
                     <TextBlock Text="Bewertung: " Width="99" VerticalAlignment="Center" Margin="0,18"/>
-                    <TextBlock Text="&#x2605;" FontSize="20" Width="27.2" VerticalAlignment="Center" TextAlignment="Center"/>
-                    <TextBlock Text="&#x2606;" FontSize="20" Width="27.2" VerticalAlignment="Center" TextAlignment="Center"/>
-                    <TextBlock Text="&#x2606;" FontSize="20" Width="27.2" VerticalAlignment="Center" TextAlignment="Center"/>
-                    <TextBlock Text="&#x2606;" FontSize="20" Width="27.2" VerticalAlignment="Center" TextAlignment="Center"/>
-                    <TextBlock Text="&#x2606;" FontSize="20" Width="27.2" VerticalAlignment="Center" TextAlignment="Center"/>
+                    <TextBlock Name="oTextBlock_Rating_1" Text="&#x2606;" Foreground="Gold" FontSize="20" Width="27.2" VerticalAlignment="Center" TextAlignment="Center" MouseUp="oTextBlock_Rating_MouseUp"/>
+                    <TextBlock Name="oTextBlock_Rating_2" Text="&#x2606;" Foreground="Gold" FontSize="20" Width="27.2" VerticalAlignment="Center" TextAlignment="Center" MouseUp="oTextBlock_Rating_MouseUp"/>
+                    <TextBlock Name="oTextBlock_Rating_3" Text="&#x2606;" Foreground="Gold" FontSize="20" Width="27.2" VerticalAlignment="Center" TextAlignment="Center" MouseUp="oTextBlock_Rating_MouseUp"/>
+                    <TextBlock Name="oTextBlock_Rating_4" Text="&#x2606;" Foreground="Gold" FontSize="20" Width="27.2" VerticalAlignment="Center" TextAlignment="Center" MouseUp="oTextBlock_Rating_MouseUp"/>
+                    <TextBlock Name="oTextBlock_Rating_5" Text="&#x2606;" Foreground="Gold" FontSize="20" Width="27.2" VerticalAlignment="Center" TextAlignment="Center" MouseUp="oTextBlock_Rating_MouseUp"/>
                 </StackPanel>
 
             </StackPanel>
@@ -116,7 +116,7 @@
                 HorizontalAlignment="Left" 
                 Height="208" 
                 VerticalAlignment="Bottom" 
-                Width="420" 
+                Width="513" 
             Margin="10,0,0,8.4"
                 Grid.Column="0"
                 Grid.Row="2">
@@ -131,7 +131,7 @@
                     VerticalAlignment="Top"
                     HorizontalAlignment="Left"
                     TextAlignment="Left"
-                    Width="410"
+                    Width="503"
                     Height="180"
                     Padding="5"
                     Text=""/>

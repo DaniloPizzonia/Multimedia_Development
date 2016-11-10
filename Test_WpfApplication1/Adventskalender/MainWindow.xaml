@@ -18,6 +18,19 @@
             <Ellipse Name="oEllipse_Door1" Fill="Yellow" Height="27" Stroke="Black" Width="27" Canvas.Left="40" Canvas.Top="31" MouseUp="oEllipse_Door_MouseUp"/>
         </Canvas>
         <Grid Name="oGrid_ScreenGoodies" Background="Beige" Margin="266,0,0,0" HorizontalAlignment="Left" Width="250" Visibility="Visible">
+            <StackPanel Name="oStackPanel_Quiz" Margin="10,30,12,47" VerticalAlignment="Top" Height="270">
+                <TextBlock Text="Quit des Tages" FontSize="13" Foreground="Purple"/>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <TextBlock Text="&#x2605;" Width="32"/>
+                    <TextBlock Text="&#x2606;" Width="32"/>
+                    <TextBlock Text="&#x2606;" Width="32"/>
+                    <TextBlock Text="&#x2606;" Width="32"/>
+                    <TextBlock Text="&#x2606;" Width="32"/>
+                </StackPanel>
+                
+                <TextBlock Text="{Binding QuestionText}" TextWrapping="Wrap" Margin="0,10,0,10"/>
+                <ListBox ItemsSource="{Binding QuestionTextAnswers}" DisplayMemberPath="answerText" SelectionChanged="ListBox_Answers_SelectionChanged"></ListBox>
+            </StackPanel>
             <Button Name="oButton_Collapse" Width="70" Height="20" Content="Collapse" Margin="168,321,12,9" Click="oButton_Collapse_Click"/>
         </Grid>
     </Grid>

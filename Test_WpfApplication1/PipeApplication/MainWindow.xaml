@@ -63,11 +63,11 @@
                                             <Run Text="{Binding Name}"/>
                                         </TextBlock>
                                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                            <TextBlock Text="&#x2605;" Width="32"/>
-                                            <TextBlock Text="&#x2606;" Width="32"/>
-                                            <TextBlock Text="&#x2606;" Width="32"/>
-                                            <TextBlock Text="&#x2606;" Width="32"/>
-                                            <TextBlock Text="&#x2606;" Width="32"/>
+                                            <TextBlock Name="oTextBlock_Rating_1" Text="{Binding UniCode1}" Foreground="Gold" FontSize="20" Width="27.2" VerticalAlignment="Center" TextAlignment="Center"/>
+                                            <TextBlock Name="oTextBlock_Rating_2" Text="{Binding UniCode2}" Foreground="Gold" FontSize="20" Width="27.2" VerticalAlignment="Center" TextAlignment="Center"/>
+                                            <TextBlock Name="oTextBlock_Rating_3" Text="{Binding UniCode3}" Foreground="Gold" FontSize="20" Width="27.2" VerticalAlignment="Center" TextAlignment="Center"/>
+                                            <TextBlock Name="oTextBlock_Rating_4" Text="{Binding UniCode4}" Foreground="Gold" FontSize="20" Width="27.2" VerticalAlignment="Center" TextAlignment="Center"/>
+                                            <TextBlock Name="oTextBlock_Rating_5" Text="{Binding UniCode5}" Foreground="Gold" FontSize="20" Width="27.2" VerticalAlignment="Center" TextAlignment="Center"/>
                                         </StackPanel>
                                         <TextBlock Text="{Binding Price}">
                                             <Run Text=" Euro"/>
@@ -94,12 +94,12 @@
                     </StackPanel>
                     <StackPanel DataContext = "{Binding ElementName = oListBox_Pipes, Path = SelectedItem}" Height="321" Orientation="Vertical" VerticalAlignment="Top" Grid.ColumnSpan="2" Margin="258,0,0,0" Grid.RowSpan="2">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="0,55,0,0">
-                            <TextBlock Text="Bewertung: " Width="90" Height="20" VerticalAlignment="Center"/>
-                            <TextBlock Text="&#x2605;" Width="32"/>
-                            <TextBlock Text="&#x2606;" Width="32"/>
-                            <TextBlock Text="&#x2606;" Width="32"/>
-                            <TextBlock Text="&#x2606;" Width="32"/>
-                            <TextBlock Text="&#x2606;" Width="32"/>
+                            <TextBlock Text="Bewertung: " Width="99" VerticalAlignment="Center" Margin="0,18"/>
+                            <TextBlock Name="oTextBlock_Rating_1" Text="{Binding UniCode1}" Foreground="Gold" FontSize="20" Width="27.2" VerticalAlignment="Center" TextAlignment="Center"/>
+                            <TextBlock Name="oTextBlock_Rating_2" Text="{Binding UniCode2}" Foreground="Gold" FontSize="20" Width="27.2" VerticalAlignment="Center" TextAlignment="Center"/>
+                            <TextBlock Name="oTextBlock_Rating_3" Text="{Binding UniCode3}" Foreground="Gold" FontSize="20" Width="27.2" VerticalAlignment="Center" TextAlignment="Center"/>
+                            <TextBlock Name="oTextBlock_Rating_4" Text="{Binding UniCode4}" Foreground="Gold" FontSize="20" Width="27.2" VerticalAlignment="Center" TextAlignment="Center"/>
+                            <TextBlock Name="oTextBlock_Rating_5" Text="{Binding UniCode5}" Foreground="Gold" FontSize="20" Width="27.2" VerticalAlignment="Center" TextAlignment="Center"/>
                         </StackPanel>
                         <StackPanel Grid.Column="1" Height="41" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,0,0,0">
                             <TextBlock Text="Modell: " Width="90" Height="20" VerticalAlignment="Center"/>

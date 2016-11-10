@@ -164,12 +164,51 @@ namespace PipeApplication {
                 if(i!=0) {
                     var s = oStackPanel_Rating.FindName("oTextBlock_Rating_" + i);
                     lRating.Add(s as TextBlock);
+                    switch(i) {
+                        case 1:
+                            oClickedPipe.UniCode1 = "\u2605";
+                            break;
+                        case 2:
+                            oClickedPipe.UniCode2 = "\u2605";
+                            break;
+                        case 3:
+                            oClickedPipe.UniCode3 = "\u2605";
+                            break;
+                        case 4:
+                            oClickedPipe.UniCode4 = "\u2605";
+                            break;
+                        case 5:
+                            oClickedPipe.UniCode5 = "\u2605";
+                            break;
+                        default:
+                           
+                            break;
+                    }
                 }
             }
             List<TextBlock> lRatingBlank = new List<TextBlock>();
             for(int i = iStarIndex + 1; i < iMaxStars; i++) {
                 var s = oStackPanel_Rating.FindName("oTextBlock_Rating_" + i);
                 lRatingBlank.Add(s as TextBlock);
+                switch(i) {
+                    case 1:
+                        oClickedPipe.UniCode1 = "\u2606";
+                        break;
+                    case 2:
+                        oClickedPipe.UniCode2 = "\u2606";
+                        break;
+                    case 3:
+                        oClickedPipe.UniCode3 = "\u2606";
+                        break;
+                    case 4:
+                        oClickedPipe.UniCode4 = "\u2606";
+                        break;
+                    case 5:
+                        oClickedPipe.UniCode5 = "\u2606";
+                        break;
+                    default:
+                        break;
+                }
             }
 
             foreach(var oStar in lRating) {

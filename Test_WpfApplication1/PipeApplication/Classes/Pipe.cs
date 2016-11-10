@@ -32,5 +32,10 @@ namespace PipeApplication {
         public string profileUri { get; set; }
         public string State { get; set; }
         public int Rating { get; set; }
+        public string UniCode1 { get; set; }
+        public string UniCode2 { get; set; }
+        public string UniCode3 { get; set; }
+        public string UniCode4 { get; set; }
+        public string UniCode5 { get; set; }
     }
 }

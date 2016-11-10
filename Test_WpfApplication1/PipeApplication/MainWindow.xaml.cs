@@ -125,7 +125,7 @@ namespace PipeApplication {
             var iClickedIndex = oListBox_Pipes.SelectedIndex;
             
             if(oResult == MessageBoxResult.Yes) {
-                bEditAddMode = true;
+                bEditAddMode = false;
                 var oWindow = new Window_ShowEdit(oUser, iClickedIndex, this, bEditAddMode);
                     oWindow.Owner = this;
                 this.Visibility = Visibility.Hidden;
@@ -171,7 +171,7 @@ namespace PipeApplication {
             var iClickedIndex = oListBox_Pipes.SelectedIndex;
 
             if(oResult == MessageBoxResult.Yes) {
-                bEditAddMode = false;
+                bEditAddMode = true;
                 var oWindow = new Window_ShowEdit(oUser, iClickedIndex, this, bEditAddMode);
                 oWindow.Owner = this;
                 this.Visibility = Visibility.Hidden;

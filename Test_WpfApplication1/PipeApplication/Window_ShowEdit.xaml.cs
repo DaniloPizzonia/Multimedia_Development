@@ -21,29 +21,28 @@ namespace PipeApplication {
     public partial class Window_ShowEdit:Window {
         User oUser;
         Pipe oPipe;
+        Pipe oClickedPipe;
         MainWindow oParentWindow;
         bool bPipeEditAddMode;
         string sPathImages = Directory.GetCurrentDirectory() + @"\Images\";
         int iClickedIndex;
         public Window_ShowEdit(User oUserCommit, int iIndexCommit, MainWindow oParentWindowCommit, bool bPipeMode) {
             // initiilize variables for using 
-            oUser = oUserCommit; iClickedIndex = iIndexCommit; oParentWindow = oParentWindowCommit;
-
-            bPipeEditAddMode = bPipeMode;
+            oUser = oUserCommit; iClickedIndex = iIndexCommit; oParentWindow = oParentWindowCommit; bPipeEditAddMode = bPipeMode;
 
             InitializeComponent();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
             oPipe = new Pipe();
-
-            if(bPipeEditAddMode == false) {
-                var oClickedPipe = oUser.lPipes[iClickedIndex];
+            if(bPipeEditAddMode == true) {
+                oClickedPipe = oUser.lPipes[iClickedIndex];
                 oTextBox_PipeName.Text = oClickedPipe.Name;
                 oTextBox_PipeMaker.Text = oClickedPipe.PipeMaker;
                 oTextBox_Tabakrichtung.Text = oClickedPipe.ReservedForFlavor;
                 oTextBox_Description.Text = oClickedPipe.Description;
                 oSlider_PipeAmount.Value = oClickedPipe.Pieces;
+                oTextBox_Price.Text = oClickedPipe.Price.ToString();
                 BitmapImage oImage = new BitmapImage();
                 try {
                     var uriPipe = oClickedPipe.profileUri;
@@ -73,23 +72,29 @@ namespace PipeApplication {
             // strings for messageBox
             string sMassage = "Wollen Sie die Pfeife wirklich speichern?", sCaption="Speichern";
             MessageBoxResult eResult = MessageBox.Show(sMassage, sCaption, MessageBoxButton.YesNo, MessageBoxImage.Question);
-
+            if(bPipeEditAddMode == false) {
+                oClickedPipe = new Pipe();
+            }
             if(eResult == MessageBoxResult.Yes) {
-                oPipe.Name = oTextBox_PipeName.Text;
-                oPipe.PipeMaker = oTextBox_PipeMaker.Text;
-                oPipe.ReservedForFlavor = oTextBox_Tabakrichtung.Text;
-                oPipe.Description = oTextBox_Description.Text;
-                oPipe.Pieces = Convert.ToInt32(oSlider_PipeAmount.Value);
+                oClickedPipe.Name = oTextBox_PipeName.Text;
+                oClickedPipe.PipeMaker = oTextBox_PipeMaker.Text;
+                oClickedPipe.ReservedForFlavor = oTextBox_Tabakrichtung.Text;
+                oClickedPipe.Description = oTextBox_Description.Text;
+                oClickedPipe.Pieces = Convert.ToInt32(oSlider_PipeAmount.Value);
                 try {
-                    oPipe.Price = Convert.ToDouble(oTextBox_Price.Text);
+                    oClickedPipe.Price = Convert.ToDouble(oTextBox_Price.Text);
                 } catch(Exception ex) {
                     MessageBox.Show("Bitte eine numerische Zahl eingeben", "Preis Fehler!!!");
                     return;
                 }
-                oPipe.PurchaseDate = oDatePicker_PurchaseDate.SelectedDate;
-                oPipe.State = oComboBox_State.SelectionBoxItem.ToString();
+                oClickedPipe.PurchaseDate = oDatePicker_PurchaseDate.SelectedDate;
+                oClickedPipe.State = oComboBox_State.SelectionBoxItem.ToString();
                 if(bPipeEditAddMode == true) {
-                    oUser.lPipes.Add(oPipe);
+                    oParentWindow.iniPipesBinding();
+                    int iIndex = oUser.lPipes.Count - 1;
+                    oParentWindow.oListBox_Pipes.SelectedIndex = iClickedIndex;
+                } else {
+                    oUser.lPipes.Add(oClickedPipe);
                     oParentWindow.iniPipesBinding();
                     int iIndex = oUser.lPipes.Count - 1;
                     oParentWindow.oListBox_Pipes.SelectedIndex = iIndex;

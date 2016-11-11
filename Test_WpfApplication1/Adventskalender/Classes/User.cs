@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 namespace Adventskalender {
     public class User {
         public User() {
-            openDoors = new List<int>();
             usedQuestions = new List<UsedQuestion>();
+            lDays = new List<Day>();
         }
         
-        public List<int> openDoors { get; set; }
         public List<UsedQuestion> usedQuestions { get; set; }
+        public List<Day> lDays { get; set; }
     }
     public class UsedQuestion {
         public int QuestionId { get; set; }

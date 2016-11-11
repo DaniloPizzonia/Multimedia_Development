@@ -22,6 +22,8 @@ namespace Adventskalender {
     public partial class MainWindow:Window {
         List<Questions> lQuestions;
         User oUser;
+        UsedQuestion oUsedQuestion;
+        int questionNumber;
         public MainWindow() {
             InitializeComponent();
             lQuestions = Save.readXML<List<Questions>>("storage.xml");
@@ -72,18 +74,32 @@ namespace Adventskalender {
         }
 
         private void oEllipse_Door_MouseUp(object sender, MouseButtonEventArgs e) {
-            oGrid_ScreenGoodies.Visibility = Visibility.Visible;
+            
             bool bContains = true;
+            const int iReset = -1;
+            int iId = iReset;
             do {
-                int iNumber = rnd.Next(lQuestions.Count);
-                int iId = lQuestions[iNumber].QuestionsId;
+                questionNumber = rnd.Next(lQuestions.Count);
+                iId = lQuestions[questionNumber].QuestionsId;
                 var qSmth = (from g in oUser.usedQuestions where g.QuestionId == iId select g).FirstOrDefault();
-                if(qSmth == null) {
+                if(qSmth == null ) {
                     bContains = false;
+                } else {
+                    if(oUser.usedQuestions.Count == lQuestions.Count) {
+                        bContains = false;
+                        iId = iReset;
+                        MessageBox.Show("Alle Fragen wurden gestellt");                    }
                 }
             } while(bContains);
-
-            oStackPanel_Quiz.DataContext = lQuestions[rnd.Next(3)];
+            if(iId > iReset) {
+                oUsedQuestion = new UsedQuestion { QuestionId = iId, isRight = false };
+                    oUser.usedQuestions.Add(oUsedQuestion);
+                //Storyboard sb = FindResource("") as Storyboard; sb.Begin();
+                
+                oStackPanel_Quiz.DataContext = lQuestions[questionNumber];
+                oGrid_ScreenGoodies.Visibility = Visibility.Visible;
+            }
+           
         }
 
         private void oButton_Collapse_Click(object sender, RoutedEventArgs e) {
@@ -96,11 +112,17 @@ namespace Adventskalender {
                 return;
             }
             if(((sender as ListBox).SelectedItem as Answers).isRight) {
+                oUsedQuestion.isRight = true;
                 result = "Hurrraaaa";
             } else {
                 result = "buuuh";
             }
             MessageBox.Show(result, "Die Leistung war...");
+            oButton_Collapse_Click(null, null);
+        }
+
+        private void Window_Closed(object sender, EventArgs e) {
+            Save.saveXML<User>( oUser,"User.xml");
         }
     }
 }

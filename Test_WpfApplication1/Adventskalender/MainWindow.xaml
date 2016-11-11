@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Adventskalender"
         mc:Ignorable="d"
         Loaded="Window_Loaded"
+        Closed="Window_Closed"
         Title="MainWindow" Height="350" Width="525" AllowsTransparency="True" WindowStyle="None" Background="{x:Null}">
     <Grid>
         <Canvas Name="oCanvas_Image" MouseDown="oCanvas_Image_MouseDown">
@@ -17,7 +18,7 @@
             <Ellipse Fill="Yellow" Height="27" Stroke="Black" Width="27" Canvas.Left="211" Canvas.Top="96"/>
             <Ellipse Name="oEllipse_Door1" Fill="Yellow" Height="27" Stroke="Black" Width="27" Canvas.Left="40" Canvas.Top="31" MouseUp="oEllipse_Door_MouseUp"/>
         </Canvas>
-        <Grid Name="oGrid_ScreenGoodies" Background="Beige" Margin="266,0,0,0" HorizontalAlignment="Left" Width="250" Visibility="Visible">
+        <Grid Name="oGrid_ScreenGoodies" Background="Beige" Margin="266,0,0,0" HorizontalAlignment="Left" Width="250" Visibility="Collapsed">
             <StackPanel Name="oStackPanel_Quiz" Margin="10,30,12,47" VerticalAlignment="Top" Height="270">
                 <TextBlock Text="Quit des Tages" FontSize="13" Foreground="Purple"/>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">

@@ -180,7 +180,7 @@
                             <TextBlock Name="oTextBlock_FilterBarTobacco" Text="Filter" Width="30" HorizontalAlignment="Left" Margin="5,0,0,0"/>
                             <TextBox Name="oTextBox_FilterBarTobacco" Width="139" HorizontalAlignment="Right" Margin="0,0,0,0" TextChanged="oTextBox_FilterBarTobacco_TextChanged"/>
                         </StackPanel>
-                        <ListBox x:Name="oListBox_Tobacco" ItemsSource="{Binding lTobaccos}" Height="380" Margin="0,5,0,0" SelectionChanged="oListBox_Tobaccos_SelectionChanged">
+                        <ListBox x:Name="oListBox_Tobacco" ItemsSource="{Binding lTobaccos}" Height="380" Margin="0,5,0,0" SelectionChanged="oListBox_Tobacco_SelectionChanged">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel>

@@ -179,8 +179,28 @@ namespace PipeApplication {
             }
         }
 
-        private void oListBox_Tobaccos_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+        private void oListBox_Tobacco_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            BitmapImage oImage = new BitmapImage();
+            var oTobaccoSelected = oListBox_Tobacco.SelectedItem as Tobacco;
 
+            try {
+                var uriTobacco = oTobaccoSelected.profileUri;
+                if(oTobaccoSelected != null) {
+                    if(uriTobacco == "" || uriTobacco == null) {
+                        uriTobacco = sPathImages + "profilePic.jpg";
+                    }
+                    using(FileStream oStream = File.OpenRead(uriTobacco)) {
+                        oImage.BeginInit();
+                        oImage.StreamSource = oStream;
+                        oImage.CacheOption = BitmapCacheOption.OnLoad;
+                        oImage.EndInit();
+                    }
+                }
+            } catch(Exception ex) {
+                //MessageBox.Show(ex.Message, "Error");
+                return;
+            }
+            oImage_TobaccoPicture.Source = oImage;
         }
 
         private void Add_Tobacco_Click(object sender, RoutedEventArgs e) {

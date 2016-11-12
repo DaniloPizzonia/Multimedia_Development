@@ -32,11 +32,6 @@
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
     </Window.Resources>
-    <Window.Triggers>
-        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
-            <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
-        </EventTrigger>
-    </Window.Triggers>
     <Grid Name="oGrid_Layout">
         <TabControl x:Name="tabControl" HorizontalAlignment="Left" VerticalAlignment="Top" Height="{Binding ElementName=oGrid_Layout, Path=ActualHeight}" Width="{Binding ElementName=oGrid_Layout, Path=ActualWidth}"  >
             <TabItem Name="oTabItem_Inventory" Header="Inventory">
@@ -81,8 +76,8 @@
                     </Grid.ColumnDefinitions>
                     <StackPanel Name="oStackPanel_Details" HorizontalAlignment="Left" Height="458" VerticalAlignment="Top" Width="174" Margin="10,10,0,0" Grid.RowSpan="2">
                         <StackPanel Orientation="Horizontal" Margin="0,10">
-                            <TextBlock Name="oTextBlock_FilterBarPipes" Text="Filter" Width="42" HorizontalAlignment="Left" Margin="5,0,10,0"/>
-                            <TextBox Name="oTextBox_FilterBarPipes" Width="115" HorizontalAlignment="Right" Margin="2,0,0,0" TextChanged="oTextBox_FilterBarPipes_TextChanged"/>
+                            <TextBlock Name="oTextBlock_FilterBarPipes" Text="Filter" Width="30" HorizontalAlignment="Left" Margin="5,0,0,0"/>
+                            <TextBox Name="oTextBox_FilterBarPipes" Width="139" HorizontalAlignment="Right" Margin="0,0,0,0" TextChanged="oTextBox_FilterBarPipes_TextChanged"/>
                         </StackPanel>
                         <ListBox x:Name="oListBox_Pipes" ItemsSource="{Binding lPipes}" Height="380" Margin="0,5,0,0" SelectionChanged="oListBox_Pipes_SelectionChanged">
                             <ListBox.ItemTemplate>
@@ -171,31 +166,89 @@
             </TabItem>
             <TabItem Name="oTabItem_Tobacco" Header="Tabak">
                 <Grid Background="#FFF">
-                    <StackPanel Name="oStackPanel_DetailsTobacco" HorizontalAlignment="Left" Height="253" VerticalAlignment="Top" Width="174" Margin="10,10,0,0">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Name="oTextBlock_FilterBarTobacco" Text="Search" Width="42" HorizontalAlignment="Left" Margin="5,0,10,0"/>
-                            <TextBox Name="oTextBox_FilterBarTobacco" Width="115" HorizontalAlignment="Right" Margin="2,0,0,0" TextChanged="oTextBox_FilterBarTobacco_TextChanged"/>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="107*"/>
+                        <RowDefinition Height="54*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="258"/>
+                        <ColumnDefinition Width="273"/>
+                        <ColumnDefinition Width="258"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Name="oStackPanel_DetailsTobacco" HorizontalAlignment="Left" Height="458" VerticalAlignment="Top" Width="174" Margin="10,10,0,0" Grid.RowSpan="2">
+                        <StackPanel Orientation="Horizontal" Margin="0,10">
+                            <TextBlock Name="oTextBlock_FilterBarTobacco" Text="Filter" Width="30" HorizontalAlignment="Left" Margin="5,0,0,0"/>
+                            <TextBox Name="oTextBox_FilterBarTobacco" Width="139" HorizontalAlignment="Right" Margin="0,0,0,0" TextChanged="oTextBox_FilterBarTobacco_TextChanged"/>
                         </StackPanel>
-                        <ListBox x:Name="oListBox_Tobacco" ItemsSource="{Binding lTobaccos}" Height="203" Margin="0,5,0,0">
+                        <ListBox x:Name="oListBox_Tobacco" ItemsSource="{Binding lTobaccos}" Height="380" Margin="0,5,0,0" SelectionChanged="oListBox_Tobaccos_SelectionChanged">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel>
                                         <TextBlock FontSize="13" FontWeight="Bold">
                                             <Run Text="{Binding Name}"/>
-                                            <Run Text=" " />
-                                            <Run Text="{Binding Rating}" />
+                                        </TextBlock>
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                            <TextBlock Name="oTextBlock_Rating_1" Text="{Binding UniCode1}" Foreground="Gold" FontSize="20" Width="27.2" VerticalAlignment="Center" TextAlignment="Center"/>
+                                            <TextBlock Name="oTextBlock_Rating_2" Text="{Binding UniCode2}" Foreground="Gold" FontSize="20" Width="27.2" VerticalAlignment="Center" TextAlignment="Center"/>
+                                            <TextBlock Name="oTextBlock_Rating_3" Text="{Binding UniCode3}" Foreground="Gold" FontSize="20" Width="27.2" VerticalAlignment="Center" TextAlignment="Center"/>
+                                            <TextBlock Name="oTextBlock_Rating_4" Text="{Binding UniCode4}" Foreground="Gold" FontSize="20" Width="27.2" VerticalAlignment="Center" TextAlignment="Center"/>
+                                            <TextBlock Name="oTextBlock_Rating_5" Text="{Binding UniCode5}" Foreground="Gold" FontSize="20" Width="27.2" VerticalAlignment="Center" TextAlignment="Center"/>
+                                        </StackPanel>
+                                        <TextBlock Text="{Binding Price}">
+                                            <Run Text=" Euro"/>
                                         </TextBlock>
                                     </StackPanel>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
                         </ListBox>
-                        <StackPanel Orientation="Vertical">
-
+                        <StackPanel Margin = "0.9" Orientation ="Horizontal" HorizontalAlignment="Right">
+                            <Button x:Name="Add_Tobacco" 
+                                    Content="+" 
+                                    FontSize="15" 
+                                    FontWeight="Bold" 
+                                    Width="30" 
+                                    Click="Add_Tobacco_Click" />
+                            <Button x:Name="Delete_Tobacco" 
+                                    Content="-" 
+                                    FontSize="15" 
+                                    FontWeight="Bold" 
+                                    Width="30" 
+                                    Click="Delete_Tobacco_Click"/>
                         </StackPanel>
+
+                    </StackPanel>
+                    <StackPanel DataContext = "{Binding ElementName = oListBox_Tobacco, Path = SelectedItem}" Height="321" Orientation="Vertical" VerticalAlignment="Top" Grid.ColumnSpan="2" Margin="258,0,0,0" Grid.RowSpan="2">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="0,55,0,0">
+                            <TextBlock Text="Bewertung: " Width="99" VerticalAlignment="Center" Margin="0,18"/>
+                            <TextBlock Name="oTextBlock__Tobacco_Rating_1" Text="{Binding UniCode1}" Foreground="Gold" FontSize="20" Width="27.2" VerticalAlignment="Center" TextAlignment="Center"/>
+                            <TextBlock Name="oTextBlock__Tobacco_Rating_2" Text="{Binding UniCode2}" Foreground="Gold" FontSize="20" Width="27.2" VerticalAlignment="Center" TextAlignment="Center"/>
+                            <TextBlock Name="oTextBlock__Tobacco_Rating_3" Text="{Binding UniCode3}" Foreground="Gold" FontSize="20" Width="27.2" VerticalAlignment="Center" TextAlignment="Center"/>
+                            <TextBlock Name="oTextBlock__Tobacco_Rating_4" Text="{Binding UniCode4}" Foreground="Gold" FontSize="20" Width="27.2" VerticalAlignment="Center" TextAlignment="Center"/>
+                            <TextBlock Name="oTextBlock__Tobacco_Rating_5" Text="{Binding UniCode5}" Foreground="Gold" FontSize="20" Width="27.2" VerticalAlignment="Center" TextAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" Height="41" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,0,0,0">
+                            <TextBlock Text="Modell: " Width="90" Height="20" VerticalAlignment="Center"/>
+                            <TextBlock Name="oTextBlock__Tobacco_Modell" Text="{Binding Name}" Width="164" Height="20" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" Height="41" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,0,0,0">
+                            <TextBlock Text="Pfeifenmachen: " Width="90" Height="20" VerticalAlignment="Center" Margin="0,10,0,11"/>
+                            <TextBlock Name="oTextBlock__Tobacco_PipeMaker" Text="{Binding PipeMaker}" Width="164" Height="20" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel DataContext = "{Binding ElementName = oListBox_Tobacco, Path = SelectedItem}" Grid.Row="1" Height="158" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="258,1.2,-86.6,0" Width="619" Grid.ColumnSpan="3">
+                        <TextBlock Text="Beschreibung: " Width="90" Height="20" HorizontalAlignment="Left"/>
+                        <TextBlock Name="oTextBlock__Tobacco_Description" Text="{Binding Description}" Width="504" Height="96" HorizontalAlignment="Left" TextWrapping="Wrap"/>
+                        <Button x:Name="oButton_EditTobacco" Content="Bearbeiten" Width="95" Height="37" HorizontalAlignment="Right" Margin="0,0,10.2,0" Click="oButton_EditPipe_Click"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="2" Margin="0,20,-79.6,15.8" Orientation="Horizontal" HorizontalAlignment="Right" Width="334">
+                        <Image x:Name="oImage_TobaccoPicture" 
+                                HorizontalAlignment="Right" 
+                                Height="251"
+                                Width="330"
+                                VerticalAlignment="Top"/>
                     </StackPanel>
                 </Grid>
             </TabItem>
         </TabControl>
-
     </Grid>
 </Window>

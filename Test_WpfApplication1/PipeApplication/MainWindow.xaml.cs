@@ -94,8 +94,8 @@ namespace PipeApplication {
 
             var qContainsResult = (from p in oUser.lTobaccos where p.Name.ToUpper().Contains(oTextBox_FilterBarTobacco.Text.ToUpper()) select p).ToList();
             qResult.AddRange(qContainsResult);
-            oListBox_Tobacco.ItemsSource = null;     // reset the ListBox entries
-            oListBox_Tobacco.ItemsSource = qResult;  // set the filter query results on the listbox
+            oListBox_Tobacco.ItemsSource = null;                // reset the ListBox entries
+            oListBox_Tobacco.ItemsSource = qResult.Distinct();  // set the filter query results on the listbox
         }
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace PipeApplication {
 
             var qContainsResult = (from p in oUser.lPipes where p.Name.ToUpper().Contains(oTextBox_FilterBarPipes.Text.ToUpper()) select p).ToList();
             qResult.AddRange(qContainsResult);
-            oListBox_Pipes.ItemsSource = null;    // resets the ListBox entries
+            oListBox_Pipes.ItemsSource = null;               // resets the ListBox entries
             oListBox_Pipes.ItemsSource = qResult.Distinct(); // set the filter query results on the listbox
         }
 
@@ -177,6 +177,22 @@ namespace PipeApplication {
                 this.Visibility = Visibility.Hidden;
                 oWindow.ShowDialog();
             }
+        }
+
+        private void oListBox_Tobaccos_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+
+        }
+
+        private void Add_Tobacco_Click(object sender, RoutedEventArgs e) {
+
+        }
+
+        private void Delete_Tobacco_Click(object sender, RoutedEventArgs e) {
+
+        }
+
+        private void oButton_EditTobacco_Click(object sender, RoutedEventArgs e) {
+
         }
     }
 }

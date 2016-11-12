@@ -111,9 +111,8 @@ namespace PipeApplication {
 
             var qContainsResult = (from p in oUser.lPipes where p.Name.ToUpper().Contains(oTextBox_FilterBarPipes.Text.ToUpper()) select p).ToList();
             qResult.AddRange(qContainsResult);
-            qResult.Select(s => s.Name).Distinct();
             oListBox_Pipes.ItemsSource = null;    // resets the ListBox entries
-            oListBox_Pipes.ItemsSource = qResult; // set the filter query results on the listbox
+            oListBox_Pipes.ItemsSource = qResult.Distinct(); // set the filter query results on the listbox
         }
 
         /// <summary>

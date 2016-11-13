@@ -204,15 +204,38 @@ namespace PipeApplication {
         }
 
         private void Add_Tobacco_Click(object sender, RoutedEventArgs e) {
+            MessageBoxResult oResult = MessageBox.Show("Ein neuer Tabak wird angelegt, wenn Sie auf ok klicken", "Tabak anlegen", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            var iClickedIndex = oListBox_Pipes.SelectedIndex;
 
+            if(oResult == MessageBoxResult.Yes) {
+                bEditAddMode = false;
+                var oWindow = new Window_ShowEdit(oUser, iClickedIndex, this, bEditAddMode);
+                oWindow.Owner = this;
+                this.Visibility = Visibility.Hidden;
+                oWindow.ShowDialog();
+            }
         }
 
         private void Delete_Tobacco_Click(object sender, RoutedEventArgs e) {
-
+            bEditAddMode = !bEditAddMode;
+            var oTobaccoSelected = oListBox_Tobacco.SelectedItem as Tobacco;
+            oUser.lTobaccos.Remove(oTobaccoSelected);
+            oListBox_Tobacco.ItemsSource = null;
+            oListBox_Tobacco.ItemsSource = oUser.lTobaccos;
+            oListBox_Tobacco.SelectedIndex = oUser.lTobaccos.Count - 1;
         }
 
         private void oButton_EditTobacco_Click(object sender, RoutedEventArgs e) {
+            MessageBoxResult oResult = MessageBox.Show("Wollen Sie diesn Tabak bearbeiten?", "Tabak bearbeiten", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            var iClickedIndex = oListBox_Tobacco.SelectedIndex;
 
+            if(oResult == MessageBoxResult.Yes) {
+                bEditAddMode = true;
+                var oWindow = new Window_ShowEditTobacco(oUser, iClickedIndex, this, bEditAddMode);
+                oWindow.Owner = this;
+                this.Visibility = Visibility.Hidden;
+                oWindow.ShowDialog();
+            }
         }
     }
 }

@@ -45,7 +45,7 @@ namespace PipeApplication {
                 oTextBox_Cut.Text = oClickedTobacco.Cut;
                 oTextBox_Flavoring.Text = oClickedTobacco.Flavoring;
                 oTextBox_Price.Text = oClickedTobacco.Price.ToString();
-
+                oSlider_TobaccoAmount.Value = oClickedTobacco.TobaccoAmount;
                 oTextBlock_Rating_1.Text = oClickedTobacco.UniCode1;
                 oTextBlock_Rating_2.Text = oClickedTobacco.UniCode2;
                 oTextBlock_Rating_3.Text = oClickedTobacco.UniCode3;
@@ -103,6 +103,7 @@ namespace PipeApplication {
                 oClickedTobacco.Brand = oTextBox_Brand.Text;
                 oClickedTobacco.Cut = oTextBox_Cut.Text;
                 oClickedTobacco.Flavoring = oTextBox_Flavoring.Text;
+                oClickedTobacco.getTotalGramms = oClickedTobacco.TobaccoAmount * 50;
                 try {
                     oClickedTobacco.Price = Convert.ToDouble(oTextBox_Price.Text);
                 } catch(Exception ex) {

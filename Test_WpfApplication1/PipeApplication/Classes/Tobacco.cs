@@ -38,5 +38,7 @@ namespace PipeApplication {
         public string UniCode5 { get; set; }
         public int TobaccoAmount { get; set; }
         public double Price { get; set; }
+
+        public int getTotalGramms { get; set; }
     }
 }

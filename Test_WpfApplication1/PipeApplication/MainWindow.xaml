@@ -217,8 +217,8 @@
                                             <TextBlock Name="oTextBlock_Rating_4" Text="{Binding UniCode4}" Foreground="Gold" FontSize="20" Width="27.2" VerticalAlignment="Center" TextAlignment="Center"/>
                                             <TextBlock Name="oTextBlock_Rating_5" Text="{Binding UniCode5}" Foreground="Gold" FontSize="20" Width="27.2" VerticalAlignment="Center" TextAlignment="Center"/>
                                         </StackPanel>
-                                        <TextBlock Text="{Binding Price}">
-                                            <Run Text=" Euro"/>
+                                        <TextBlock Text="{Binding getTotalGramms}">
+                                            <Run Text=" g"/>
                                         </TextBlock>
                                     </StackPanel>
                                 </DataTemplate>

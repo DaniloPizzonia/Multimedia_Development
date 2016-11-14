@@ -172,9 +172,10 @@
                     Width="245" >
                 <TextBlock 
                         VerticalAlignment="Center"
-                        Text="Anzahl Tabake"
+                        Text="Anzahl je 50g"
                         Margin="0,0,10,0"
-                        Width="90"/>
+                        Width="90">
+                </TextBlock>
                 <Slider x:Name="oSlider_TobaccoAmount"
                             Width="90"
                             VerticalAlignment="Center"

@@ -11,6 +11,7 @@ namespace PipeApplication {
         public Tobacco() {
             this.Name = "Default Tobacco";
             this.Rating = 5;
+            this.profileUri = "";
         }
         
 

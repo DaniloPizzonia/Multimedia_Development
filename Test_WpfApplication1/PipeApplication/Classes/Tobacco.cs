@@ -25,7 +25,8 @@ namespace PipeApplication {
         public string Cut { get; set; }
         public string Strength { get; set; }
         public string profileUri { get; set; }
-        public int Flavoring { get; set; }
+        public string Flavoring { get; set; }
+        public string Note { get; set; }
         public int Taste { get; set; }
         public int RoomNote { get; set; }
         public int SmokedBowls { get; set; }
@@ -35,5 +36,7 @@ namespace PipeApplication {
         public string UniCode3 { get; set; }
         public string UniCode4 { get; set; }
         public string UniCode5 { get; set; }
+        public int TobaccoAmount { get; set; }
+        public double Price { get; set; }
     }
 }

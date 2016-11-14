@@ -19,7 +19,7 @@
             <ColumnDefinition Width="370*"/>
         </Grid.ColumnDefinitions>
         <StackPanel Margin="0,0,1.2,4.4">
-            <TextBlock Name="oTextBlock_Title" Text="Pfeife Anlegen" Margin="10,5,-0.4,0" FontSize="20" Height="35" VerticalAlignment="Top" />
+            <TextBlock Name="oTextBlock_Title" Text="Tabak Anlegen" Margin="10,5,-0.4,0" FontSize="20" Height="35" VerticalAlignment="Top" />
         </StackPanel>
         <StackPanel Margin="0,0.6,39.6,205.4" Orientation="Vertical" HorizontalAlignment="Right" Width="358" Grid.ColumnSpan="2" Grid.RowSpan="2" Grid.Row="1" >
             <Image x:Name="oImage_PipePicture" 
@@ -33,7 +33,8 @@
                     Margin="0,10,0,0"
                     VerticalAlignment="Top" 
                     Width="109" 
-                    Height="32" Click="oButton_AddImage_Click"/>
+                    Height="32" 
+                    Click="oButton_AddImage_Click"/>
         </StackPanel>
 
         <StackPanel Margin="10,0.6,193.2,9.2" Orientation="Vertical" Grid.Column="0" Grid.Row="1" >
@@ -62,10 +63,10 @@
                     Width="236" >
                 <TextBlock 
                         VerticalAlignment="Center"
-                        Text="Modell"
+                        Text="Name"
                         Margin="0,18,10,18"
                         Width="90"/>
-                <TextBox x:Name="oTextBox_PipeName"
+                <TextBox x:Name="oTextBox_TobaccoName"
                         VerticalAlignment="Center"
                         TextAlignment="Left"
                         Width="135"
@@ -81,10 +82,10 @@
                     Width="236" >
                 <TextBlock 
                         VerticalAlignment="Center"
-                        Text="Pfeifenmacher"
+                        Text="Hersteller"
                         Margin="0,0,10,0"
                         Width="90"/>
-                <TextBox x:Name="oTextBox_PipeMaker"
+                <TextBox x:Name="oTextBox_Brand"
                         VerticalAlignment="Center"
                         TextAlignment="Left"
                         Width="135"
@@ -99,10 +100,10 @@
                     Width="236" >
                 <TextBlock 
                         VerticalAlignment="Center"
-                        Text="Tabakrichtung"
+                        Text="Schnittart"
                         Margin="0,0,10,0"
                         Width="90"/>
-                <TextBox x:Name="oTextBox_Tabakrichtung"
+                <TextBox x:Name="oTextBox_Cut"
                         VerticalAlignment="Center"
                         TextAlignment="Left"
                         Width="135"
@@ -114,10 +115,10 @@
         <StackPanel 
                 Orientation="Vertical"
                 HorizontalAlignment="Left" 
-                Height="208" 
+                Height="205" 
                 VerticalAlignment="Bottom" 
-                Width="513" 
-            Margin="10,0,0,8.4"
+                Width="261" 
+            Margin="10,0,0,11.4"
                 Grid.Column="0"
                 Grid.Row="2">
             <TextBlock 
@@ -131,12 +132,37 @@
                     VerticalAlignment="Top"
                     HorizontalAlignment="Left"
                     TextAlignment="Left"
-                    Width="503"
-                    Height="180"
+                    Width="250"
+                    Height="182"
                     Padding="5"
                     Text=""/>
         </StackPanel>
-        <Button x:Name="oButton_SavePipe" Content="Speichern" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" Margin="0,175.8,39.6,0"  VerticalAlignment="Top" Width="109" Height="32" Click="oButton_SavePipe_Click"/>
+        <StackPanel 
+                Orientation="Vertical"
+                HorizontalAlignment="Left" 
+                Height="205" 
+                VerticalAlignment="Bottom" 
+                Width="271" 
+            Margin="276,0,0,11.4"
+                Grid.Column="0"
+                Grid.Row="2" Grid.ColumnSpan="2">
+            <TextBlock 
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"
+                    Text="Notiz:"
+                    Margin="0,0,10,5"
+                    Width="90"/>
+            <TextBox x:Name="oTextBox_Note"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"
+                    TextAlignment="Left"
+                    Width="261"
+                    Height="183"
+                    Padding="5"
+                    Text=""/>
+        </StackPanel>
+        <Button x:Name="oButton_SaveTobacco" Content="Speichern" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" Margin="0,175.8,39.6,0"  VerticalAlignment="Top" Width="109" Height="32" Click="oButton_SaveTobacco_Click"/>
         <StackPanel Margin="279,0.6,367.6,9.2" Orientation="Vertical" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1">
             <StackPanel 
                     Orientation="Horizontal"
@@ -146,10 +172,10 @@
                     Width="245" >
                 <TextBlock 
                         VerticalAlignment="Center"
-                        Text="Anzahl Pfeifen"
+                        Text="Anzahl Tabake"
                         Margin="0,0,10,0"
                         Width="90"/>
-                <Slider x:Name="oSlider_PipeAmount"
+                <Slider x:Name="oSlider_TobaccoAmount"
                             Width="90"
                             VerticalAlignment="Center"
                             Margin="0,15"
@@ -157,28 +183,27 @@
                             Maximum="10"
                             TickFrequency="1"
                             IsSnapToTickEnabled="True"/>
-                <TextBlock Text="{Binding ElementName=oSlider_PipeAmount, Path=Value}" Width="30" VerticalAlignment="Center" TextAlignment="Right" Margin="0,18"/>
+                <TextBlock Text="{Binding ElementName=oSlider_TobaccoAmount, Path=Value}" Width="30" VerticalAlignment="Center" TextAlignment="Right" Margin="0,18"/>
             </StackPanel>
             <StackPanel 
-                Orientation="Horizontal"
-                HorizontalAlignment="Left" 
-                Height="55" 
-                VerticalAlignment="Top" 
-                Width="237" >
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Left" 
+                    Height="52" 
+                    VerticalAlignment="Top" 
+                    Width="236" >
                 <TextBlock 
-                    VerticalAlignment="Center"
-                    Text="Gekauft am: "
-                    Margin="0,0,10,0"
-                    Width="90"/>
-                <DatePicker x:Name ="oDatePicker_PurchaseDate" 
-                            Grid.Column="1" 
-                            Grid.Row="2"
-                            HorizontalAlignment="Left" 
-                            VerticalAlignment="Center"
-                            FontSize="10"
-                            Height="25"
-                            Margin="0,15,0,15.2" 
-                            Width="135"  />
+                        VerticalAlignment="Center"
+                        Text="Aromatisierung"
+                        Margin="0,0,10,0"
+                        FontSize="12"
+                        Width="90"/>
+                <TextBox x:Name="oTextBox_Flavoring"
+                        VerticalAlignment="Center"
+                        TextAlignment="Left"
+                        Width="135"
+                        Padding="5"
+                        Text="" 
+                        Margin="0,12"/>
             </StackPanel>
             <StackPanel 
                 Orientation="Horizontal"
@@ -188,13 +213,14 @@
                 Width="237" >
                 <TextBlock 
                     VerticalAlignment="Center"
-                    Text="Zustand: "
+                    Text="Stärke: "
                     Margin="0,0,10,0"
                     Width="90"/>
-                <ComboBox x:Name="oComboBox_State" Text="Neu" Height="25" Width="135" Margin="0,14,0,13">
-                    <ComboBoxItem Content="Neu"/>
-                    <ComboBoxItem Content="Gebraucht"/>
-                    <ComboBoxItem Content="Verschenkt"/>
+                <ComboBox x:Name="oComboBox_Strength" Text="Neu" Height="25" Width="135" Margin="0,14,0,13">
+                    <ComboBoxItem Content="Leicht"/>
+                    <ComboBoxItem Content="Mild"/>
+                    <ComboBoxItem Content="Stark"/>
+                    <ComboBoxItem Content="Super Stark"/>
                 </ComboBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="52" VerticalAlignment="Top" Width="237" >

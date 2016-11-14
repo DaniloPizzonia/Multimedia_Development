@@ -37,12 +37,15 @@ namespace PipeApplication {
             oTobacco = new Tobacco();
             if(bTobaccoEditAddMode == true) {
                 oClickedTobacco = oUser.lTobaccos[iClickedIndex];
-                oTextBox_PipeName.Text = oClickedTobacco.Name;
-                //oTextBox_PipeMaker.Text = oClickedTobacco.Brand;
-                //oTextBox_Tabakrichtung.Text = oClickedTobacco.ReservedForFlavor;
+
+                oTextBox_TobaccoName.Text = oClickedTobacco.Name;
+                oTextBox_Brand.Text = oClickedTobacco.Brand;
                 oTextBox_Description.Text = oClickedTobacco.Description;
-                //oSlider_PipeAmount.Value = oClickedTobacco.Pieces;
-                //oTextBox_Price.Text = oClickedTobacco.Price.ToString();
+                oTextBox_Note.Text = oClickedTobacco.Note;
+                oTextBox_Cut.Text = oClickedTobacco.Cut;
+                oTextBox_Flavoring.Text = oClickedTobacco.Flavoring;
+                oTextBox_Price.Text = oClickedTobacco.Price.ToString();
+
                 oTextBlock_Rating_1.Text = oClickedTobacco.UniCode1;
                 oTextBlock_Rating_2.Text = oClickedTobacco.UniCode2;
                 oTextBlock_Rating_3.Text = oClickedTobacco.UniCode3;
@@ -79,7 +82,7 @@ namespace PipeApplication {
             this.Owner.Visibility = Visibility.Visible;
         }
         
-        private void oButton_SavePipe_Click(object sender, RoutedEventArgs e) {
+        private void oButton_SaveTobacco_Click(object sender, RoutedEventArgs e) {
             // strings for messageBox
             string sMassage = "Wollen Sie die Pfeife wirklich speichern?", sCaption="Speichern";
             MessageBoxResult eResult = MessageBox.Show(sMassage, sCaption, MessageBoxButton.YesNo, MessageBoxImage.Question);
@@ -87,34 +90,35 @@ namespace PipeApplication {
                 oClickedTobacco = oTobacco;
             }
             if(eResult == MessageBoxResult.Yes) {
-                if(oTextBox_PipeName.Text == "") {
+                if(oTextBox_TobaccoName.Text == "") {
                     MessageBox.Show("Bitte Name eingeben!");
                     return;
                 } else {
-                    oClickedTobacco.Name = oTextBox_PipeName.Text;
+                    oClickedTobacco.Name = oTextBox_TobaccoName.Text;
                 }
                 
-                //oClickedTobacco.PipeMaker = oTextBox_PipeMaker.Text;
-                //oClickedTobacco.ReservedForFlavor = oTextBox_Tabakrichtung.Text;
                 oClickedTobacco.Description = oTextBox_Description.Text;
-                //oClickedTobacco.Pieces = Convert.ToInt32(oSlider_PipeAmount.Value);
+                oClickedTobacco.Note = oTextBox_Note.Text;
+                oClickedTobacco.TobaccoAmount = Convert.ToInt32(oSlider_TobaccoAmount.Value);
+                oClickedTobacco.Brand = oTextBox_Brand.Text;
+                oClickedTobacco.Cut = oTextBox_Cut.Text;
+                oClickedTobacco.Flavoring = oTextBox_Flavoring.Text;
                 try {
-                    //oClickedTobacco.Price = Convert.ToDouble(oTextBox_Price.Text);
+                    oClickedTobacco.Price = Convert.ToDouble(oTextBox_Price.Text);
                 } catch(Exception ex) {
                     MessageBox.Show("Bitte eine numerische Zahl eingeben", "Preis Fehler!!!");
                     return;
                 }
-                //oClickedTobacco.PurchaseDate = oDatePicker_PurchaseDate.SelectedDate;
-                //oClickedTobacco.State = oComboBox_State.SelectionBoxItem.ToString();
+                oClickedTobacco.Strength = oComboBox_Strength.SelectionBoxItem.ToString();
                 if(bTobaccoEditAddMode == true) {
-                    oParentWindow.iniPipesBinding();
+                    oParentWindow.iniTobaccoBinding();
                     int iIndex = oUser.lTobaccos.Count - 1;
-                    oParentWindow.oListBox_Pipes.SelectedIndex = iClickedIndex;
+                    oParentWindow.oListBox_Tobacco.SelectedIndex = iClickedIndex;
                 } else {
                     oUser.lTobaccos.Add(oClickedTobacco);
-                    oParentWindow.iniPipesBinding();
+                    oParentWindow.iniTobaccoBinding();
                     int iIndex = oUser.lTobaccos.Count - 1;
-                    oParentWindow.oListBox_Pipes.SelectedIndex = iIndex;
+                    oParentWindow.oListBox_Tobacco.SelectedIndex = iIndex;
                 }
                 this.Owner.Visibility = Visibility.Visible;
                 this.Close();

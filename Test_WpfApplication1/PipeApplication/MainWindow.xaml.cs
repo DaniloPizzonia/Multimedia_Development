@@ -78,6 +78,7 @@ namespace PipeApplication {
         public void iniTobaccoBinding() {
             oListBox_Tobacco.ItemsSource = null;
             oListBox_Tobacco.ItemsSource = oUser.lTobaccos;
+            oListBox_Tobacco.SelectedIndex = 0;
             oStackPanel_DetailsTobacco.DataContext = oUser;
         }
 
@@ -205,11 +206,11 @@ namespace PipeApplication {
 
         private void Add_Tobacco_Click(object sender, RoutedEventArgs e) {
             MessageBoxResult oResult = MessageBox.Show("Ein neuer Tabak wird angelegt, wenn Sie auf ok klicken", "Tabak anlegen", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            var iClickedIndex = oListBox_Pipes.SelectedIndex;
+            var iClickedIndex = oListBox_Tobacco.SelectedIndex;
 
             if(oResult == MessageBoxResult.Yes) {
                 bEditAddMode = false;
-                var oWindow = new Window_ShowEdit(oUser, iClickedIndex, this, bEditAddMode);
+                var oWindow = new Window_ShowEditTobacco(oUser, iClickedIndex, this, bEditAddMode);
                 oWindow.Owner = this;
                 this.Visibility = Visibility.Hidden;
                 oWindow.ShowDialog();

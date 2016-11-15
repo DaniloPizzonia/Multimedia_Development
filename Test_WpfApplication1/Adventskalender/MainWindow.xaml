@@ -13,14 +13,19 @@
             <Image x:Name="oImage_xMas_Tree" Opacity="{Binding ElementName=oSlider_XmasTree, Path=Value}" HorizontalAlignment="Left" Height="290" VerticalAlignment="Top" Width="268" Source="Images/advent_calendar.png" Canvas.Top="24"/>
             <Button x:Name="oButton_Close" Content="Close" Foreground="Red" FontSize="14" Canvas.Left="14" Canvas.Top="314" Width="75" Click="oButton_Close_Click"/>
             <Slider x:Name="oSlider_XmasTree" Width="90" VerticalAlignment="Center" Value="1"  Minimum="0" Maximum="1" TickFrequency="0.1" IsSnapToTickEnabled="True" Canvas.Left="164" Canvas.Top="319"/>
-            <Ellipse Fill="Yellow" Height="27" Stroke="Black" Width="27" Canvas.Left="21" Canvas.Top="96"/>
-            <Ellipse Fill="Yellow" Height="27" Stroke="Black" Width="27" Canvas.Left="161" Canvas.Top="31"/>
+            <Ellipse Name="oEllipse_Door2" Fill="Yellow" Height="27" Stroke="Black" Width="27" Canvas.Left="21" Canvas.Top="96" MouseUp="oEllipse_Door2_MouseUp" />
+            <Ellipse Name="oEllipse_DataGrid"  Fill="Yellow" Height="27" Stroke="Black" Width="27" Canvas.Left="161" Canvas.Top="31" MouseUp="oEllipse_DataGrid_MouseUp"/>
             <Ellipse Fill="Yellow" Height="27" Stroke="Black" Width="27" Canvas.Left="211" Canvas.Top="96"/>
             <Ellipse Name="oEllipse_Door1" Fill="Yellow" Height="27" Stroke="Black" Width="27" Canvas.Left="40" Canvas.Top="31" MouseUp="oEllipse_Door_MouseUp"/>
+            <StackPanel Height="258" Width="326">
+                <MediaElement Name="oMediaELement_Video" Height="260" Width="350" LoadedBehavior="Manual" Cursor="Hand" HorizontalAlignment="Left" Visibility="Hidden" MouseEnter="oMediaELement_Video_MouseEnter" MouseLeave="oMediaELement_Video_MouseLeave"/>
+                <Button Name="oButton_stopVideo" Content="X" Visibility="Hidden" Click="oButton_stopVideo_Click"/>
+            </StackPanel>
+            <Button x:Name="oButton_UCGrid" Content="UC GRid" Foreground="Red" FontSize="14" Canvas.Left="135" Canvas.Top="289" Width="75" Click="oButton_UCGrid_Click"/>
         </Canvas>
-        <Grid Name="oGrid_ScreenGoodies" Background="Beige" Margin="266,0,0,0" HorizontalAlignment="Left" Width="250" Visibility="Collapsed">
+        <Grid Name="oGrid_ScreenGoodies" Background="Beige" Margin="266,0,0,0" HorizontalAlignment="Left" Width="250" Visibility="Visible">
             <StackPanel Name="oStackPanel_Quiz" Margin="10,30,12,47" VerticalAlignment="Top" Height="270">
-                <TextBlock Text="Quit des Tages" FontSize="13" Foreground="Purple"/>
+                <TextBlock Name="QuizDesTages" Text="Quiz des Tages" FontSize="13" Foreground="Purple"/>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                     <TextBlock Text="&#x2605;" Width="32"/>
                     <TextBlock Text="&#x2606;" Width="32"/>
@@ -28,11 +33,11 @@
                     <TextBlock Text="&#x2606;" Width="32"/>
                     <TextBlock Text="&#x2606;" Width="32"/>
                 </StackPanel>
-                
                 <TextBlock Text="{Binding QuestionText}" TextWrapping="Wrap" Margin="0,10,0,10"/>
                 <ListBox ItemsSource="{Binding QuestionTextAnswers}" DisplayMemberPath="answerText" SelectionChanged="ListBox_Answers_SelectionChanged"></ListBox>
             </StackPanel>
             <Button Name="oButton_Collapse" Width="70" Height="20" Content="Collapse" Margin="168,321,12,9" Click="oButton_Collapse_Click"/>
+            <local:UC_Table Background="AliceBlue" x:Name="oUserCntroll" Visibility="Hidden" />
         </Grid>
     </Grid>
 </Window>

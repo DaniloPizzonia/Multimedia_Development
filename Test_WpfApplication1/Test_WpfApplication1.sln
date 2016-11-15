@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinQ", "LinQ\LinQ.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adventskalender", "Adventskalender\Adventskalender.csproj", "{2BBA4798-3C23-43F1-A127-2349115D2B09}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webservice", "Webservice\Webservice.csproj", "{780CA0F6-0FD5-44B6-BF04-83F77A8CB2A6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{2BBA4798-3C23-43F1-A127-2349115D2B09}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2BBA4798-3C23-43F1-A127-2349115D2B09}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2BBA4798-3C23-43F1-A127-2349115D2B09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{780CA0F6-0FD5-44B6-BF04-83F77A8CB2A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{780CA0F6-0FD5-44B6-BF04-83F77A8CB2A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{780CA0F6-0FD5-44B6-BF04-83F77A8CB2A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{780CA0F6-0FD5-44B6-BF04-83F77A8CB2A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,27 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Webservice"
+        xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="Webservice.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        
+        <StackPanel Name="oStackpanel_Webservices">
+            <ComboBox x:Name="comboBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" SelectionChanged="comboBox_SelectionChanged">
+                <System:String>67250020</System:String>
+                <System:String>67250020</System:String>
+                <System:String>67250020</System:String>
+            </ComboBox>
+            <TextBlock Text="{Binding bezeichnung, StringFormat=Bank: {0}}"/>
+            <TextBlock>
+                <Run Text="{Binding plz, StringFormat=PLZ: {0}}"/>
+                <Run Text="{Binding ort, StringFormat=Ort: {0}}"/>
+                <LineBreak/>
+                <Run Text="{Binding bic, StringFormat=BIC: {0}}"/>
+            </TextBlock>
+        </StackPanel>
+    </Grid>
+</Window>

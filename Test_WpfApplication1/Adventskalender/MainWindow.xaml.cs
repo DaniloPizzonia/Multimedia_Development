@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,20 +21,28 @@ namespace Adventskalender {
     /// </summary>
     /// 
     public partial class MainWindow:Window {
-        List<Questions> lQuestions;
-        User oUser;
+        public static List<Questions> _lQuestions;
+        User oUser; 
         UsedQuestion oUsedQuestion;
         int questionNumber;
         public MainWindow() {
             InitializeComponent();
-            lQuestions = Save.readXML<List<Questions>>("storage.xml");
-            if(lQuestions == null) {
-                lQuestions = new List<Questions>();
+            _lQuestions = Save.readXML<List<Questions>>("storage.xml");
+            if(_lQuestions == null) {
+                _lQuestions = new List<Questions>();
             }
             oUser = Save.readXML<User>("User.xml");
             if(oUser == null) {
                 oUser = new User();
             }
+            var url = new Uri(@"http://ainf.hiai.de/studium/spielwiese/fragen.xml");
+            WebClient oWebCLient = new WebClient();
+            oWebCLient.DownloadStringCompleted += OWebCLient_DownloadStringCompleted;
+            oWebCLient.DownloadStringAsync(url);
+        }
+
+        private void OWebCLient_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e) {
+           
         }
 
         private void oCanvas_Image_MouseDown(object sender, MouseButtonEventArgs e) {
@@ -48,7 +57,6 @@ namespace Adventskalender {
         }
         Random rnd = new Random();
         private void Window_Loaded(object sender, RoutedEventArgs e) {
-
             foreach(var oItem in oCanvas_Image.Children) {
                 var oItemEl = (oItem as Ellipse);
                 
@@ -68,7 +76,6 @@ namespace Adventskalender {
 
                     oItemEl.Fill = oSolidColorBursh;
                     oSolidColorBursh.BeginAnimation(SolidColorBrush.ColorProperty, oColorAnimation);
-
                 }
             }
         }
@@ -79,13 +86,13 @@ namespace Adventskalender {
             const int iReset = -1;
             int iId = iReset;
             do {
-                questionNumber = rnd.Next(lQuestions.Count);
-                iId = lQuestions[questionNumber].QuestionsId;
+                questionNumber = rnd.Next(_lQuestions.Count);
+                iId = _lQuestions[questionNumber].QuestionsId;
                 var qSmth = (from g in oUser.usedQuestions where g.QuestionId == iId select g).FirstOrDefault();
                 if(qSmth == null ) {
                     bContains = false;
                 } else {
-                    if(oUser.usedQuestions.Count == lQuestions.Count) {
+                    if(oUser.usedQuestions.Count == _lQuestions.Count) {
                         bContains = false;
                         iId = iReset;
                         MessageBox.Show("Alle Fragen wurden gestellt");                    }
@@ -96,7 +103,7 @@ namespace Adventskalender {
                     oUser.usedQuestions.Add(oUsedQuestion);
                 //Storyboard sb = FindResource("") as Storyboard; sb.Begin();
                 
-                oStackPanel_Quiz.DataContext = lQuestions[questionNumber];
+                oStackPanel_Quiz.DataContext = _lQuestions[questionNumber];
                 oGrid_ScreenGoodies.Visibility = Visibility.Visible;
             }
            
@@ -123,6 +130,44 @@ namespace Adventskalender {
 
         private void Window_Closed(object sender, EventArgs e) {
             Save.saveXML<User>( oUser,"User.xml");
+        }
+
+        private void oMediaELement_Video_MouseEnter(object sender, MouseEventArgs e) {
+            (sender as MediaElement).Pause();
+        }
+
+        private void oMediaELement_Video_MouseLeave(object sender, MouseEventArgs e) {
+            (sender as MediaElement).Play();
+        }
+
+        private void oEllipse_Door2_MouseUp(object sender, MouseButtonEventArgs e) {
+            oMediaELement_Video.Source = new Uri( (Environment.CurrentDirectory + "/medien/rat.wmv") );
+            oMediaELement_Video.Visibility = Visibility.Visible;
+            oButton_stopVideo.Visibility = Visibility.Visible;
+            oMediaELement_Video.Play();
+        }
+
+        private void oButton_stopVideo_Click(object sender, RoutedEventArgs e) {
+            oMediaELement_Video.Close();
+            (sender as Button).Visibility = Visibility.Hidden;
+        }
+
+        private void oEllipse_DataGrid_MouseUp(object sender, MouseButtonEventArgs e) {
+            if(oUserCntroll.Visibility == Visibility.Visible) {
+                oUserCntroll.Visibility = Visibility.Collapsed;
+            } else {
+                oUserCntroll.Visibility = Visibility.Visible;
+                oUserCntroll.oDataGrid_Grid.ItemsSource = oUser.usedQuestions;
+            }
+        }
+
+        private void oButton_UCGrid_Click(object sender, RoutedEventArgs e) {
+            if(oUserCntroll.Visibility == Visibility.Visible) {
+                oUserCntroll.Visibility = Visibility.Collapsed;
+            } else {
+                oUserCntroll.Visibility = Visibility.Visible;
+                oUserCntroll.oDataGrid_Grid.ItemsSource = oUser.usedQuestions;
+            }
         }
     }
 }

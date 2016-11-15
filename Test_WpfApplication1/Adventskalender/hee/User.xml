@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<User xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <openDoors />
+  <usedQuestions>
+    <UsedQuestion>
+      <QuestionId>3</QuestionId>
+      <isRight>true</isRight>
+    </UsedQuestion>
+    <UsedQuestion>
+      <QuestionId>2</QuestionId>
+      <isRight>false</isRight>
+    </UsedQuestion>
+    <UsedQuestion>
+      <QuestionId>1</QuestionId>
+      <isRight>false</isRight>
+    </UsedQuestion>
+  </usedQuestions>
+</User>

@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<ArrayOfQuestions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Questions>
+    <QuestionsId>1</QuestionsId>
+    <QuestionText>Wer war Enki</QuestionText>
+    <QuestionTextAnswers>
+      <Answers>
+        <answerText>Herr der Rinde</answerText>
+        <isRight>true</isRight>
+      </Answers>
+      <Answers>
+        <answerText>Herr der RInge</answerText>
+        <isRight>false</isRight>
+      </Answers>
+      <Answers>
+        <answerText>Herr der Zwerge</answerText>
+        <isRight>false</isRight>
+      </Answers>
+      <Answers>
+        <answerText>Herr der Arbeitslosen</answerText>
+        <isRight>false</isRight>
+      </Answers>
+    </QuestionTextAnswers>
+  </Questions>
+  <Questions>
+    <QuestionsId>2</QuestionsId>
+    <QuestionText>Wer war Thor</QuestionText>
+    <QuestionTextAnswers>
+      <Answers>
+        <answerText>Ein Bodybuilder</answerText>
+        <isRight>false</isRight>
+      </Answers>
+      <Answers>
+        <answerText>Ein Schauspieler</answerText>
+        <isRight>false</isRight>
+      </Answers>
+      <Answers>
+        <answerText>Eine Frau</answerText>
+        <isRight>false</isRight>
+      </Answers>
+      <Answers>
+        <answerText>Donald Trump</answerText>
+        <isRight>true</isRight>
+      </Answers>
+    </QuestionTextAnswers>
+  </Questions>
+  <Questions>
+    <QuestionsId>3</QuestionsId>
+    <QuestionText>Wer war EA?</QuestionText>
+    <QuestionTextAnswers>
+      <Answers>
+        <answerText>Eine Spielefirma</answerText>
+        <isRight>true</isRight>
+      </Answers>
+      <Answers>
+        <answerText>Eine politische Partei</answerText>
+        <isRight>false</isRight>
+      </Answers>
+      <Answers>
+        <answerText>Donald Trump</answerText>
+        <isRight>false</isRight>
+      </Answers>
+      <Answers>
+        <answerText>Oder doch Manuel Neuer</answerText>
+        <isRight>false</isRight>
+      </Answers>
+    </QuestionTextAnswers>
+  </Questions>
+</ArrayOfQuestions>

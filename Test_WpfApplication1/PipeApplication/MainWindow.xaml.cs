@@ -195,6 +195,7 @@ namespace PipeApplication {
             bEditAddMode = !bEditAddMode;
             var oPipeSelected = oListBox_Pipes.SelectedItem as Pipe;
             oUser.lPipes.Remove(oPipeSelected);
+            iniDashboard();
             oListBox_Pipes.ItemsSource = null;
             oListBox_Pipes.ItemsSource = oUser.lPipes;
             oListBox_Pipes.SelectedIndex = oUser.lPipes.Count - 1;
@@ -254,6 +255,7 @@ namespace PipeApplication {
             bEditAddMode = !bEditAddMode;
             var oTobaccoSelected = oListBox_Tobacco.SelectedItem as Tobacco;
             oUser.lTobaccos.Remove(oTobaccoSelected);
+            iniDashboard();
             oListBox_Tobacco.ItemsSource = null;
             oListBox_Tobacco.ItemsSource = oUser.lTobaccos;
             oListBox_Tobacco.SelectedIndex = oUser.lTobaccos.Count - 1;

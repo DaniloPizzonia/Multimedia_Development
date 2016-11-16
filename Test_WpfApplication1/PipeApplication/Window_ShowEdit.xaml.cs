@@ -23,16 +23,15 @@ namespace PipeApplication {
         Pipe oPipe;
         Pipe oClickedPipe;
         MainWindow oParentWindow;
+
         bool bPipeEditAddMode; // editMode := true; addMode := false;
         string sPathImages = Directory.GetCurrentDirectory() + @"\Images\";
         int iClickedIndex;
         public Window_ShowEdit(User oUserCommit, int iIndexCommit, MainWindow oParentWindowCommit, bool bPipeMode) {
             // initiilize variables for using 
             oUser = oUserCommit; iClickedIndex = iIndexCommit; oParentWindow = oParentWindowCommit; bPipeEditAddMode = bPipeMode;
-
             InitializeComponent();
         }
-
         private void Window_Loaded(object sender, RoutedEventArgs e) {
             oPipe = new Pipe();
             if(bPipeEditAddMode == true) {

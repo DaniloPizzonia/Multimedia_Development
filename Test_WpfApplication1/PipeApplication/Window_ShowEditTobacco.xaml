@@ -11,7 +11,7 @@
     <Grid Name="oGrid_Edit">
         <Grid.RowDefinitions>
             <RowDefinition Height="38*"/>
-            <RowDefinition Height="253*"/>
+            <RowDefinition Height="252.8"/>
             <RowDefinition Height="219*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>

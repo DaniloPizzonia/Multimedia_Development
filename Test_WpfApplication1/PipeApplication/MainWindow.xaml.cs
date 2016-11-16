@@ -35,9 +35,7 @@ namespace PipeApplication {
                     oUser = Save.readXML<User>(sPathUserData + "user.xml");
                 }
             }
-            oTextBlock_Pipe.Text = "Pipes " + oUser.PipesCounter;
-            oTextBlock_Tobacco.Text = "Tobacco " + oUser.TobaccoCounter;
-
+            iniDashboard();
             iniPipesBinding();
             iniTobaccoBinding();
         }
@@ -61,6 +59,15 @@ namespace PipeApplication {
                 Tobacco oDefaultTobacco = new Tobacco();
                 oUser.lTobaccos.Add(oDefaultTobacco);
             }
+        }
+
+        public void iniDashboard() {
+            oUser.PipesCounter = oUser.lPipes.Count();
+            oUser.TobaccoCounter = oUser.lTobaccos.Count();
+            oStackPanel_OverviewPagePipe.DataContext = null;
+            oStackPanel_OverviewPagePipe.DataContext = oUser;
+            oStackPanel_OverviewPageTobacco.DataContext = null;
+            oStackPanel_OverviewPageTobacco.DataContext = oUser;
         }
 
         /// <summary>

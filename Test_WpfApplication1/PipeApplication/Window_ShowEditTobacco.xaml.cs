@@ -115,11 +115,13 @@ namespace PipeApplication {
                     oParentWindow.iniTobaccoBinding();
                     int iIndex = oUser.lTobaccos.Count - 1;
                     oParentWindow.oListBox_Tobacco.SelectedIndex = iClickedIndex;
+                    oParentWindow.iniDashboard();
                 } else {
                     oUser.lTobaccos.Add(oClickedTobacco);
                     oParentWindow.iniTobaccoBinding();
                     int iIndex = oUser.lTobaccos.Count - 1;
                     oParentWindow.oListBox_Tobacco.SelectedIndex = iIndex;
+                    oParentWindow.iniDashboard();
                 }
                 this.Owner.Visibility = Visibility.Visible;
                 this.Close();

@@ -110,11 +110,13 @@ namespace PipeApplication {
                     oParentWindow.iniPipesBinding();
                     int iIndex = oUser.lPipes.Count - 1;
                     oParentWindow.oListBox_Pipes.SelectedIndex = iClickedIndex;
+                    oParentWindow.iniDashboard();
                 } else {
                     oUser.lPipes.Add(oClickedPipe);
                     oParentWindow.iniPipesBinding();
                     int iIndex = oUser.lPipes.Count - 1;
                     oParentWindow.oListBox_Pipes.SelectedIndex = iIndex;
+                    oParentWindow.iniDashboard();
                 }
                 this.Owner.Visibility = Visibility.Visible;
                 this.Close();

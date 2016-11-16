@@ -16,6 +16,8 @@ namespace PipeApplication {
         public string Name { get; set; }
         public int PipesCounter { get; set; }
         public int TobaccoCounter { get; set; }
+        public double TotalAmountPipe { get; set; }
+        public double TotalAmountTobacco { get; set; }
         /// <summary>
         /// Contructors with some overloads
         /// </summary>

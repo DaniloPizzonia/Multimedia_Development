@@ -64,12 +64,30 @@ namespace PipeApplication {
         public void iniDashboard() {
             oUser.PipesCounter = oUser.lPipes.Count();
             oUser.TobaccoCounter = oUser.lTobaccos.Count();
+            calcTotalAmountPipe();
+            calcTotalAmountTobacco();
             oStackPanel_OverviewPagePipe.DataContext = null;
             oStackPanel_OverviewPagePipe.DataContext = oUser;
             oStackPanel_OverviewPageTobacco.DataContext = null;
             oStackPanel_OverviewPageTobacco.DataContext = oUser;
         }
 
+        private void calcTotalAmountPipe() {
+            double dTotal = 0;
+            foreach(var t in oUser.lPipes) {
+                dTotal += t.Price;
+            }
+            oUser.TotalAmountPipe = dTotal;
+        }
+        private void calcTotalAmountTobacco() {
+            double dTotal = 0; const int iKilo = 1000;
+            foreach(var t in oUser.lTobaccos) {
+                dTotal += t.TobaccoAmount;
+            }
+            dTotal *= 50;
+            dTotal /= iKilo;
+            oUser.TotalAmountTobacco = dTotal ;
+        }
         /// <summary>
         /// is used for binding the Pipes in the Listbox 
         /// </summary>

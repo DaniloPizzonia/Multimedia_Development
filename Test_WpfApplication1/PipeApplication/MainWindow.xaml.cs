@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,14 +21,21 @@ namespace PipeApplication {
     /// </summary>
     public partial class MainWindow:Window {
         User oUser;
+        SoundPlayer soundPlayer;
         string sPathUserData = Directory.GetCurrentDirectory() + @"\UserData\";
         string sPathImages = Directory.GetCurrentDirectory() + @"\Images\";
+        string sPathMusic = Directory.GetCurrentDirectory() + @"\Music\";
+
+        
+        
         bool bEditAddMode;
         public MainWindow() {
             InitializeComponent();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
+            soundPlayer = new SoundPlayer(sPathMusic + "Loop.wav");
+            soundPlayer.PlayLooping();
             if(oUser == null) {
                 if(Save.readXML<User>(sPathUserData + "user.xml") == null) {
                     oUser = new User("Default Name", 0, 0);
@@ -261,6 +269,17 @@ namespace PipeApplication {
                 oWindow.Owner = this;
                 this.Visibility = Visibility.Hidden;
                 oWindow.ShowDialog();
+            }
+        }
+
+        private void oButton_Sound_Click(object sender, RoutedEventArgs e) {
+            
+            if(oButton_Sound.Content.ToString() == "Audio Off") {
+                soundPlayer.Stop();
+                oButton_Sound.Content = "Audio On";
+            } else {
+                oButton_Sound.Content = "Audio Off";
+                soundPlayer.PlayLooping();
             }
         }
     }

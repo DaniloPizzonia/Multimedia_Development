@@ -49,8 +49,8 @@
                         <ColumnDefinition Width="464*"/>
                         <ColumnDefinition Width="409*"/>
                     </Grid.ColumnDefinitions>
-                    <Button x:Name="oButton_Sound" Content="Audio Off" Grid.Column="2" Grid.Row="0" Height="20" Width="70" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,20,20,0" Click="oButton_Sound_Click"/>
-                    <StackPanel Name="oStackPanel_OverviewPagePipe" Grid.Column="1" Grid.Row="1" Margin="5,1,2,7" Orientation="Vertical">
+                    <Button x:Name="oButton_Sound" Content="Audio off" Grid.Column="2" Grid.Row="0" Height="24" Width="70" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,20,20,0" Click="oButton_Sound_Click"/>
+                    <StackPanel Name="oStackPanel_OverviewPagePipe" Grid.Column="1" Grid.Row="1" Margin="5,1,2,7" Orientation="Vertical" MouseUp="oStackPanel_OverviewPagePipe_MouseUp" >
                         <StackPanel.Background>
                             <ImageBrush ImageSource="Images/wood-panel-hd-background-bible-clipart-BGPilc-clipart.jpg" Stretch="UniformToFill"/>
                         </StackPanel.Background>
@@ -71,7 +71,7 @@
                             </TextBlock>
                         </StackPanel>
                     </StackPanel>
-                    <StackPanel Name="oStackPanel_OverviewPageTobacco" Grid.Column="2" Grid.Row="1" Margin="6,1,10,7" Orientation="Vertical">
+                    <StackPanel Name="oStackPanel_OverviewPageTobacco" Grid.Column="2" Grid.Row="1" Margin="6,1,10,7" Orientation="Vertical" MouseUp="oStackPanel_OverviewPageTobacco_MouseUp">
                         <StackPanel.Background>
                             <ImageBrush ImageSource="Images/wood-panel-hd-background-bible-clipart-BGPilc-clipart.jpg" Stretch="UniformToFill"/>
                         </StackPanel.Background>

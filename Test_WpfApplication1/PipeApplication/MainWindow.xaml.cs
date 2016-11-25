@@ -284,5 +284,13 @@ namespace PipeApplication {
                 soundPlayer.PlayLooping();
             }
         }
+
+        private void oStackPanel_OverviewPagePipe_MouseUp(object sender, MouseButtonEventArgs e) {
+            tabControl.SelectedIndex = 1;
+        }
+
+        private void oStackPanel_OverviewPageTobacco_MouseUp(object sender, MouseButtonEventArgs e) {
+            tabControl.SelectedIndex = 2;
+        }
     }
 }

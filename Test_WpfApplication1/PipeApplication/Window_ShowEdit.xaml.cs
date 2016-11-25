@@ -157,7 +157,7 @@ namespace PipeApplication {
 
         private void oTextBlock_Rating_MouseUp(object sender, MouseButtonEventArgs e) {
             var oTextBlock = (sender as TextBlock);
-            var sStarName = oTextBlock.Name;
+            string sStarName = oTextBlock.Name;
             int iStarIndex = 0;
             const int iMaxStars = 6;
             try {
@@ -169,6 +169,7 @@ namespace PipeApplication {
             if(bPipeEditAddMode == false) {
                 oClickedPipe = oPipe;
             }
+
             oClickedPipe.Rating = iStarIndex;
             List<TextBlock> lRating = new List<TextBlock>();
             for(int i = 0; i < iStarIndex + 1; i++) {

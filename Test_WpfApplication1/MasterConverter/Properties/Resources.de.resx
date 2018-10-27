@@ -120,6 +120,9 @@
   <data name="appName" xml:space="preserve">
     <value>Konverter</value>
   </data>
+  <data name="convertButton" xml:space="preserve">
+    <value>Konvertieren</value>
+  </data>
   <data name="copyButton" xml:space="preserve">
     <value>Kopieren</value>
   </data>

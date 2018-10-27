@@ -70,6 +70,15 @@ namespace MasterConverter.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Convert.
+        /// </summary>
+        public static string convertButton {
+            get {
+                return ResourceManager.GetString("convertButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Copy.
         /// </summary>
         public static string copyButton {

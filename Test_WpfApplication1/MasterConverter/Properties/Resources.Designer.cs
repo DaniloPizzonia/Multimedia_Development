@@ -61,11 +61,20 @@ namespace MasterConverter.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Internationalization.
+        ///   Looks up a localized string similar to Converter.
         /// </summary>
         public static string appName {
             get {
                 return ResourceManager.GetString("appName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy.
+        /// </summary>
+        public static string copyButton {
+            get {
+                return ResourceManager.GetString("copyButton", resourceCulture);
             }
         }
         
@@ -75,6 +84,15 @@ namespace MasterConverter.Properties {
         public static string dateBlock {
             get {
                 return ResourceManager.GetString("dateBlock", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export.
+        /// </summary>
+        public static string exportButton {
+            get {
+                return ResourceManager.GetString("exportButton", resourceCulture);
             }
         }
         

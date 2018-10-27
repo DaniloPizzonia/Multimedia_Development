@@ -9,11 +9,19 @@
         Loaded="Window_Loaded"
         Title="{x:Static i18n:Resources.appName}" Height="350" Width="525">
     <Grid>
-        <StackPanel Margin="50,50,81,157" Orientation="Horizontal">
-            <ComboBox x:Name="oComboBox_i18n" HorizontalAlignment="Left" VerticalAlignment="Top"  Width="200" SelectionChanged="oComboBox_i18n_SelectionChanged"/>
-            <Button x:Name="oButto_restLanguage" HorizontalAlignment="Right" VerticalAlignment="Top" Content="{x:Static i18n:Resources.resetButton}" Height="20" Width="50" Margin="0,0,0,0" Click="oButto_restLanguage_Click"/>
-            <TextBlock Text="{x:Static i18n:Resources.dateBlock}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="37"/>
-            <TextBox Name="oTextBox_Date" Text=""  HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="82"/>
+        <ComboBox x:Name="oComboBox_i18n" HorizontalAlignment="Right" VerticalAlignment="Top"  Width="34" SelectionChanged="oComboBox_i18n_SelectionChanged" Margin="0,0,42,0"/>
+        <Button x:Name="oButto_restLanguage" HorizontalAlignment="Right" VerticalAlignment="Top" Content="{x:Static i18n:Resources.resetButton}" Height="22" Width="42" Margin="0,0,0,0" Click="oButto_restLanguage_Click"/>
+        <StackPanel Margin="50,50,47,157" Orientation="Horizontal">
+            <Border Background="White" BorderBrush="Black" BorderThickness="1">
+                <TextBlock Foreground="Black" FontSize="12">Stacked Item #1</TextBlock>
+            </Border>
+            <Border Background="White" BorderBrush="Black" BorderThickness="1">
+                <TextBlock Foreground="Black" FontSize="12">Stacked Item #1
+                    <Button x:Name="button_copy" HorizontalAlignment="Right" VerticalAlignment="Bottom" Content="{x:Static i18n:Resources.copyButton}" Height="22" Width="42" Margin="0,0,0,0" Click="oButto_restLanguage_Click"/>
+                    <Button x:Name="button_export" HorizontalAlignment="Right" VerticalAlignment="Bottom" Content="{x:Static i18n:Resources.exportButton}" Height="22" Width="42" Margin="0,0,0,0" Click="oButto_restLanguage_Click"/>
+                </TextBlock>
+            </Border>
+            
         </StackPanel>
         <Rectangle Name="oRect_0" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="46" Margin="333,195,0,0" Stroke="Black" VerticalAlignment="Top" Width="59" MouseLeftButtonUp="oRect_MouseLeftButtonUp"/>
         <Rectangle Name="oRect_1" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="46" Margin="411,195,0,0" Stroke="Black" VerticalAlignment="Top" Width="59" MouseLeftButtonUp="oRect_MouseLeftButtonUp" />

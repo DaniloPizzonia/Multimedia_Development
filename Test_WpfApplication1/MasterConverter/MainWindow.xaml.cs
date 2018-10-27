@@ -35,7 +35,7 @@ namespace MasterConverter {
         private void Window_Loaded(object sender, RoutedEventArgs e) {
             
             oComboBox_i18n.ItemsSource = Enum.GetValues(typeof(Culture));
-            oTextBox_Date.Text = DateTime.Now.ToShortDateString();
+            //oTextBox_Date.Text = DateTime.Now.ToShortDateString();
 
             fillRect(oRect_0, 0);
             fillRect(oRect_1, 1);

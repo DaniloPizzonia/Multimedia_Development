@@ -120,8 +120,14 @@
   <data name="appName" xml:space="preserve">
     <value>Internationalization</value>
   </data>
+  <data name="copyButton" xml:space="preserve">
+    <value>Copy</value>
+  </data>
   <data name="dateBlock" xml:space="preserve">
     <value>Date</value>
+  </data>
+  <data name="exportButton" xml:space="preserve">
+    <value>Export</value>
   </data>
   <data name="resetButton" xml:space="preserve">
     <value>Reset</value>

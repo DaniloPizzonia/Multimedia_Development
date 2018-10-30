@@ -22,6 +22,7 @@ namespace MasterConverter {
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow:Window {
+        string sPathImages = Directory.GetCurrentDirectory() + @"\Images\";
         string _languageSettings = Properties.Settings.Default.sprache;
         public enum Culture {
             en, de
@@ -35,8 +36,11 @@ namespace MasterConverter {
         private void Window_Loaded(object sender, RoutedEventArgs e) {
             
             oComboBox_i18n.ItemsSource = Enum.GetValues(typeof(Culture));
-            fillRect(oRect_3, 0);
-            fillRect(oRect_3_Copy, 1);
+            imageContainer_left.Source = new BitmapImage(new Uri(@"/Images/Pipe.jpg", UriKind.Relative));
+            imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/Pipe.jpg", UriKind.Relative));
+
+            //fillRect(oRect_3, 0);
+            //fillRect(oRect_3_Copy, 1);
         }
 
         private void oComboBox_i18n_SelectionChanged(object sender, SelectionChangedEventArgs e) {
@@ -48,6 +52,11 @@ namespace MasterConverter {
             Process.Start(Application.ResourceAssembly.Location);
             App.Current.Shutdown();
         }
+
+        private void leftImage() {
+
+        }
+
         private void fillRect(Rectangle rec, int nr) {
             string sPathImages = Directory.GetCurrentDirectory() + @"\Images\";
             ImageBrush oImageBrush = new ImageBrush();

@@ -36,8 +36,6 @@ namespace MasterConverter {
         private void Window_Loaded(object sender, RoutedEventArgs e) {
             
             oComboBox_i18n.ItemsSource = Enum.GetValues(typeof(Culture));
-            imageContainer_left.Source = new BitmapImage(new Uri(@"/Images/Pipe.jpg", UriKind.Relative));
-            imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/Pipe.jpg", UriKind.Relative));
 
             
 
@@ -75,7 +73,7 @@ namespace MasterConverter {
                     //MessageBox.Show("swaped successfully");
                 }
             } catch(Exception) {
-                MessageBox.Show("pls enter a number");
+                //MessageBox.Show("pls enter a number");
                 return;
             }           
         }
@@ -86,17 +84,74 @@ namespace MasterConverter {
             int vorkommastelle = (int) devider;
             float nachkommastelle = (devider - (float) vorkommastelle) *10;
             double nachkommastelleRounded = Math.Round(nachkommastelle);
-            MessageBox.Show("der input " + input + ", vorkommasteller " + vorkommastelle + " nachkommastelle " + nachkommastelleRounded);
-            swapLeft();
-            swapRight();
+            //MessageBox.Show("der input " + input + ", vorkommasteller " + vorkommastelle + " nachkommastelle " + nachkommastelleRounded);
+            swapLeft(vorkommastelle);
+            swapRight(nachkommastelleRounded);
         }
 
-        private void swapLeft() {
+        private void swapLeft(int num) {
             // implement the logic for swaping image 1-5
+
+            switch(num) {
+                case 0:
+                    
+                    break;
+                case 1:
+                    imageContainer_left.Source = new BitmapImage(new Uri(@"/Images/left/l_1.png", UriKind.Relative));
+                    break;
+                case 2:
+                    imageContainer_left.Source = new BitmapImage(new Uri(@"/Images/left/l_2.png", UriKind.Relative));
+                    break;
+                case 3:
+                    imageContainer_left.Source = new BitmapImage(new Uri(@"/Images/left/l_3.png", UriKind.Relative));
+                    break;
+                case 4:
+                    imageContainer_left.Source = new BitmapImage(new Uri(@"/Images/left/l_4.png", UriKind.Relative));
+                    break;
+                case 5:
+                    imageContainer_left.Source = new BitmapImage(new Uri(@"/Images/left/l_5.png", UriKind.Relative));
+                    break;
+                default:
+                    break;
+            }
         }
 
-        private void swapRight() {
+        private void swapRight(double num) {
             // implement logic to swap image 1-9
+            int numm = (int) num;
+            switch(numm) {
+                case 0:
+                    break;
+                case 1:
+                    imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_1.png", UriKind.Relative));
+                    break;
+                case 2:
+                    imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_2.png", UriKind.Relative));
+                    break;
+                case 3:
+                    imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_3.png", UriKind.Relative));
+                    break;
+                case 4:
+                    imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_4.png", UriKind.Relative));
+                    break;
+                case 5:
+                    imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_5.png", UriKind.Relative));
+                    break;
+                case 6:
+                    imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_6.png", UriKind.Relative));
+                    break;
+                case 7:
+                    imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_7.png", UriKind.Relative));
+                    break;
+                case 8:
+                    imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_8.png", UriKind.Relative));
+                    break;
+                case 9:
+                    imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_9.png", UriKind.Relative));
+                    break;
+                default:
+                    break;
+            }
         }
 
     }

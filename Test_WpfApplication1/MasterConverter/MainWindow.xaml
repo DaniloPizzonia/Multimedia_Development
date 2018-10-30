@@ -17,25 +17,25 @@
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
-                <TextBox x:Name="textBox_input" HorizontalAlignment="Center" Height="70" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="107" VerticalContentAlignment="Center" FontSize="40"  FontWeight="Bold"/>
+                <TextBox x:Name="textBox_input" TextChanged="textBox_InputChanged" HorizontalAlignment="Center" Height="70" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="107" VerticalContentAlignment="Center" FontSize="40"  FontWeight="Bold"/>
                 <!--
                 <Rectangle Name="oRect_3" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="108" Stroke="Black" VerticalAlignment="Top" Width="121" MouseLeftButtonUp="oRect_MouseLeftButtonUp" Grid.Column="1" Margin="10,59,0,0"/>
                 <Rectangle x:Name="oRect_3_Copy" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="108" Stroke="Black" VerticalAlignment="Top" Width="114" MouseLeftButtonUp="oRect_MouseLeftButtonUp" Grid.Column="1" Margin="125,59,0,0"/>
 
                 -->
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="1" Width="249" >
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="1" Width="249" Margin="0,42,0,88" >
                     <Image x:Name="imageContainer_left" 
                            HorizontalAlignment="Left" 
-                           Height="168" 
+                           Height="96" 
                            VerticalAlignment="Top" 
-                           Width="128" 
+                           Width="122" Margin="0,10,0,0" 
                            
                            />
                     <Image x:Name="imageContainer_right" 
                            HorizontalAlignment="Right" 
-                           Height="168" 
+                           Height="96" 
                            VerticalAlignment="Top" 
-                           Width="120" />
+                           Width="122" Margin="0,10,0,0" />
 
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="195,0,-20,0" Grid.ColumnSpan="2" >

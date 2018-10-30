@@ -39,6 +39,8 @@ namespace MasterConverter {
             imageContainer_left.Source = new BitmapImage(new Uri(@"/Images/Pipe.jpg", UriKind.Relative));
             imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/Pipe.jpg", UriKind.Relative));
 
+            
+
             //fillRect(oRect_3, 0);
             //fillRect(oRect_3_Copy, 1);
         }
@@ -55,6 +57,11 @@ namespace MasterConverter {
 
         private void leftImage() {
 
+        }
+
+        private void textBox_InputChanged(object sender, TextChangedEventArgs e) {
+            string userInput = textBox_input.Text;
+            //MessageBox.Show(userInput);
         }
 
         private void fillRect(Rectangle rec, int nr) {

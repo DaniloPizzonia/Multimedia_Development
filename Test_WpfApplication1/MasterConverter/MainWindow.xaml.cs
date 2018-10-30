@@ -18,9 +18,6 @@ using System.Windows.Shapes;
 
 namespace MasterConverter {
     
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow:Window {
         string sPathImages = Directory.GetCurrentDirectory() + @"\Images\";
         string _languageSettings = Properties.Settings.Default.sprache;
@@ -34,13 +31,7 @@ namespace MasterConverter {
     }
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
-            
             oComboBox_i18n.ItemsSource = Enum.GetValues(typeof(Culture));
-
-            
-
-            //fillRect(oRect_3, 0);
-            //fillRect(oRect_3_Copy, 1);
         }
 
         private void oComboBox_i18n_SelectionChanged(object sender, SelectionChangedEventArgs e) {
@@ -53,10 +44,6 @@ namespace MasterConverter {
             App.Current.Shutdown();
         }
 
-        private void leftImage() {
-
-        }
-
         private void textBox_InputChanged(object sender, TextChangedEventArgs e) {
             string userInput = textBox_input.Text;
             int fetchedUserInput = 0;
@@ -64,13 +51,16 @@ namespace MasterConverter {
                 fetchedUserInput = Convert.ToInt32(userInput);
 
                 if(fetchedUserInput < 0) {
-                    //MessageBox.Show("pls do not enter negative values");
+                    // handle input and stop user to enter a negatove value
                 } else if(fetchedUserInput > 59) {
-                    //MessageBox.Show("pls do not enter values avobe 59");
+                    if(fetchedUserInput == 60) {
+                        imageContainer_left.Source = new BitmapImage(new Uri(@"/Images/right/r_1.png", UriKind.Relative));
+                        imageContainer_right.Source = null;
+                    } else {
+                        // handle input and stop user to enter a higher value than expected
+                    }
                 } else {
-                    //MessageBox.Show(fetchedUserInput.ToString());
                     swapImages(fetchedUserInput);
-                    //MessageBox.Show("swaped successfully");
                 }
             } catch(Exception) {
                 //MessageBox.Show("pls enter a number");
@@ -84,17 +74,14 @@ namespace MasterConverter {
             int vorkommastelle = (int) devider;
             float nachkommastelle = (devider - (float) vorkommastelle) *10;
             double nachkommastelleRounded = Math.Round(nachkommastelle);
-            //MessageBox.Show("der input " + input + ", vorkommasteller " + vorkommastelle + " nachkommastelle " + nachkommastelleRounded);
             swapLeft(vorkommastelle);
             swapRight(nachkommastelleRounded);
         }
 
         private void swapLeft(int num) {
-            // implement the logic for swaping image 1-5
-
             switch(num) {
                 case 0:
-                    
+                    imageContainer_left.Source = null;
                     break;
                 case 1:
                     imageContainer_left.Source = new BitmapImage(new Uri(@"/Images/left/l_1.png", UriKind.Relative));
@@ -117,10 +104,10 @@ namespace MasterConverter {
         }
 
         private void swapRight(double num) {
-            // implement logic to swap image 1-9
             int numm = (int) num;
             switch(numm) {
                 case 0:
+                    imageContainer_right.Source = null;
                     break;
                 case 1:
                     imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_1.png", UriKind.Relative));

@@ -61,22 +61,30 @@ namespace MasterConverter {
 
         private void textBox_InputChanged(object sender, TextChangedEventArgs e) {
             string userInput = textBox_input.Text;
+            int fetchedUserInput = 0;
+            try {
+                fetchedUserInput = Convert.ToInt32(userInput);
+            } catch(Exception) {
+                MessageBox.Show("pls enter a number");
+                return;
+            }           
+            
             //MessageBox.Show(userInput);
+            MessageBox.Show(fetchedUserInput.ToString());
+            swapImages(fetchedUserInput);
         }
 
-        private void fillRect(Rectangle rec, int nr) {
-            string sPathImages = Directory.GetCurrentDirectory() + @"\Images\";
-            ImageBrush oImageBrush = new ImageBrush();
-            //oImageBrush.ImageSource = new BitmapImage(new Uri(sPathImages + "/profilePic.jpg"));
-            oImageBrush.Stretch = Stretch.UniformToFill;
-            oImageBrush.Viewport = new Rect(0.0, 0.0, 1.0, 1.0);
-            double iXPos, iYPos, iWidth, iHeigth;
-            iXPos = nr * 0.166;
-            iYPos = 0;
-            iWidth = 0.166;
-            iHeigth = 0.25;
-            oImageBrush.Viewbox = new Rect(iXPos, iYPos,iWidth,iHeigth);
-            rec.Fill = oImageBrush;
+        private void swapImages(int input) {
+            swapLeft();
+            swapRight();
+        }
+
+        private void swapLeft() {
+            // implement the logic for swaping image 1-5
+        }
+
+        private void swapRight() {
+            // implement logic to swap image 1-9
         }
 
         private void oRect_MouseLeftButtonUp(object sender, MouseButtonEventArgs e) {

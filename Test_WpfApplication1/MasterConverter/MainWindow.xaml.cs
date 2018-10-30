@@ -66,13 +66,13 @@ namespace MasterConverter {
                 fetchedUserInput = Convert.ToInt32(userInput);
 
                 if(fetchedUserInput < 0) {
-                    MessageBox.Show("pls do not enter negative values");
+                    //MessageBox.Show("pls do not enter negative values");
                 } else if(fetchedUserInput > 59) {
-                    MessageBox.Show("pls do not enter values avobe 59");
+                    //MessageBox.Show("pls do not enter values avobe 59");
                 } else {
-                    MessageBox.Show(fetchedUserInput.ToString());
+                    //MessageBox.Show(fetchedUserInput.ToString());
                     swapImages(fetchedUserInput);
-                    MessageBox.Show("swaped successfully");
+                    //MessageBox.Show("swaped successfully");
                 }
             } catch(Exception) {
                 MessageBox.Show("pls enter a number");
@@ -80,7 +80,13 @@ namespace MasterConverter {
             }           
         }
 
-        private void swapImages(int input) {
+        private void swapImages(float input) {
+            float devider= input / 10;
+
+            int vorkommastelle = (int) devider;
+            float nachkommastelle = (devider - (float) vorkommastelle) *10;
+            double nachkommastelleRounded = Math.Round(nachkommastelle);
+            MessageBox.Show("der input " + input + ", vorkommasteller " + vorkommastelle + " nachkommastelle " + nachkommastelleRounded);
             swapLeft();
             swapRight();
         }

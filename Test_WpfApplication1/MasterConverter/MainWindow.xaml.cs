@@ -64,14 +64,20 @@ namespace MasterConverter {
             int fetchedUserInput = 0;
             try {
                 fetchedUserInput = Convert.ToInt32(userInput);
+
+                if(fetchedUserInput < 0) {
+                    MessageBox.Show("pls do not enter negative values");
+                } else if(fetchedUserInput > 59) {
+                    MessageBox.Show("pls do not enter values avobe 59");
+                } else {
+                    MessageBox.Show(fetchedUserInput.ToString());
+                    swapImages(fetchedUserInput);
+                    MessageBox.Show("swaped successfully");
+                }
             } catch(Exception) {
                 MessageBox.Show("pls enter a number");
                 return;
             }           
-            
-            //MessageBox.Show(userInput);
-            MessageBox.Show(fetchedUserInput.ToString());
-            swapImages(fetchedUserInput);
         }
 
         private void swapImages(int input) {
@@ -87,9 +93,5 @@ namespace MasterConverter {
             // implement logic to swap image 1-9
         }
 
-        private void oRect_MouseLeftButtonUp(object sender, MouseButtonEventArgs e) {
-            int iIndex = Convert.ToInt32((sender as Rectangle).Name[6]) - 48;
-            oComboBox_i18n.SelectedIndex = iIndex;
-        }
     }
 }

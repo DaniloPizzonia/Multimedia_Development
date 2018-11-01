@@ -61,7 +61,7 @@ namespace MasterConverter.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Converter.
+        ///   Looks up a localized string similar to Babylonian Number Converter.
         /// </summary>
         public static string appName {
             get {

@@ -32,6 +32,7 @@ namespace MasterConverter {
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
             oComboBox_i18n.ItemsSource = Enum.GetValues(typeof(Culture));
+            textBox_input.MaxLength = 2;
         }
 
         private void oComboBox_i18n_SelectionChanged(object sender, SelectionChangedEventArgs e) {
@@ -52,20 +53,45 @@ namespace MasterConverter {
 
                 if(fetchedUserInput < 0) {
                     // handle input and stop user to enter a negatove value
+
+                    MessageBox.Show("Do not enter negative values!");
+                    textBox_input.Text = "";
+                    return;
                 } else if(fetchedUserInput > 59) {
                     if(fetchedUserInput == 60) {
                         imageContainer_left.Source = new BitmapImage(new Uri(@"/Images/right/r_1.png", UriKind.Relative));
                         imageContainer_right.Source = null;
                     } else {
                         // handle input and stop user to enter a higher value than expected
+                        cleanImageBoxes(0);
+                        MessageBox.Show("Do not enter values above 60 due to the limitation of 60 numbers in the the babylonian number system! A value above 60 can not be displayed.");
                     }
                 } else {
                     swapImages(fetchedUserInput);
                 }
             } catch(Exception) {
-                //MessageBox.Show("pls enter a number");
+                if(userInput == "") {
+                    cleanImageBoxes(2);
+                }
                 return;
             }           
+        }
+
+        private void cleanImageBoxes(int amount) {
+            switch(amount) {
+                case 0:
+                    imageContainer_left.Source = null;
+                    imageContainer_right.Source = null;
+                    break;
+                case 1:
+                    imageContainer_right.Source = null;
+                    break;
+                case 2:
+                    imageContainer_right.Source = null;
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void swapImages(float input) {

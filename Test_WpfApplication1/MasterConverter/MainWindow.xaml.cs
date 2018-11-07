@@ -44,6 +44,13 @@ namespace MasterConverter {
             Process.Start(Application.ResourceAssembly.Location);
             App.Current.Shutdown();
         }
+        private void oButto_intKonvertierer(object sender, RoutedEventArgs e) {
+            Classes.Converter myConverter = new Classes.Converter();
+            var return2 = myConverter.modHigh(7840);
+            System.Windows.MessageBox.Show(return2);
+           
+
+        }
 
         private void textBox_InputChanged(object sender, TextChangedEventArgs e) {
             string userInput = textBox_input.Text;

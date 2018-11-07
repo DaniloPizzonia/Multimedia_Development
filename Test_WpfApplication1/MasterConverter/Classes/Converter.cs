@@ -6,20 +6,52 @@ using System.Threading.Tasks;
 
 namespace MasterConverter.Classes {
     class Converter {
-        public Converter() {
-            this.name = "hi";
-            this._Modulo = 10;
+        public Converter() {}
+
+        public int userInput { get; set; }
+
+        public int linkeSpalteDec { get; set; }
+        public int linkeSpalteBaby{ get; set; }
+
+        public int mittlereSpalteDec { get; set; }
+        public int mittlereSpalteBaby { get; set; }
+
+        public int rechteSpalteDecBaby { get; set; }
+
+
+        public string modHigh(int userInitalInput) {
+            // x 3600
+            this.userInput = userInitalInput;
+            int high = 3600;
+            var multiplier = userInitalInput / high;
+
+            //  ergInDec is the babylonische dec zahl linke spalte => 2 * 3600
+            // multiplier ist die anzahl der babylonischen in dem fall bei 2 => ||
+            var ergInDec = multiplier * high;
+
+            this.linkeSpalteBaby = multiplier;
+            this.linkeSpalteDec = ergInDec;
+
+            return this.modMid();
         }
 
-        public string name { get; set; }
-        public int _Modulo { get; set; }
+        public string modMid() {
+            // x 60
+            var tempErg = this.userInput - this.linkeSpalteDec;
 
-        public int myMethod () {
-            var testInput = 41;
+            int mid = 60;
+            var multiplier = tempErg / mid;
 
-            var mod = testInput % this._Modulo;
+            this.mittlereSpalteDec = tempErg;
+            this.mittlereSpalteBaby = multiplier;
 
-            return mod;
-        }
+            // + rest
+            this.rechteSpalteDecBaby = tempErg % mid;
+
+            return "linke Spalte Dec: " + this.linkeSpalteDec + " " + " linke Spalte Baby: " + this.linkeSpalteBaby +
+                   "| mittlere Spalte Dec: " + this.mittlereSpalteDec + " mittlere Spalte Baby: " + this.mittlereSpalteBaby +
+                   "| rechte Spalte Dec: " + this.rechteSpalteDecBaby;
+        } 
+
     }
 }

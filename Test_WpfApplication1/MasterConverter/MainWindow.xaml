@@ -11,11 +11,11 @@
         ResizeMode="CanMinimize">
     <StackPanel>
         <Grid>
+            <Button x:Name="oButton_IntKonvertierer" Content="hello" HorizontalAlignment="Right" VerticalAlignment="Top" Height="22" Width="44"  Click="oButto_intKonvertierer" Margin="0,161,233,0"/>
             <StackPanel Orientation="Horizontal">
                 <ComboBox x:Name="oComboBox_i18n" HorizontalAlignment="Left" VerticalAlignment="Top"  Width="46" SelectionChanged="oComboBox_i18n_SelectionChanged" Margin="405,10,0,0"/>
                 <Button x:Name="oButto_restLanguage" HorizontalAlignment="Right" VerticalAlignment="Top" Content="{x:Static i18n:Resources.resetButton}" Height="22" Width="44" Margin="10,10,10,0" Click="oButto_restLanguage_Click"/>
-            </StackPanel> 
-
+            </StackPanel>
             <StackPanel Margin="10,50,10,23" Orientation="Horizontal">
                 <Grid Width="497">
                     <Grid.ColumnDefinitions>

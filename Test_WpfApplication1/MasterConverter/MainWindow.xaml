@@ -11,7 +11,7 @@
         ResizeMode="CanMinimize">
     <StackPanel>
         <Grid>
-            <Button x:Name="oButton_IntKonvertierer" Content="hello" HorizontalAlignment="Right" VerticalAlignment="Top" Height="22" Width="44"  Click="oButto_intKonvertierer" Margin="0,161,233,0"/>
+            <Button x:Name="oButton_IntKonvertierer" Content="hello" HorizontalAlignment="Right" VerticalAlignment="Top" Height="22" Width="44"  Click="oButto_intKonvertierer" Margin="0,193,363,0"/>
             <StackPanel Orientation="Horizontal">
                 <ComboBox x:Name="oComboBox_i18n" HorizontalAlignment="Left" VerticalAlignment="Top"  Width="46" SelectionChanged="oComboBox_i18n_SelectionChanged" Margin="405,10,0,0"/>
                 <Button x:Name="oButto_restLanguage" HorizontalAlignment="Right" VerticalAlignment="Top" Content="{x:Static i18n:Resources.resetButton}" Height="22" Width="44" Margin="10,10,10,0" Click="oButto_restLanguage_Click"/>
@@ -22,25 +22,52 @@
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBox x:Name="textBox_input" TextChanged="textBox_InputChanged" HorizontalAlignment="Center" Height="100" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="103" VerticalContentAlignment="Center" FontSize="60"  FontWeight="Bold"/>
+                    <TextBox x:Name="textBox_input" TextChanged="textBox_InputChanged" HorizontalAlignment="Center" Height="100" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="228" VerticalContentAlignment="Center" FontSize="60"  FontWeight="Bold" Margin="10,37"/>
                     <!--
                 <Rectangle Name="oRect_3" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="108" Stroke="Black" VerticalAlignment="Top" Width="121" MouseLeftButtonUp="oRect_MouseLeftButtonUp" Grid.Column="1" Margin="10,59,0,0"/>
                 <Rectangle x:Name="oRect_3_Copy" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="108" Stroke="Black" VerticalAlignment="Top" Width="114" MouseLeftButtonUp="oRect_MouseLeftButtonUp" Grid.Column="1" Margin="125,59,0,0"/>
 
                 -->
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Column="1" Width="239" Margin="5,66,5,65">
-                        <Image x:Name="imageContainer_left" 
+
+                    <StackPanel x:Name="left" Orientation="Horizontal" HorizontalAlignment="Center" Grid.Column="1" Width="66" Margin="0,67,183,64">
+                        <Image x:Name="left_imageContainer_left" 
                            HorizontalAlignment="Right" 
-                           Height="100" 
+                           Height="33.33" 
                            VerticalAlignment="Top" 
-                           Width="122" Margin="0,10,0,0" 
-                           
-                           />
-                        <Image x:Name="imageContainer_right" 
+                           Width="32.33" Margin="0,10,0,0" />
+
+                        <Image x:Name="left_imageContainer_right" 
                            HorizontalAlignment="Left" 
-                           Height="100" 
+                           Height="33.33" 
                            VerticalAlignment="Top" 
-                           Width="97" Margin="0,10,0,0" />
+                           Width="32.33" Margin="0,10,0,0" />
+                    </StackPanel>
+                    <StackPanel x:Name="middle" Orientation="Horizontal" HorizontalAlignment="Center" Grid.Column="1" Width="66" Margin="76,67,107,64">
+                        <Image x:Name="middle_imageContainer_left" 
+                           HorizontalAlignment="Right" 
+                           Height="33.33" 
+                           VerticalAlignment="Top" 
+                           Width="32.33" Margin="0,10,0,0" />
+
+                        <Image x:Name="middle_imageContainer_right" 
+                           HorizontalAlignment="Left" 
+                           Height="33.33" 
+                           VerticalAlignment="Top" 
+                           Width="32.33" Margin="0,10,0,0" />
+
+                    </StackPanel>
+                    <StackPanel x:Name="right" Orientation="Horizontal" HorizontalAlignment="Center" Grid.Column="1" Width="66" Margin="157,67,26,64">
+                        <Image x:Name="right_imageContainer_left" 
+                           HorizontalAlignment="Right" 
+                           Height="33.33" 
+                           VerticalAlignment="Top" 
+                           Width="32.33" Margin="0,10,0,0" />
+
+                        <Image x:Name="right_imageContainer_right" 
+                           HorizontalAlignment="Left" 
+                           Height="33.33" 
+                           VerticalAlignment="Top" 
+                           Width="32.33" Margin="0,10,0,0" />
 
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="195,0,-20,0" Grid.ColumnSpan="2" >
@@ -54,5 +81,5 @@
             </StackPanel>
         </Grid>
     </StackPanel>
-   
+
 </Window>

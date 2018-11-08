@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace MasterConverter.Classes {
-    class Converter {
+    public class Converter {
         public Converter() {}
 
         public int userInput { get; set; }
@@ -48,9 +48,13 @@ namespace MasterConverter.Classes {
             // + rest
             this.rechteSpalteDecBaby = tempErg % mid;
 
-            return "linke Spalte Dec: " + this.linkeSpalteDec + " " + " linke Spalte Baby: " + this.linkeSpalteBaby +
-                   "| mittlere Spalte Dec: " + this.mittlereSpalteDec + " mittlere Spalte Baby: " + this.mittlereSpalteBaby +
-                   "| rechte Spalte Dec: " + this.rechteSpalteDecBaby;
+            string sAll = "linke Spalte Dec: " + this.linkeSpalteDec + " " + " linke Spalte Baby: " + this.linkeSpalteBaby +
+                    "| mittlere Spalte Dec: " + this.mittlereSpalteDec + " mittlere Spalte Baby: " + this.mittlereSpalteBaby +
+                    "| rechte Spalte Dec: " + this.rechteSpalteDecBaby;
+            string mult = this.linkeSpalteBaby +
+                   "| " + this.mittlereSpalteBaby +
+                   "| " + this.rechteSpalteDecBaby;
+            return mult;
         } 
 
     }

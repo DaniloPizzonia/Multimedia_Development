@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MasterConverter.Classes;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -21,6 +22,7 @@ namespace MasterConverter {
     public partial class MainWindow:Window {
         string sPathImages = Directory.GetCurrentDirectory() + @"\Images\";
         string _languageSettings = Properties.Settings.Default.sprache;
+        private Converter myConverter = new Converter();
         public enum Culture {
             en, de
         };
@@ -32,7 +34,7 @@ namespace MasterConverter {
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
             oComboBox_i18n.ItemsSource = Enum.GetValues(typeof(Culture));
-            textBox_input.MaxLength = 2;
+            textBox_input.MaxLength = 6;
         }
 
         private void oComboBox_i18n_SelectionChanged(object sender, SelectionChangedEventArgs e) {
@@ -45,11 +47,14 @@ namespace MasterConverter {
             App.Current.Shutdown();
         }
         private void oButto_intKonvertierer(object sender, RoutedEventArgs e) {
-            Classes.Converter myConverter = new Classes.Converter();
-            var return2 = myConverter.modHigh(7840);
-            System.Windows.MessageBox.Show(return2);
-           
+            //Converter myConverter = new Converter();
+            var return2 = this.myConverter.modHigh(6661);
+            
 
+            swapImages(myConverter.linkeSpalteBaby, left_imageContainer_left, left_imageContainer_right);
+            swapImages(myConverter.mittlereSpalteBaby, middle_imageContainer_left, middle_imageContainer_right);
+            swapImages(myConverter.rechteSpalteDecBaby, right_imageContainer_left, right_imageContainer_right);
+            System.Windows.MessageBox.Show(return2);
         }
 
         private void textBox_InputChanged(object sender, TextChangedEventArgs e) {
@@ -64,17 +69,14 @@ namespace MasterConverter {
                     MessageBox.Show("Do not enter negative values!");
                     textBox_input.Text = "";
                     return;
-                } else if(fetchedUserInput > 59) {
-                    if(fetchedUserInput == 60) {
-                        imageContainer_left.Source = new BitmapImage(new Uri(@"/Images/right/r_1.png", UriKind.Relative));
-                        imageContainer_right.Source = null;
-                    } else {
-                        // handle input and stop user to enter a higher value than expected
-                        cleanImageBoxes(0);
-                        MessageBox.Show("Do not enter values above 60 due to the limitation of 60 numbers in the the babylonian number system! A value above 60 can not be displayed.");
-                    }
-                } else {
-                    swapImages(fetchedUserInput);
+                } else { 
+                    // swapImages(fetchedUserInput, right_imageContainer_left);
+
+                    var return2 = this.myConverter.modHigh(fetchedUserInput);
+
+                    swapImages(myConverter.linkeSpalteBaby, left_imageContainer_left, left_imageContainer_right);
+                    swapImages(myConverter.mittlereSpalteBaby, middle_imageContainer_left, middle_imageContainer_right);
+                    swapImages(myConverter.rechteSpalteDecBaby, right_imageContainer_left, right_imageContainer_right);
                 }
             } catch(Exception) {
                 if(userInput == "") {
@@ -87,87 +89,128 @@ namespace MasterConverter {
         private void cleanImageBoxes(int amount) {
             switch(amount) {
                 case 0:
-                    imageContainer_left.Source = null;
-                    imageContainer_right.Source = null;
+                    right_imageContainer_left.Source = null;
+                    right_imageContainer_right.Source = null;
+
+                    left_imageContainer_left.Source = null;
+                    left_imageContainer_right.Source = null;
+
+                    middle_imageContainer_left.Source = null;
+                    middle_imageContainer_right.Source = null;
                     break;
                 case 1:
-                    imageContainer_right.Source = null;
+                    right_imageContainer_right.Source = null;
+                    left_imageContainer_right.Source = null;
+                    middle_imageContainer_right.Source = null;
                     break;
                 case 2:
-                    imageContainer_right.Source = null;
+                    right_imageContainer_right.Source = null;
+                    left_imageContainer_right.Source = null;
+                    middle_imageContainer_right.Source = null;
                     break;
                 default:
                     break;
             }
         }
 
-        private void swapImages(float input) {
+        private void swapImages(float input, Image imageContainerLeft, Image imageContainerRight) {
             float devider= input / 10;
-
             int vorkommastelle = (int) devider;
             float nachkommastelle = (devider - (float) vorkommastelle) *10;
             double nachkommastelleRounded = Math.Round(nachkommastelle);
-            swapLeft(vorkommastelle);
-            swapRight(nachkommastelleRounded);
+           swapLeft(vorkommastelle, imageContainerLeft);
+           swapRight(nachkommastelleRounded, imageContainerRight);
         }
 
-        private void swapLeft(int num) {
+        private void swapLeft(int num, Image imageContainer) {
             switch(num) {
                 case 0:
-                    imageContainer_left.Source = null;
+                    imageContainer.Source = null;
+                    //left_imageContainer_left.Source = null;
+                    //middle_imageContainer_left.Source = null;
                     break;
                 case 1:
-                    imageContainer_left.Source = new BitmapImage(new Uri(@"/Images/left/l_1.png", UriKind.Relative));
+                    imageContainer.Source = new BitmapImage(new Uri(@"/Images/left/l_1.png", UriKind.Relative));
+                    //left_imageContainer_left.Source = new BitmapImage(new Uri(@"/Images/left/l_1.png", UriKind.Relative));
+                    //middle_imageContainer_left.Source = new BitmapImage(new Uri(@"/Images/left/l_1.png", UriKind.Relative));
                     break;
                 case 2:
-                    imageContainer_left.Source = new BitmapImage(new Uri(@"/Images/left/l_2.png", UriKind.Relative));
+                    imageContainer.Source = new BitmapImage(new Uri(@"/Images/left/l_2.png", UriKind.Relative));
+                    //left_imageContainer_left.Source = new BitmapImage(new Uri(@"/Images/left/l_2.png", UriKind.Relative));
+                    //middle_imageContainer_left.Source = new BitmapImage(new Uri(@"/Images/left/l_2.png", UriKind.Relative));
                     break;
                 case 3:
-                    imageContainer_left.Source = new BitmapImage(new Uri(@"/Images/left/l_3.png", UriKind.Relative));
+                    imageContainer.Source = new BitmapImage(new Uri(@"/Images/left/l_3.png", UriKind.Relative));
+                    //left_imageContainer_left.Source = new BitmapImage(new Uri(@"/Images/left/l_3.png", UriKind.Relative));
+                    //middle_imageContainer_left.Source = new BitmapImage(new Uri(@"/Images/left/l_3.png", UriKind.Relative));
                     break;
                 case 4:
-                    imageContainer_left.Source = new BitmapImage(new Uri(@"/Images/left/l_4.png", UriKind.Relative));
+                    imageContainer.Source = new BitmapImage(new Uri(@"/Images/left/l_4.png", UriKind.Relative));
+                    //left_imageContainer_left.Source = new BitmapImage(new Uri(@"/Images/left/l_4.png", UriKind.Relative));
+                    //middle_imageContainer_left.Source = new BitmapImage(new Uri(@"/Images/left/l_4.png", UriKind.Relative));
                     break;
                 case 5:
-                    imageContainer_left.Source = new BitmapImage(new Uri(@"/Images/left/l_5.png", UriKind.Relative));
+                    imageContainer.Source = new BitmapImage(new Uri(@"/Images/left/l_5.png", UriKind.Relative));
+                    //left_imageContainer_left.Source = new BitmapImage(new Uri(@"/Images/left/l_5.png", UriKind.Relative));
+                    //middle_imageContainer_left.Source = new BitmapImage(new Uri(@"/Images/left/l_5.png", UriKind.Relative));
                     break;
                 default:
                     break;
             }
         }
 
-        private void swapRight(double num) {
+        private void swapRight(double num, Image imageContainer) {
             int numm = (int) num;
             switch(numm) {
                 case 0:
-                    imageContainer_right.Source = null;
+                    imageContainer.Source = null;
+                    // left_imageContainer_right.Source = null;
+                    //middle_imageContainer_right.Source = null;
                     break;
                 case 1:
-                    imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_1.png", UriKind.Relative));
+                    imageContainer.Source = new BitmapImage(new Uri(@"/Images/right/r_1.png", UriKind.Relative));
+                    //left_imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_1.png", UriKind.Relative));
+                    //middle_imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_1.png", UriKind.Relative));
                     break;
                 case 2:
-                    imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_2.png", UriKind.Relative));
+                    imageContainer.Source = new BitmapImage(new Uri(@"/Images/right/r_2.png", UriKind.Relative));
+                    // left_imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_2.png", UriKind.Relative));
+                    // middle_imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_2.png", UriKind.Relative));
                     break;
                 case 3:
-                    imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_3.png", UriKind.Relative));
+                    imageContainer.Source = new BitmapImage(new Uri(@"/Images/right/r_3.png", UriKind.Relative));
+                    // left_imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_3.png", UriKind.Relative));
+                    //middle_imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_3.png", UriKind.Relative));
                     break;
                 case 4:
-                    imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_4.png", UriKind.Relative));
+                    imageContainer.Source = new BitmapImage(new Uri(@"/Images/right/r_4.png", UriKind.Relative));
+                    // left_imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_4.png", UriKind.Relative));
+                    //middle_imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_4.png", UriKind.Relative));
                     break;
                 case 5:
-                    imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_5.png", UriKind.Relative));
+                    imageContainer.Source = new BitmapImage(new Uri(@"/Images/right/r_5.png", UriKind.Relative));
+                    // left_imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_5.png", UriKind.Relative));
+                    //middle_imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_5.png", UriKind.Relative));
                     break;
                 case 6:
-                    imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_6.png", UriKind.Relative));
+                    imageContainer.Source = new BitmapImage(new Uri(@"/Images/right/r_6.png", UriKind.Relative));
+                    //left_imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_6.png", UriKind.Relative));
+                    //middle_imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_6.png", UriKind.Relative));
                     break;
                 case 7:
-                    imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_7.png", UriKind.Relative));
+                    imageContainer.Source = new BitmapImage(new Uri(@"/Images/right/r_7.png", UriKind.Relative));
+                    // left_imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_7.png", UriKind.Relative));
+                    // middle_imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_7.png", UriKind.Relative));
                     break;
                 case 8:
-                    imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_8.png", UriKind.Relative));
+                    imageContainer.Source = new BitmapImage(new Uri(@"/Images/right/r_8.png", UriKind.Relative));
+                    //left_imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_8.png", UriKind.Relative));
+                    //middle_imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_8.png", UriKind.Relative));
                     break;
                 case 9:
-                    imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_9.png", UriKind.Relative));
+                    imageContainer.Source = new BitmapImage(new Uri(@"/Images/right/r_9.png", UriKind.Relative));
+                    // left_imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_9.png", UriKind.Relative));
+                    // middle_imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_9.png", UriKind.Relative));
                     break;
                 default:
                     break;

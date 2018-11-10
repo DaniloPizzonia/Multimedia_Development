@@ -1,0 +1,33 @@
+﻿<Window x:Class="MasterConverter.Window_ShowEdit"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MasterConverter"
+        mc:Ignorable="d"
+        Loaded="Window_Loaded"
+        Closed="Window_Closed"
+        Title="Window_ShowEdit" Height="540" Width="900" WindowStartupLocation="CenterOwner">
+    <Grid Name="oGrid_Edit">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="38*"/>
+            <RowDefinition Height="253*"/>
+            <RowDefinition Height="219*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="523*"/>
+            <ColumnDefinition Width="370*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Margin="0,0,1.2,4.4">
+            <TextBlock Name="oTextBlock_Title" Text="Popup Konverter" Margin="10,5,-0.4,0" FontSize="20" Height="35" VerticalAlignment="Top" />
+        </StackPanel>
+        
+
+       
+      
+        <Button x:Name="oButton_SavePipe" Content="Speichern" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" Margin="0,175.8,39.6,0"  VerticalAlignment="Top" Width="109" Height="32" Click="oButton_SavePipe_Click"/>
+       
+
+
+    </Grid>
+</Window>

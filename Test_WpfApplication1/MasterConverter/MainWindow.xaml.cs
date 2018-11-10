@@ -47,6 +47,10 @@ namespace MasterConverter {
             App.Current.Shutdown();
         }
         private void oButto_intKonvertierer(object sender, RoutedEventArgs e) {
+            var oWindow = new Window_ShowEdit();
+            oWindow.Owner = this;
+            this.Visibility = Visibility.Hidden;
+            oWindow.ShowDialog();
             //Converter myConverter = new Converter();
             var return2 = this.myConverter.modHigh(6661);
             

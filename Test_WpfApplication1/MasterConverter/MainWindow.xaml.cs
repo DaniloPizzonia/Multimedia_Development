@@ -47,7 +47,7 @@ namespace MasterConverter {
             App.Current.Shutdown();
         }
         private void oButto_intKonvertierer(object sender, RoutedEventArgs e) {
-            var oWindow = new Window_ShowEdit();
+            var oWindow = new Window_ShowSelection();
             oWindow.Owner = this;
             this.Visibility = Visibility.Hidden;
             oWindow.ShowDialog();

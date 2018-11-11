@@ -1,0 +1,111 @@
+﻿<Window x:Class="MasterConverter.Window_ShowSelection"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MasterConverter"
+        mc:Ignorable="d"
+        Loaded="Window_Loaded"
+        Closed="Window_Closed"
+        Title="Window_ShowEdit" Height="321" Width="519" WindowStartupLocation="CenterOwner">
+    <Window.Resources>
+        <Style x:Key="myButton" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <ContentControl>
+                            <Grid>
+                                <Border Name="PressedBorder" BorderBrush="Gray" BorderThickness="1,1,2,2">
+                                    <ContentPresenter/>
+                                </Border>
+                                <Border Name="NormalBorder" BorderBrush="Black"  BorderThickness="2"/>
+                            </Grid>
+                        </ContentControl>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="Button.IsPressed" Value="True" >
+                                <Setter TargetName="NormalBorder" Property="BorderBrush" Value="Transparent" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid Name="oGrid_Edit">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="38*"/>
+            <RowDefinition Height="119*"/>
+            <RowDefinition Height="119*"/>
+            <RowDefinition Height="60*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="370*"/>
+            <ColumnDefinition Width="20*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Margin="0,0,1.2,4.4" Grid.Column="1" Grid.Row="0">
+            <TextBlock Name="oTextBlock_Title" Text="Popup Konverter" Margin="10,5,-0.4,0" FontSize="20" Height="35" VerticalAlignment="Top" />
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
+            <ToggleButton Checked="HandleCheck" Unchecked="HandleUnchecked" Width="50" Height="50" HorizontalAlignment="Center">
+                <Image Source="Images/right/r_1.png"/>
+            </ToggleButton>
+            
+            <ToggleButton Checked="HandleCheck" Unchecked="HandleUnchecked" Width="50" Height="50" HorizontalAlignment="Center">
+                <Image Source="Images/right/r_2.png"/>
+            </ToggleButton>
+
+            <ToggleButton Checked="HandleCheck" Unchecked="HandleUnchecked" Width="50" Height="50" HorizontalAlignment="Center">
+                <Image Source="Images/right/r_3.png"/>
+            </ToggleButton>
+
+            <ToggleButton Checked="HandleCheck" Unchecked="HandleUnchecked" Width="50" Height="50" HorizontalAlignment="Center">
+                <Image Source="Images/right/r_4.png"/>
+            </ToggleButton>
+            
+            <ToggleButton Checked="HandleCheck" Unchecked="HandleUnchecked" Width="50" Height="50" HorizontalAlignment="Center">
+                <Image Source="Images/right/r_5.png"/>
+            </ToggleButton>
+            
+            <ToggleButton Checked="HandleCheck" Unchecked="HandleUnchecked" Width="50" Height="50" HorizontalAlignment="Center">
+                <Image Source="Images/right/r_6.png"/>
+            </ToggleButton>
+
+            <ToggleButton Checked="HandleCheck" Unchecked="HandleUnchecked" Width="50" Height="50" HorizontalAlignment="Center">
+                <Image Source="Images/right/r_7.png"/>
+            </ToggleButton>
+
+            <ToggleButton Checked="HandleCheck" Unchecked="HandleUnchecked" Width="50" Height="50" HorizontalAlignment="Center">
+                <Image Source="Images/right/r_8.png"/>
+            </ToggleButton>
+
+            <ToggleButton Checked="HandleCheck" Unchecked="HandleUnchecked" Width="50" Height="50" HorizontalAlignment="Center">
+                <Image Source="Images/right/r_9.png"/>
+            </ToggleButton>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal">
+            <ToggleButton Checked="HandleCheck" Unchecked="HandleUnchecked" Width="50" Height="50" HorizontalAlignment="Center">
+                <Image Source="Images/left/l_1.png"/>
+            </ToggleButton>
+
+            <ToggleButton Checked="HandleCheck" Unchecked="HandleUnchecked" Width="50" Height="50" HorizontalAlignment="Center">
+                <Image Source="Images/left/l_2.png"/>
+            </ToggleButton>
+
+            <ToggleButton Checked="HandleCheck" Unchecked="HandleUnchecked" Width="50" Height="50" HorizontalAlignment="Center">
+                <Image Source="Images/left/l_3.png"/>
+            </ToggleButton>
+
+            <ToggleButton Checked="HandleCheck" Unchecked="HandleUnchecked" Width="50" Height="50" HorizontalAlignment="Center">
+                <Image Source="Images/left/l_4.png"/>
+            </ToggleButton>
+
+            <ToggleButton Checked="HandleCheck" Unchecked="HandleUnchecked" Width="50" Height="50" HorizontalAlignment="Center">
+                <Image Source="Images/left/l_5.png"/>
+            </ToggleButton>
+        </StackPanel>
+        <Button x:Name="oButton_SavePipe" Content="Speichern" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Top" Width="109" Height="32" Click="oButton_SavePipe_Click"/>
+    </Grid>
+</Window>

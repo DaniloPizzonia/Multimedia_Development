@@ -26,7 +26,20 @@
                         <StackPanel Orientation="Horizontal">
                             <TextBox x:Name="textBox_input" TextChanged="textBox_InputChanged" HorizontalAlignment="Center" Height="100" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="228" VerticalContentAlignment="Center" FontSize="60"  FontWeight="Bold" Margin="10,37"/>
                             <StackPanel Orientation="Horizontal" Width="260">
-                                <StackPanel x:Name="left" Orientation="Horizontal" HorizontalAlignment="Center" Width="66" Margin="20,67,10,64">
+                                <StackPanel x:Name="ganzleft" Orientation="Horizontal" HorizontalAlignment="Center" Width="66" Margin="0,67,0,64">
+                                    <Image x:Name="ganzleft_imageContainer_left" 
+                                       HorizontalAlignment="Right" 
+                                       Height="33.33" 
+                                       VerticalAlignment="Top" 
+                                       Width="32.33" Margin="0,10,0,0" />
+
+                                    <Image x:Name="ganzleft_imageContainer_right" 
+                                       HorizontalAlignment="Left" 
+                                       Height="33.33" 
+                                       VerticalAlignment="Top" 
+                                       Width="32.33" Margin="0,10,0,0" />
+                                </StackPanel>
+                                <StackPanel x:Name="left" Orientation="Horizontal" HorizontalAlignment="Center" Width="66" Margin="0,67,0,64">
                                     <Image x:Name="left_imageContainer_left" 
                                        HorizontalAlignment="Right" 
                                        Height="33.33" 
@@ -39,7 +52,7 @@
                                        VerticalAlignment="Top" 
                                        Width="32.33" Margin="0,10,0,0" />
                                 </StackPanel>
-                                <StackPanel x:Name="middle" Orientation="Horizontal" HorizontalAlignment="Center" Width="66" Margin="10,67,0,64">
+                                <StackPanel x:Name="middle" Orientation="Horizontal" HorizontalAlignment="Center" Width="66" Margin="0,67,0,64">
                                     <Image x:Name="middle_imageContainer_left" 
                                        HorizontalAlignment="Right" 
                                        Height="33.33" 
@@ -52,7 +65,7 @@
                                        VerticalAlignment="Top" 
                                        Width="32.33" Margin="0,10,0,0" />
                                 </StackPanel>
-                                <StackPanel x:Name="right" Orientation="Horizontal" HorizontalAlignment="Center" Grid.Column="1" Width="66" Margin="10,67,0,64">
+                                <StackPanel x:Name="right" Orientation="Horizontal" HorizontalAlignment="Center" Grid.Column="1" Width="66" Margin="0,67,0,64">
                                     <Image x:Name="right_imageContainer_left" 
                                        HorizontalAlignment="Right" 
                                        Height="33.33" 

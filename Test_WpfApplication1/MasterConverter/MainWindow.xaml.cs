@@ -78,6 +78,7 @@ namespace MasterConverter {
 
                     var return2 = this.myConverter.modHigh(fetchedUserInput);
 
+                    swapImages(myConverter.ganzLinkeSpalteBaby, ganzleft_imageContainer_left, ganzleft_imageContainer_right);
                     swapImages(myConverter.linkeSpalteBaby, left_imageContainer_left, left_imageContainer_right);
                     swapImages(myConverter.mittlereSpalteBaby, middle_imageContainer_left, middle_imageContainer_right);
                     swapImages(myConverter.rechteSpalteDecBaby, right_imageContainer_left, right_imageContainer_right);
@@ -130,33 +131,21 @@ namespace MasterConverter {
             switch(num) {
                 case 0:
                     imageContainer.Source = null;
-                    //left_imageContainer_left.Source = null;
-                    //middle_imageContainer_left.Source = null;
                     break;
                 case 1:
                     imageContainer.Source = new BitmapImage(new Uri(@"/Images/left/l_1.png", UriKind.Relative));
-                    //left_imageContainer_left.Source = new BitmapImage(new Uri(@"/Images/left/l_1.png", UriKind.Relative));
-                    //middle_imageContainer_left.Source = new BitmapImage(new Uri(@"/Images/left/l_1.png", UriKind.Relative));
                     break;
                 case 2:
                     imageContainer.Source = new BitmapImage(new Uri(@"/Images/left/l_2.png", UriKind.Relative));
-                    //left_imageContainer_left.Source = new BitmapImage(new Uri(@"/Images/left/l_2.png", UriKind.Relative));
-                    //middle_imageContainer_left.Source = new BitmapImage(new Uri(@"/Images/left/l_2.png", UriKind.Relative));
                     break;
                 case 3:
                     imageContainer.Source = new BitmapImage(new Uri(@"/Images/left/l_3.png", UriKind.Relative));
-                    //left_imageContainer_left.Source = new BitmapImage(new Uri(@"/Images/left/l_3.png", UriKind.Relative));
-                    //middle_imageContainer_left.Source = new BitmapImage(new Uri(@"/Images/left/l_3.png", UriKind.Relative));
                     break;
                 case 4:
                     imageContainer.Source = new BitmapImage(new Uri(@"/Images/left/l_4.png", UriKind.Relative));
-                    //left_imageContainer_left.Source = new BitmapImage(new Uri(@"/Images/left/l_4.png", UriKind.Relative));
-                    //middle_imageContainer_left.Source = new BitmapImage(new Uri(@"/Images/left/l_4.png", UriKind.Relative));
                     break;
                 case 5:
                     imageContainer.Source = new BitmapImage(new Uri(@"/Images/left/l_5.png", UriKind.Relative));
-                    //left_imageContainer_left.Source = new BitmapImage(new Uri(@"/Images/left/l_5.png", UriKind.Relative));
-                    //middle_imageContainer_left.Source = new BitmapImage(new Uri(@"/Images/left/l_5.png", UriKind.Relative));
                     break;
                 default:
                     break;
@@ -168,53 +157,33 @@ namespace MasterConverter {
             switch(numm) {
                 case 0:
                     imageContainer.Source = null;
-                    // left_imageContainer_right.Source = null;
-                    //middle_imageContainer_right.Source = null;
                     break;
                 case 1:
                     imageContainer.Source = new BitmapImage(new Uri(@"/Images/right/r_1.png", UriKind.Relative));
-                    //left_imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_1.png", UriKind.Relative));
-                    //middle_imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_1.png", UriKind.Relative));
                     break;
                 case 2:
                     imageContainer.Source = new BitmapImage(new Uri(@"/Images/right/r_2.png", UriKind.Relative));
-                    // left_imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_2.png", UriKind.Relative));
-                    // middle_imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_2.png", UriKind.Relative));
                     break;
                 case 3:
                     imageContainer.Source = new BitmapImage(new Uri(@"/Images/right/r_3.png", UriKind.Relative));
-                    // left_imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_3.png", UriKind.Relative));
-                    //middle_imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_3.png", UriKind.Relative));
                     break;
                 case 4:
                     imageContainer.Source = new BitmapImage(new Uri(@"/Images/right/r_4.png", UriKind.Relative));
-                    // left_imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_4.png", UriKind.Relative));
-                    //middle_imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_4.png", UriKind.Relative));
                     break;
                 case 5:
                     imageContainer.Source = new BitmapImage(new Uri(@"/Images/right/r_5.png", UriKind.Relative));
-                    // left_imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_5.png", UriKind.Relative));
-                    //middle_imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_5.png", UriKind.Relative));
                     break;
                 case 6:
                     imageContainer.Source = new BitmapImage(new Uri(@"/Images/right/r_6.png", UriKind.Relative));
-                    //left_imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_6.png", UriKind.Relative));
-                    //middle_imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_6.png", UriKind.Relative));
                     break;
                 case 7:
                     imageContainer.Source = new BitmapImage(new Uri(@"/Images/right/r_7.png", UriKind.Relative));
-                    // left_imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_7.png", UriKind.Relative));
-                    // middle_imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_7.png", UriKind.Relative));
                     break;
                 case 8:
                     imageContainer.Source = new BitmapImage(new Uri(@"/Images/right/r_8.png", UriKind.Relative));
-                    //left_imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_8.png", UriKind.Relative));
-                    //middle_imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_8.png", UriKind.Relative));
                     break;
                 case 9:
                     imageContainer.Source = new BitmapImage(new Uri(@"/Images/right/r_9.png", UriKind.Relative));
-                    // left_imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_9.png", UriKind.Relative));
-                    // middle_imageContainer_right.Source = new BitmapImage(new Uri(@"/Images/right/r_9.png", UriKind.Relative));
                     break;
                 default:
                     break;

@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -42,6 +43,9 @@ namespace MasterConverter {
 
         private void HandleCheck(object sender, RoutedEventArgs e) {
             //text2.Text = "Button is Checked";
+            ToggleButton bla = ((ToggleButton)sender);
+            var name = bla.Name;
+
         }
 
         private void HandleUnchecked(object sender, RoutedEventArgs e) {

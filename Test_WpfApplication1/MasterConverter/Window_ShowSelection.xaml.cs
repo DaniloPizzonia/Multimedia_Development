@@ -58,6 +58,11 @@ namespace MasterConverter {
             var value = Convert.ToInt32(Regex.Match(bla.Name, @"\d+").Value);
             isToggleCheckedLow = bla.IsChecked;
 
+            var sourceImage = ((BitmapFrame)(bla.Content as Image).Source).ToString();
+            // Here we call Regex.Match.
+            Match match = Regex.Match(sourceImage, @"/Images/(.*)");
+            var clickedImageSource = match.ToString();
+
             counterLow += 1;
 
             if((bool)isToggleCheckedLow && counterLow > 1) {
@@ -65,6 +70,7 @@ namespace MasterConverter {
                 counterLow = 1;
                 return;
             }
+            setPreview(single_imageContainer_right, clickedImageSource);
             oConverter.selectedSpalteBaby = value;
             MessageBox.Show(value.ToString());
         }
@@ -75,6 +81,11 @@ namespace MasterConverter {
             var value = Convert.ToInt32(Regex.Match(bla.Name, @"\d+").Value);
             isToggleCheckedHigh = bla.IsChecked;
 
+            var sourceImage = ((BitmapFrame)(bla.Content as Image).Source).ToString();
+            // Here we call Regex.Match.
+            Match match = Regex.Match(sourceImage, @"/Images/(.*)");
+            var clickedImageSource = match.ToString();
+           
             counterHigh += 1;
 
             if((bool)isToggleCheckedHigh && counterHigh > 1) {
@@ -82,8 +93,10 @@ namespace MasterConverter {
                 counterHigh = 1;
                 return;
             }
+            setPreview(single_imageContainer_left, clickedImageSource);
             oConverter.selectedSpalteBaby = value;
             MessageBox.Show(value.ToString());
+            var a = 1;
         }
 
         private void HandleUnchecked(object sender, RoutedEventArgs e) {
@@ -98,5 +111,11 @@ namespace MasterConverter {
                 counterHigh -= 1;
             }
         }
+
+        private void setPreview(Image image, string source) {
+
+            image.Source = new BitmapImage(new Uri(@"" + source, UriKind.Relative));
+        }
+
     }
 }

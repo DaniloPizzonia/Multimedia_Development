@@ -27,16 +27,19 @@ namespace MasterConverter {
 
         MainWindow oParentWindow;
         Converter oConverter;
+        //Helper oHelper;
+        List<Button> myButtonList;
         bool? isToggleCheckedLow;
         int counterLow;
 
         bool? isToggleCheckedHigh;
         int counterHigh;
 
-        public Window_ShowSelection(MainWindow oParentWindowCommit, Converter myConverter) {
+        public Window_ShowSelection(MainWindow oParentWindowCommit, Converter myConverter, List<Button> selectedPanelWithButtons) {
             // initiilize variables for using 
             oParentWindow = oParentWindowCommit;
             oConverter = myConverter;
+            myButtonList = selectedPanelWithButtons;
             InitializeComponent();
         }
         private void Window_Loaded(object sender, RoutedEventArgs e) {
@@ -63,6 +66,11 @@ namespace MasterConverter {
             Match match = Regex.Match(sourceImage, @"/Images/(.*)");
             var clickedImageSource = match.ToString();
 
+
+            var bttn = myButtonList[1];
+
+            setBtnImage(bttn, clickedImageSource);
+
             counterLow += 1;
 
             if((bool)isToggleCheckedLow && counterLow > 1) {
@@ -76,7 +84,8 @@ namespace MasterConverter {
         }
 
         private void HandleCheckHigh(object sender, RoutedEventArgs e) {
-            //text2.Text = "Button is Checked";
+           
+           
             ToggleButton bla = ((ToggleButton)sender);
             var value = Convert.ToInt32(Regex.Match(bla.Name, @"\d+").Value);
             isToggleCheckedHigh = bla.IsChecked;
@@ -85,7 +94,17 @@ namespace MasterConverter {
             // Here we call Regex.Match.
             Match match = Regex.Match(sourceImage, @"/Images/(.*)");
             var clickedImageSource = match.ToString();
-           
+
+
+            var bttn = myButtonList[0];
+
+            setBtnImage(bttn, clickedImageSource);
+
+            //foreach(Button oButton in myButtonList) {
+            //    Console.WriteLine(oButton.Name);
+            //setBtnImage(oButton, clickedImageSource);
+            //}
+
             counterHigh += 1;
 
             if((bool)isToggleCheckedHigh && counterHigh > 1) {
@@ -94,13 +113,13 @@ namespace MasterConverter {
                 return;
             }
             setPreview(single_imageContainer_left, clickedImageSource);
+
             oConverter.selectedSpalteBaby = value;
-            MessageBox.Show(value.ToString());
+            //MessageBox.Show(value.ToString());
             var a = 1;
         }
 
         private void HandleUnchecked(object sender, RoutedEventArgs e) {
-            //text2.Text = "Button is unchecked.";
             if(counterLow == 1) {
                 counterLow -= 1;
             }
@@ -115,6 +134,10 @@ namespace MasterConverter {
         private void setPreview(Image image, string source) {
 
             image.Source = new BitmapImage(new Uri(@"" + source, UriKind.Relative));
+        }
+
+        private void setBtnImage(Button btn, string source) {
+            (btn.Content as Image).Source = new BitmapImage(new Uri(@"" + source, UriKind.Relative));
         }
 
     }

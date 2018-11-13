@@ -70,6 +70,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\Helper.cs" />
     <Compile Include="Window_ShowSelection.xaml.cs">
       <DependentUpon>Window_ShowSelection.xaml</DependentUpon>
     </Compile>

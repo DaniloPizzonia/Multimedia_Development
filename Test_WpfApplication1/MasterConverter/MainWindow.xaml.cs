@@ -23,6 +23,7 @@ namespace MasterConverter {
         string sPathImages = Directory.GetCurrentDirectory() + @"\Images\";
         string _languageSettings = Properties.Settings.Default.sprache;
         private Converter myConverter = new Converter();
+        public Helper myhelper = new Helper();
         public enum Culture {
             en, de
         };
@@ -47,10 +48,10 @@ namespace MasterConverter {
             App.Current.Shutdown();
         }
         private void oButto_intKonvertierer(object sender, RoutedEventArgs e) {
-            var oWindow = new Window_ShowSelection(this, myConverter);
-            oWindow.Owner = this;
-            this.Visibility = Visibility.Hidden;
-            oWindow.ShowDialog();
+            //var oWindow = new Window_ShowSelection(this, myConverter, myhelper);
+            //oWindow.Owner = this;
+            //this.Visibility = Visibility.Hidden;
+            //oWindow.ShowDialog();
             //Converter myConverter = new Converter();
             //var return2 = this.myConverter.modHigh(6661);
             
@@ -93,23 +94,70 @@ namespace MasterConverter {
 
         private void oEventClick(object sender, RoutedEventArgs e) {
 
-            var oWindow = new Window_ShowSelection(this, myConverter);
-            oWindow.Owner = this;
-            this.Visibility = Visibility.Hidden;
-            oWindow.ShowDialog();
+          
 
             // invoke here the popup and fetch the result from the popup and insert it L/R
             var oBsender = (sender as Button);
             var oImage = (oBsender.Content as Image).Source;
             var oStackPanel = oBsender.Parent as StackPanel;
+            Console.WriteLine(oStackPanel.Name);
             IEnumerable<Button> aButton = (oStackPanel.Children as UIElementCollection).OfType<Button>();
 
-            foreach(Button oButton in aButton) {
-                Console.WriteLine(oButton.Name);
-                // insert here the URI after left the popup
-                //(oBsender.Content as Image).Source = new BitmapImage(new Uri(@"/Images/left/l_1.png", UriKind.Relative));
+
+            List<Button> selectedPanelWithButtons = new List<Button>();
+            switch(oStackPanel.Name) {
+                case "SP_veryHigh":
+                    if(myhelper.lButtonsVeryHigh.Count < 2) {
+                        foreach(Button oButton in aButton) {
+                            myhelper.lButtonsVeryHigh.Add(oButton);
+                            Console.WriteLine(oButton.Name);
+                        }
+                        
+                        // insert here the URI after left the popup
+                        //(oBsender.Content as Image).Source = new BitmapImage(new Uri(@"/Images/left/l_1.png", UriKind.Relative));
+                    }
+                    selectedPanelWithButtons = myhelper.lButtonsVeryHigh;
+                    break;
+                case "SP_high":
+                    if(myhelper.lButtonsHigh.Count < 2) {
+                        foreach(Button oButton in aButton) {
+                            myhelper.lButtonsHigh.Add(oButton);
+                            Console.WriteLine(oButton.Name);
+                        }
+                        
+                    }
+                    selectedPanelWithButtons = myhelper.lButtonsHigh;
+                    break;
+                case "SP_medium":
+                    if(myhelper.lButtonsMedium.Count < 2) {
+                        foreach(Button oButton in aButton) {
+                            myhelper.lButtonsMedium.Add(oButton);
+                            Console.WriteLine(oButton.Name);
+                        }
+                        
+                    }
+                    selectedPanelWithButtons = myhelper.lButtonsMedium;
+                    break;
+                case "SP_low":
+                    if(myhelper.lButtonslow.Count < 2) {
+                        foreach(Button oButton in aButton) {
+                            myhelper.lButtonslow.Add(oButton);
+                            Console.WriteLine(oButton.Name);
+                        }
+                        
+                    }
+                    selectedPanelWithButtons = myhelper.lButtonslow;
+                    break;
+                default:
+                    break;
             }
 
+            
+
+            var oWindow = new Window_ShowSelection(this, myConverter, selectedPanelWithButtons);
+            oWindow.Owner = this;
+            this.Visibility = Visibility.Hidden;
+            oWindow.ShowDialog();
             //(oBsender.Content as Image).Source = new BitmapImage(new Uri(@"/Images/left/l_1.png", UriKind.Relative));
         }
 

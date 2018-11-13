@@ -91,6 +91,28 @@ namespace MasterConverter {
             }           
         }
 
+        private void oEventClick(object sender, RoutedEventArgs e) {
+
+            var oWindow = new Window_ShowSelection(this, myConverter);
+            oWindow.Owner = this;
+            this.Visibility = Visibility.Hidden;
+            oWindow.ShowDialog();
+
+            // invoke here the popup and fetch the result from the popup and insert it L/R
+            var oBsender = (sender as Button);
+            var oImage = (oBsender.Content as Image).Source;
+            var oStackPanel = oBsender.Parent as StackPanel;
+            IEnumerable<Button> aButton = (oStackPanel.Children as UIElementCollection).OfType<Button>();
+
+            foreach(Button oButton in aButton) {
+                Console.WriteLine(oButton.Name);
+                // insert here the URI after left the popup
+                //(oBsender.Content as Image).Source = new BitmapImage(new Uri(@"/Images/left/l_1.png", UriKind.Relative));
+            }
+
+            //(oBsender.Content as Image).Source = new BitmapImage(new Uri(@"/Images/left/l_1.png", UriKind.Relative));
+        }
+
         private void cleanImageBoxes(int amount) {
             switch(amount) {
                 case 0:

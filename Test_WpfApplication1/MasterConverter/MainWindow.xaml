@@ -8,15 +8,14 @@
         xmlns:i18n="clr-namespace:MasterConverter.Properties"
         Loaded="Window_Loaded"
         Title="{x:Static i18n:Resources.appName}" Height="350" Width="525" WindowStartupLocation="CenterOwner" ResizeMode="CanMinimize">
-        <Grid Height="321">
-            <TabControl x:Name="tabControl" Height="321" Width="519">
-                <TabItem Name="oTabItem_decToBab" Header="Dec to Bab">
+    <Grid Height="321">
+        <TabControl x:Name="tabControl" Height="321" Width="519">
+            <TabItem Name="oTabItem_decToBab" Header="Dec to Bab">
                 <Grid>
                     <Grid.RowDefinitions>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                     </Grid.ColumnDefinitions>
-                    <Button x:Name="oButton_IntKonvertierer" HorizontalAlignment="Right" VerticalAlignment="Top" Height="22" Width="44"  Click="oButto_intKonvertierer" Margin="0,193,363,0"/>
                     <StackPanel VerticalAlignment="top">
                         <StackPanel Orientation="Horizontal">
                             <ComboBox x:Name="oComboBox_i18n" HorizontalAlignment="Left" VerticalAlignment="Top"  Width="46" SelectionChanged="oComboBox_i18n_SelectionChanged" Margin="405,10,0,0"/>
@@ -86,15 +85,93 @@
             <TabItem Name="oTabItem_babtoDec" Header="Bab to Dec">
                 <Grid>
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="38*"/>
+                        <RowDefinition Height="119*"/>
+                        <RowDefinition Height="60*"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="163*"/>
+                        <ColumnDefinition Width="10*"/>
                     </Grid.ColumnDefinitions>
-                </Grid>
+                    <StackPanel Grid.ColumnSpan="2" Grid.Row="2">
+                        <Button x:Name="oButton_IntKonvertierer" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="22" Width="44"  Click="oButto_intKonvertierer" Content="Open"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel x:Name="SP_veryHigh" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,67,0,64">
+                                <Button x:Name="_bttn_veryHigh_left" Click="oEventClick">
+                                    <Image x:Name="_veryHigh_imageContainer_left" 
+                                       HorizontalAlignment="Right" 
+                                       Height="33.33" 
+                                       VerticalAlignment="Top" 
+                                       Width="32.33" />
+                                </Button>
+                                <Button x:Name="_bttn_veryHigh_right" Click="oEventClick">
+                                    <Image x:Name="_veryHigh_imageContainer_right" 
+                                       HorizontalAlignment="Left" 
+                                       Height="33.33" 
+                                       VerticalAlignment="Top" 
+                                       Width="32.33" />
+                                </Button>
+                            </StackPanel>
+                            <StackPanel x:Name="SP_high" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,67,0,64">
+                                <Button x:Name="_bttn_high_left" Click="oEventClick">
+                                    <Image x:Name="_high_imageContainer_left" 
+                                       HorizontalAlignment="Right" 
+                                       Height="33.33" 
+                                       VerticalAlignment="Top" 
+                                       Width="32.33" />
+                                </Button>
+                                <Button x:Name="_bttn_high_right" Click="oEventClick">
+                                    <Image x:Name="_high_imageContainer_right" 
+                                       HorizontalAlignment="Left" 
+                                       Height="33.33" 
+                                       VerticalAlignment="Top" 
+                                       Width="32.33" />
+                                </Button>
+                            </StackPanel>
+                            <StackPanel x:Name="SP_medium" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,67,0,64">
+                                <Button x:Name="_bttn_medium_left" Click="oEventClick">
+                                    <Image x:Name="_medium_imageContainer_left" 
+                                       HorizontalAlignment="Right" 
+                                       Height="33.33" 
+                                       VerticalAlignment="Top" 
+                                       Width="32.33" />
+                                </Button>
+                                <Button x:Name="_bttn_medium_right" Click="oEventClick">
+                                    <Image x:Name="_medium_imageContainer_right" 
+                                       HorizontalAlignment="Left" 
+                                       Height="33.33" 
+                                       VerticalAlignment="Top" 
+                                       Width="32.33" />
+                                </Button>
+                            </StackPanel>
+                            <StackPanel x:Name="SP_low" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,67,0,64">
+                                <Button x:Name="_bttn_low_left" Click="oEventClick">
+                                    <Image x:Name="_low_imageContainer_left" 
+                                       HorizontalAlignment="Right" 
+                                       Height="33.33" 
+                                       VerticalAlignment="Top" 
+                                       Width="32.33" />
+                                </Button>
+                                <Button x:Name="_bttn_low_right" Click="oEventClick">
+                                    <Image x:Name="_low_imageContainer_right" 
+                                       HorizontalAlignment="Left" 
+                                       Height="33.33" 
+                                       VerticalAlignment="Top" 
+                                       Width="32.33" />
+                                </Button>
+                            </StackPanel>
+                        </StackPanel>
+                      </StackPanel>
+                    </Grid>
+
             </TabItem>
         </TabControl>
-            
-            
-      
-        </Grid>
+
+
+
+    </Grid>
 
 </Window>

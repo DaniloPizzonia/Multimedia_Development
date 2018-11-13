@@ -47,18 +47,18 @@ namespace MasterConverter {
             App.Current.Shutdown();
         }
         private void oButto_intKonvertierer(object sender, RoutedEventArgs e) {
-            var oWindow = new Window_ShowSelection();
+            var oWindow = new Window_ShowSelection(this, myConverter);
             oWindow.Owner = this;
             this.Visibility = Visibility.Hidden;
             oWindow.ShowDialog();
             //Converter myConverter = new Converter();
-            var return2 = this.myConverter.modHigh(6661);
+            //var return2 = this.myConverter.modHigh(6661);
             
 
             swapImages(myConverter.linkeSpalteBaby, left_imageContainer_left, left_imageContainer_right);
             swapImages(myConverter.mittlereSpalteBaby, middle_imageContainer_left, middle_imageContainer_right);
             swapImages(myConverter.rechteSpalteDecBaby, right_imageContainer_left, right_imageContainer_right);
-            System.Windows.MessageBox.Show(return2);
+            //System.Windows.MessageBox.Show(return2);
         }
 
         private void textBox_InputChanged(object sender, TextChangedEventArgs e) {

@@ -23,6 +23,10 @@ namespace MasterConverter.Classes {
         public int rechteSpalteDecBaby { get; set; }
 
 
+        public int selectedSpalteBaby { get; set; }
+        public int selectedSpalteDec { get; set; }
+
+
         public string modHigh(int userInitalInput) {
             // x 3600
             this.userInput = userInitalInput;

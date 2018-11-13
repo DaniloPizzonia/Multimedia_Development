@@ -11,16 +11,16 @@ namespace MasterConverter.Classes {
 
         public int userInput { get; set; }
 
-        public int linkeSpalteDec { get; set; }
+        public int linkeSpalteDec { get; set; } // high
         public int linkeSpalteBaby{ get; set; }
 
-        public int ganzLinkeSpalteDec { get; set; }
+        public int ganzLinkeSpalteDec { get; set; } // veryhigh
         public int ganzLinkeSpalteBaby { get; set; }
 
-        public int mittlereSpalteDec { get; set; }
+        public int mittlereSpalteDec { get; set; } // medium
         public int mittlereSpalteBaby { get; set; }
 
-        public int rechteSpalteDecBaby { get; set; }
+        public int rechteSpalteDecBaby { get; set; } // low
 
 
         public int selectedSpalteBaby { get; set; }
@@ -74,6 +74,15 @@ namespace MasterConverter.Classes {
                    "| " + this.rechteSpalteDecBaby;
             MessageBox.Show(sAll);
             return mult;
+        }
+        
+        public int babToDec(int a, int b, int c, int d) {
+            int veryHigh = 216000, high = 3600, medium = 60;
+            a *= veryHigh;
+            b *= high;
+            c *= medium;
+            
+            return a + b + c + d;
         } 
 
     }

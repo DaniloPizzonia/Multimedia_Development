@@ -51,8 +51,31 @@ namespace MasterConverter {
         }
 
         private void oButton_SavePipe_Click(object sender, RoutedEventArgs e) {
+            Console.WriteLine(oConverter.babToDec(oConverter.ganzLinkeSpalteBaby, oConverter.linkeSpalteBaby, oConverter.mittlereSpalteBaby, oConverter.rechteSpalteDecBaby));
+            oParentWindow.textBox_output.Text = oConverter.babToDec(oConverter.ganzLinkeSpalteBaby, oConverter.linkeSpalteBaby, oConverter.mittlereSpalteBaby, oConverter.rechteSpalteDecBaby).ToString();
             this.Owner.Visibility = Visibility.Visible;
             this.Close();
+
+        }
+
+        private void saveValuesBabToDec(string StackpanelName, int value) {
+            switch(StackpanelName) {
+                case "SP_veryHigh":
+                    oConverter.ganzLinkeSpalteBaby = value;
+                    break;
+                case "SP_high":
+                    oConverter.linkeSpalteBaby += value;
+                    break;
+                case "SP_medium":
+                    oConverter.mittlereSpalteBaby += value;
+                    break;
+                case "SP_low":
+                    oConverter.rechteSpalteDecBaby += value;
+                    break;
+                default:
+                    break;
+
+            }
         }
 
         private void HandleCheck(object sender, RoutedEventArgs e) {
@@ -60,7 +83,6 @@ namespace MasterConverter {
             ToggleButton bla = ((ToggleButton)sender);
             var value = Convert.ToInt32(Regex.Match(bla.Name, @"\d+").Value);
             isToggleCheckedLow = bla.IsChecked;
-
             var sourceImage = ((BitmapFrame)(bla.Content as Image).Source).ToString();
             // Here we call Regex.Match.
             Match match = Regex.Match(sourceImage, @"/Images/(.*)");
@@ -70,7 +92,9 @@ namespace MasterConverter {
             var bttn = myButtonList[1];
 
             setBtnImage(bttn, clickedImageSource);
+            var stackpanel_name_from_button = (bttn.Parent as StackPanel).Name;
 
+            saveValuesBabToDec(stackpanel_name_from_button, value);
             counterLow += 1;
 
             if((bool)isToggleCheckedLow && counterLow > 1) {
@@ -80,7 +104,7 @@ namespace MasterConverter {
             }
             setPreview(single_imageContainer_right, clickedImageSource);
             oConverter.selectedSpalteBaby = value;
-            MessageBox.Show(value.ToString());
+            //MessageBox.Show(value.ToString());
         }
 
         private void HandleCheckHigh(object sender, RoutedEventArgs e) {
@@ -95,16 +119,12 @@ namespace MasterConverter {
             Match match = Regex.Match(sourceImage, @"/Images/(.*)");
             var clickedImageSource = match.ToString();
 
-
             var bttn = myButtonList[0];
 
             setBtnImage(bttn, clickedImageSource);
+            var stackpanel_name_from_button = (bttn.Parent as StackPanel).Name;
 
-            //foreach(Button oButton in myButtonList) {
-            //    Console.WriteLine(oButton.Name);
-            //setBtnImage(oButton, clickedImageSource);
-            //}
-
+            saveValuesBabToDec(stackpanel_name_from_button, value);
             counterHigh += 1;
 
             if((bool)isToggleCheckedHigh && counterHigh > 1) {

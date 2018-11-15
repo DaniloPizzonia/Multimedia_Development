@@ -29,7 +29,15 @@ namespace MasterConverter {
         public enum Culture {
             en, de
         };
+
+        public string currentStackpanel { get; set; }
+        public string newStackpanel { get; set; }
+        public string oldStackpanel { get; set; }
+
         public MainWindow() {
+            this.currentStackpanel = "SP_low";
+            this.newStackpanel = "";
+            this.oldStackpanel = "";
             Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(_languageSettings);
             Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(_languageSettings);
             InitializeComponent();
@@ -37,7 +45,7 @@ namespace MasterConverter {
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
             oComboBox_i18n.ItemsSource = Enum.GetValues(typeof(Culture));
-            textBox_input.MaxLength = 6;
+            textBox_input.MaxLength = 8;
         }
 
         private void oComboBox_i18n_SelectionChanged(object sender, SelectionChangedEventArgs e) {
@@ -170,7 +178,14 @@ namespace MasterConverter {
                     break;
             }
 
-            
+            this.oldStackpanel = currentStackpanel;
+            this.currentStackpanel = oStackPanel.Name;
+            this.newStackpanel = "";
+
+
+                this.bttn2 = 0;
+                this.bttn1 = 0;
+            Console.WriteLine("After clicked new panel=> bttn1: " + this.bttn1 + " bttn2: " + this.bttn2);
 
             var oWindow = new Window_ShowSelection(this, myConverter, selectedPanelWithButtons);
             oWindow.Owner = this;
@@ -223,6 +238,8 @@ namespace MasterConverter {
             _medium_imageContainer_right.Source = null;
             _low_imageContainer_left.Source = null;
             _low_imageContainer_right.Source = null;
+            this.bttn1 = 0;
+            this.bttn2 = 0;
         }
 
         private void swapImages(float input, Image imageContainerLeft, Image imageContainerRight) {

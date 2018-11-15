@@ -31,6 +31,7 @@ namespace MasterConverter {
         List<Button> myButtonList;
         bool? isToggleCheckedLow;
         int counterLow;
+   
         
 
         bool? isToggleCheckedHigh;
@@ -62,7 +63,7 @@ namespace MasterConverter {
                 oParentWindow.SP_veryHigh.Visibility = Visibility.Visible;
             }
 
-            Console.WriteLine(oConverter.babToDec(oConverter.ganzLinkeSpalteBaby, oConverter.linkeSpalteBaby, oConverter.mittlereSpalteBaby, oConverter.rechteSpalteDecBaby));
+            //Console.WriteLine(oConverter.babToDec(oConverter.ganzLinkeSpalteBaby, oConverter.linkeSpalteBaby, oConverter.mittlereSpalteBaby, oConverter.rechteSpalteDecBaby));
             oParentWindow.textBox_output.Text = oConverter.babToDec(oConverter.ganzLinkeSpalteBaby, oConverter.linkeSpalteBaby, oConverter.mittlereSpalteBaby, oConverter.rechteSpalteDecBaby).ToString();
             this.Owner.Visibility = Visibility.Visible;
             this.Close();
@@ -101,13 +102,10 @@ namespace MasterConverter {
 
 
             var bttn = myButtonList[1];
-            if(oParentWindow.bttn2 == 0) {
-                single_imageContainer_right.Source = null;
-                (bttn.Content as Image).Source = null;
-            }
 
             setBtnImage(bttn, clickedImageSource);
             var stackpanel_name_from_button = (bttn.Parent as StackPanel).Name;
+
             oParentWindow.bttn2 = 0;
             oParentWindow.bttn2 = value;
             value = oParentWindow.bttn2 + oParentWindow.bttn1;
@@ -138,10 +136,6 @@ namespace MasterConverter {
             var clickedImageSource = match.ToString();
 
             var bttn = myButtonList[0];
-            if(oParentWindow.bttn1 == 0) {
-                single_imageContainer_right.Source = null;
-                (bttn.Content as Image).Source = null;
-            }
 
             setBtnImage(bttn, clickedImageSource);
             var stackpanel_name_from_button = (bttn.Parent as StackPanel).Name;
@@ -149,6 +143,7 @@ namespace MasterConverter {
             oParentWindow.bttn1 = 0;
             oParentWindow.bttn1 = value;
             value = oParentWindow.bttn2 + oParentWindow.bttn1;
+            Console.WriteLine(" Bttn1: " + oParentWindow.bttn1);
             saveValuesBabToDec(stackpanel_name_from_button, value);
             counterHigh += 1;
 

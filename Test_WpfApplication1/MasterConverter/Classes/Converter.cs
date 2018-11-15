@@ -37,7 +37,7 @@ namespace MasterConverter.Classes {
             var multiplier = 0; ;
             if(this.userInput >= veryHigh) {
                 multiplier = this.userInput / veryHigh;
-                this.userInput -= veryHigh;
+                this.userInput -= veryHigh * multiplier;
             }
             this.ganzLinkeSpalteBaby = multiplier;
             this.ganzLinkeSpalteDec = multiplier * veryHigh;
@@ -68,12 +68,12 @@ namespace MasterConverter.Classes {
             this.rechteSpalteDecBaby = tempErg % mid;
 
             string sAll = "ganz linke Spalte Dec: " + this.ganzLinkeSpalteDec + " " + " ganz linke Spalte Baby: " + this.ganzLinkeSpalteBaby +
-                    "linke Spalte Dec: " + this.linkeSpalteDec + " " + " linke Spalte Baby: " + this.linkeSpalteBaby +
-                    "| mittlere Spalte Dec: " + this.mittlereSpalteDec + " mittlere Spalte Baby: " + this.mittlereSpalteBaby +
-                    "| rechte Spalte Dec: " + this.rechteSpalteDecBaby;
+                    " linke Spalte Dec: " + this.linkeSpalteDec + " " + " linke Spalte Baby: " + this.linkeSpalteBaby +
+                    " | mittlere Spalte Dec: " + this.mittlereSpalteDec + " mittlere Spalte Baby: " + this.mittlereSpalteBaby +
+                    " | rechte Spalte Dec: " + this.rechteSpalteDecBaby;
             string mult = this.linkeSpalteBaby +
-                   "| " + this.mittlereSpalteBaby +
-                   "| " + this.rechteSpalteDecBaby;
+                   " | " + this.mittlereSpalteBaby +
+                   " | " + this.rechteSpalteDecBaby;
             //MessageBox.Show(sAll);
             return mult;
         }
@@ -83,8 +83,8 @@ namespace MasterConverter.Classes {
             a *= veryHigh;
             b *= high;
             c *= medium;
-            
-            return a + b + c + d;
+            var erg = a + b + c + d;
+            return erg;
         } 
 
         public void cleanProps() {

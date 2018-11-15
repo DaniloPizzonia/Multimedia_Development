@@ -23,7 +23,7 @@
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal">
-                            <TextBox x:Name="textBox_input" TextChanged="textBox_InputChanged" HorizontalAlignment="Center" Height="100" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="228" VerticalContentAlignment="Center" FontSize="60"  FontWeight="Bold" Margin="10,37"/>
+                            <TextBox x:Name="textBox_input" TextChanged="textBox_InputChanged" HorizontalAlignment="Center" Height="100" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="245" VerticalContentAlignment="Center" FontSize="50"  FontWeight="Bold" Margin="3,37,0,20"/>
                             <StackPanel Orientation="Horizontal" Width="260">
                                 <StackPanel x:Name="ganzleft" Orientation="Horizontal" HorizontalAlignment="Center" Width="66" Margin="0,67,0,64">
                                     <Image x:Name="ganzleft_imageContainer_left" 

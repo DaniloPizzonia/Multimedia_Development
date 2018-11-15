@@ -49,76 +49,85 @@
             <TextBlock Name="oTextBlock_Title" Text="Popup Konverter" Margin="10,5,-0.4,0" FontSize="20" Height="35" VerticalAlignment="Top" />
         </StackPanel>
         <StackPanel x:Name="ganzleft" Orientation="Horizontal" HorizontalAlignment="Center" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2">
+            <Border CornerRadius="6" BorderBrush="red" BorderThickness="2" DockPanel.Dock="Top" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Height="70" Width="70" >
                 <Image x:Name="single_imageContainer_left" 
                                        HorizontalAlignment="Right" 
-                                       Height="100" 
+                                       Height="70" 
                                        VerticalAlignment="Top" 
-                                       Width="100" Margin="0,10,0,0" />
-
+                                       Width="70" />
+            </Border>
+            <Border CornerRadius="6" BorderBrush="Blue" BorderThickness="2" DockPanel.Dock="Top" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Height="70" Width="70" >
                 <Image x:Name="single_imageContainer_right" 
                                        HorizontalAlignment="Left" 
-                                       Height="100" 
+                                       Height="70" 
                                        VerticalAlignment="Top" 
-                                       Width="100" Margin="0,10,0,0" />
+                                       Width="70" />
+            </Border>
         </StackPanel>
-        <StackPanel Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal">
-            <ToggleButton Name="toggle_1" Checked="HandleCheck" Unchecked="HandleUnchecked" Width="50" Height="50" HorizontalAlignment="Center">
-                <Image Source="Images/right/r_1.png"/>
-            </ToggleButton>
+        <Border CornerRadius="6" BorderBrush="Blue" BorderThickness="2" DockPanel.Dock="Top" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Height="60"  Width="460" Padding="2">
+            <StackPanel  Orientation="Horizontal">
+                <ToggleButton Name="toggle_1" Checked="HandleCheck" Unchecked="HandleUnchecked" Width="50" Height="50" HorizontalAlignment="Center">
+                    <Image Source="Images/right/r_1.png"/>
+                </ToggleButton>
 
-            <ToggleButton Name="toggle_2" Checked="HandleCheck" Unchecked="HandleUnchecked" Width="50" Height="50" HorizontalAlignment="Center">
-                <Image Source="Images/right/r_2.png"/>
-            </ToggleButton>
+                <ToggleButton Name="toggle_2" Checked="HandleCheck" Unchecked="HandleUnchecked" Width="50" Height="50" HorizontalAlignment="Center">
+                    <Image Source="Images/right/r_2.png"/>
+                </ToggleButton>
 
-            <ToggleButton Name="toggle_3" Checked="HandleCheck" Unchecked="HandleUnchecked" Width="50" Height="50" HorizontalAlignment="Center">
-                <Image Source="Images/right/r_3.png"/>
-            </ToggleButton>
+                <ToggleButton Name="toggle_3" Checked="HandleCheck" Unchecked="HandleUnchecked" Width="50" Height="50" HorizontalAlignment="Center">
+                    <Image Source="Images/right/r_3.png"/>
+                </ToggleButton>
 
-            <ToggleButton Name="toggle_4" Checked="HandleCheck" Unchecked="HandleUnchecked" Width="50" Height="50" HorizontalAlignment="Center">
-                <Image Source="Images/right/r_4.png"/>
-            </ToggleButton>
+                <ToggleButton Name="toggle_4" Checked="HandleCheck" Unchecked="HandleUnchecked" Width="50" Height="50" HorizontalAlignment="Center">
+                    <Image Source="Images/right/r_4.png"/>
+                </ToggleButton>
 
-            <ToggleButton Name="toggle_5" Checked="HandleCheck" Unchecked="HandleUnchecked" Width="50" Height="50" HorizontalAlignment="Center">
-                <Image Source="Images/right/r_5.png"/>
-            </ToggleButton>
+                <ToggleButton Name="toggle_5" Checked="HandleCheck" Unchecked="HandleUnchecked" Width="50" Height="50" HorizontalAlignment="Center">
+                    <Image Source="Images/right/r_5.png"/>
+                </ToggleButton>
 
-            <ToggleButton Name="toggle_6" Checked="HandleCheck" Unchecked="HandleUnchecked" Width="50" Height="50" HorizontalAlignment="Center">
-                <Image Source="Images/right/r_6.png"/>
-            </ToggleButton>
+                <ToggleButton Name="toggle_6" Checked="HandleCheck" Unchecked="HandleUnchecked" Width="50" Height="50" HorizontalAlignment="Center">
+                    <Image Source="Images/right/r_6.png"/>
+                </ToggleButton>
 
-            <ToggleButton Name="toggle_7" Checked="HandleCheck" Unchecked="HandleUnchecked" Width="50" Height="50" HorizontalAlignment="Center">
-                <Image Source="Images/right/r_7.png"/>
-            </ToggleButton>
+                <ToggleButton Name="toggle_7" Checked="HandleCheck" Unchecked="HandleUnchecked" Width="50" Height="50" HorizontalAlignment="Center">
+                    <Image Source="Images/right/r_7.png"/>
+                </ToggleButton>
 
-            <ToggleButton Name="toggle_8" Checked="HandleCheck" Unchecked="HandleUnchecked" Width="50" Height="50" HorizontalAlignment="Center">
-                <Image Source="Images/right/r_8.png"/>
-            </ToggleButton>
+                <ToggleButton Name="toggle_8" Checked="HandleCheck" Unchecked="HandleUnchecked" Width="50" Height="50" HorizontalAlignment="Center">
+                    <Image Source="Images/right/r_8.png"/>
+                </ToggleButton>
 
-            <ToggleButton Name="toggle_9" Checked="HandleCheck" Unchecked="HandleUnchecked" Width="50" Height="50" HorizontalAlignment="Center">
-                <Image Source="Images/right/r_9.png"/>
-            </ToggleButton>
-        </StackPanel>
-        <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
-            <ToggleButton Name="toggle_10" Checked="HandleCheckHigh" Unchecked="HandleUncheckedHigh" Width="50" Height="50" HorizontalAlignment="Center">
-                <Image Source="Images/left/l_1.png"/>
-            </ToggleButton>
+                <ToggleButton Name="toggle_9" Checked="HandleCheck" Unchecked="HandleUnchecked" Width="50" Height="50" HorizontalAlignment="Center">
+                    <Image Source="Images/right/r_9.png"/>
+                </ToggleButton>
+            </StackPanel>
+        </Border>
+        <Border Grid.Column="1" Grid.Row="1" CornerRadius="6" BorderBrush="Red" BorderThickness="2" DockPanel.Dock="Top"  Margin="0,0,0,10">
+            <StackPanel  Orientation="Horizontal">
+                <ToggleButton Name="toggle_10" Checked="HandleCheckHigh" Unchecked="HandleUncheckedHigh" Width="50" Height="50" HorizontalAlignment="Center">
+                    <Image Source="Images/left/l_1.png"/>
+                </ToggleButton>
 
-            <ToggleButton Name="toggle_20" Checked="HandleCheckHigh" Unchecked="HandleUncheckedHigh" Width="50" Height="50" HorizontalAlignment="Center">
-                <Image Source="Images/left/l_2.png"/>
-            </ToggleButton>
+                <ToggleButton Name="toggle_20" Checked="HandleCheckHigh" Unchecked="HandleUncheckedHigh" Width="50" Height="50" HorizontalAlignment="Center">
+                    <Image Source="Images/left/l_2.png"/>
+                </ToggleButton>
 
-            <ToggleButton Name="toggle_30" Checked="HandleCheckHigh" Unchecked="HandleUncheckedHigh" Width="50" Height="50" HorizontalAlignment="Center">
-                <Image Source="Images/left/l_3.png"/>
-            </ToggleButton>
+                <ToggleButton Name="toggle_30" Checked="HandleCheckHigh" Unchecked="HandleUncheckedHigh" Width="50" Height="50" HorizontalAlignment="Center">
+                    <Image Source="Images/left/l_3.png"/>
+                </ToggleButton>
 
-            <ToggleButton Name="toggle_40" Checked="HandleCheckHigh" Unchecked="HandleUncheckedHigh" Width="50" Height="50" HorizontalAlignment="Center">
-                <Image Source="Images/left/l_4.png"/>
-            </ToggleButton>
+                <ToggleButton Name="toggle_40" Checked="HandleCheckHigh" Unchecked="HandleUncheckedHigh" Width="50" Height="50" HorizontalAlignment="Center">
+                    <Image Source="Images/left/l_4.png"/>
+                </ToggleButton>
 
-            <ToggleButton Name="toggle_50" Checked="HandleCheckHigh" Unchecked="HandleUncheckedHigh" Width="50" Height="50" HorizontalAlignment="Center">
-                <Image Source="Images/left/l_5.png"/>
-            </ToggleButton>
-        </StackPanel>
+                <ToggleButton Name="toggle_50" Checked="HandleCheckHigh" Unchecked="HandleUncheckedHigh" Width="50" Height="50" HorizontalAlignment="Center">
+                    <Image Source="Images/left/l_5.png"/>
+                </ToggleButton>
+            </StackPanel>
+        </Border>
+
+
         <Button x:Name="oButton_SavePipe" Content="Speichern" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Top" Width="109" Height="32" Click="oButton_SavePipe_Click"/>
     </Grid>
 </Window>

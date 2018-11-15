@@ -31,6 +31,7 @@ namespace MasterConverter {
         List<Button> myButtonList;
         bool? isToggleCheckedLow;
         int counterLow;
+        
 
         bool? isToggleCheckedHigh;
         int counterHigh;
@@ -64,13 +65,13 @@ namespace MasterConverter {
                     oConverter.ganzLinkeSpalteBaby = value;
                     break;
                 case "SP_high":
-                    oConverter.linkeSpalteBaby += value;
+                    oConverter.linkeSpalteBaby = value;
                     break;
                 case "SP_medium":
-                    oConverter.mittlereSpalteBaby += value;
+                    oConverter.mittlereSpalteBaby = value;
                     break;
                 case "SP_low":
-                    oConverter.rechteSpalteDecBaby += value;
+                    oConverter.rechteSpalteDecBaby = value;
                     break;
                 default:
                     break;
@@ -81,7 +82,7 @@ namespace MasterConverter {
         private void HandleCheck(object sender, RoutedEventArgs e) {
             //text2.Text = "Button is Checked";
             ToggleButton bla = ((ToggleButton)sender);
-            var value = Convert.ToInt32(Regex.Match(bla.Name, @"\d+").Value);
+            int value = Convert.ToInt32(Regex.Match(bla.Name, @"\d+").Value);
             isToggleCheckedLow = bla.IsChecked;
             var sourceImage = ((BitmapFrame)(bla.Content as Image).Source).ToString();
             // Here we call Regex.Match.
@@ -93,7 +94,9 @@ namespace MasterConverter {
 
             setBtnImage(bttn, clickedImageSource);
             var stackpanel_name_from_button = (bttn.Parent as StackPanel).Name;
-
+            oParentWindow.bttn2 = 0;
+            oParentWindow.bttn2 = value;
+            value = oParentWindow.bttn2 + oParentWindow.bttn1;
             saveValuesBabToDec(stackpanel_name_from_button, value);
             counterLow += 1;
 
@@ -124,6 +127,9 @@ namespace MasterConverter {
             setBtnImage(bttn, clickedImageSource);
             var stackpanel_name_from_button = (bttn.Parent as StackPanel).Name;
 
+            oParentWindow.bttn1 = 0;
+            oParentWindow.bttn1 = value;
+            value = oParentWindow.bttn2 + oParentWindow.bttn1;
             saveValuesBabToDec(stackpanel_name_from_button, value);
             counterHigh += 1;
 

@@ -24,6 +24,8 @@ namespace MasterConverter {
         string _languageSettings = Properties.Settings.Default.sprache;
         private Converter myConverter = new Converter();
         public Helper myhelper = new Helper();
+        public int bttn1 { get; set; }
+        public int bttn2 { get; set; }
         public enum Culture {
             en, de
         };
@@ -54,12 +56,20 @@ namespace MasterConverter {
             //oWindow.ShowDialog();
             //Converter myConverter = new Converter();
             //var return2 = this.myConverter.modHigh(6661);
-            
+
+            myConverter.cleanProps();
 
             swapImages(myConverter.linkeSpalteBaby, left_imageContainer_left, left_imageContainer_right);
             swapImages(myConverter.mittlereSpalteBaby, middle_imageContainer_left, middle_imageContainer_right);
             swapImages(myConverter.rechteSpalteDecBaby, right_imageContainer_left, right_imageContainer_right);
             //System.Windows.MessageBox.Show(return2);
+        }
+
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            if(oTabItem_babtoDec.IsSelected) {
+                myConverter.cleanProps();
+                cleanTextBoxBabToDec();
+            }
         }
 
         private void textBox_InputChanged(object sender, TextChangedEventArgs e) {
@@ -108,6 +118,7 @@ namespace MasterConverter {
             switch(oStackPanel.Name) {
                 case "SP_veryHigh":
                     if(myhelper.lButtonsVeryHigh.Count < 2) {
+                        //addButtonsFromStackPanel(aButton, myhelper);
                         foreach(Button oButton in aButton) {
                             myhelper.lButtonsVeryHigh.Add(oButton);
                             Console.WriteLine(oButton.Name);
@@ -161,6 +172,13 @@ namespace MasterConverter {
             //(oBsender.Content as Image).Source = new BitmapImage(new Uri(@"/Images/left/l_1.png", UriKind.Relative));
         }
 
+        private void addButtonsFromStackPanel(IEnumerable<Button> aButton, Helper myhelper) {
+            foreach(Button oButton in aButton) {
+                myhelper.lButtonslow.Add(oButton);
+                Console.WriteLine(oButton.Name);
+            }
+        }
+
         private void cleanImageBoxes(int amount) {
             switch(amount) {
                 case 0:
@@ -186,6 +204,18 @@ namespace MasterConverter {
                 default:
                     break;
             }
+        }
+
+        private void cleanTextBoxBabToDec() {
+            textBox_output.Text = "";
+            _veryHigh_imageContainer_left.Source = null;
+            _veryHigh_imageContainer_right.Source = null;
+            _high_imageContainer_left.Source = null;
+            _high_imageContainer_right.Source = null;
+            _medium_imageContainer_left.Source = null;
+            _medium_imageContainer_right.Source = null;
+            _low_imageContainer_left.Source = null;
+            _low_imageContainer_right.Source = null;
         }
 
         private void swapImages(float input, Image imageContainerLeft, Image imageContainerRight) {

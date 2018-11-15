@@ -74,7 +74,7 @@ namespace MasterConverter.Classes {
             string mult = this.linkeSpalteBaby +
                    "| " + this.mittlereSpalteBaby +
                    "| " + this.rechteSpalteDecBaby;
-            MessageBox.Show(sAll);
+            //MessageBox.Show(sAll);
             return mult;
         }
         
@@ -86,6 +86,24 @@ namespace MasterConverter.Classes {
             
             return a + b + c + d;
         } 
+
+        public void cleanProps() {
+            this.userInput = 0; 
+
+            this.linkeSpalteDec = 0;
+            this.linkeSpalteBaby = 0;
+
+            this.ganzLinkeSpalteDec = 0;
+            this.ganzLinkeSpalteBaby = 0;
+
+            this.mittlereSpalteDec = 0;
+                this.mittlereSpalteBaby = 0;
+
+            this.rechteSpalteDecBaby = 0;
+            
+            this.selectedSpalteBaby = 0;
+            this.selectedSpalteDec = 0;
+        }
 
     }
 }

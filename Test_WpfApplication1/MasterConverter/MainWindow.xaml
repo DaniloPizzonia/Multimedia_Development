@@ -9,7 +9,7 @@
         Loaded="Window_Loaded"
         Title="{x:Static i18n:Resources.appName}" Height="350" Width="525" WindowStartupLocation="CenterOwner" ResizeMode="CanMinimize">
     <Grid Height="321">
-        <TabControl x:Name="tabControl" Height="321" Width="519">
+        <TabControl x:Name="tabControl" Height="321" Width="519" SelectionChanged="TabControl_SelectionChanged">
             <TabItem Name="oTabItem_decToBab" Header="Dec to Bab">
                 <Grid>
                     <Grid.RowDefinitions>

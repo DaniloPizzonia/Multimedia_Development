@@ -69,6 +69,16 @@ namespace MasterConverter {
             if(oTabItem_babtoDec.IsSelected) {
                 myConverter.cleanProps();
                 cleanTextBoxBabToDec();
+
+                if(myConverter.mittlereSpalteBaby == 0) {
+                    this.SP_medium.Visibility = Visibility.Hidden;
+                }
+                if(myConverter.linkeSpalteBaby == 0) {
+                    this.SP_high.Visibility = Visibility.Hidden;
+                }
+                if(myConverter.ganzLinkeSpalteBaby == 0) {
+                    this.SP_veryHigh.Visibility = Visibility.Hidden;
+                }
             }
         }
 

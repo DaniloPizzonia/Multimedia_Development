@@ -34,12 +34,14 @@ namespace MasterConverter.Classes {
             int high = 3600;
             int veryHigh = high * 60;
 
-            var multiplier = this.userInput / veryHigh;
+            var multiplier = 0; ;
+            if(this.userInput >= veryHigh) {
+                multiplier = this.userInput / veryHigh;
+                this.userInput -= veryHigh;
+            }
             this.ganzLinkeSpalteBaby = multiplier;
             this.ganzLinkeSpalteDec = multiplier * veryHigh;
-            MessageBox.Show(this.ganzLinkeSpalteBaby + " " + this.ganzLinkeSpalteDec);
-            this.userInput -= veryHigh;
-
+         
             multiplier = this.userInput / high;
 
             //  ergInDec is the babylonische dec zahl linke spalte => 2 * 3600

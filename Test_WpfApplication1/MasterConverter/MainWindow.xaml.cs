@@ -113,9 +113,6 @@ namespace MasterConverter {
         }
 
         private void oEventClick(object sender, RoutedEventArgs e) {
-
-          
-
             // invoke here the popup and fetch the result from the popup and insert it L/R
             var oBsender = (sender as Button);
             var oImage = (oBsender.Content as Image).Source;

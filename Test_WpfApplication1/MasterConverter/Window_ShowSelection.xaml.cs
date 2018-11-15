@@ -119,6 +119,7 @@ namespace MasterConverter {
                 counterLow = 1;
                 return;
             }
+
             setPreview(single_imageContainer_right, clickedImageSource);
             oConverter.selectedSpalteBaby = value;
             //MessageBox.Show(value.ToString());
@@ -153,29 +154,34 @@ namespace MasterConverter {
 
             if((bool)isToggleCheckedHigh && counterHigh > 1) {
                 bla.IsChecked = false;
+                
                 counterHigh = 1;
                 return;
             }
             setPreview(single_imageContainer_left, clickedImageSource);
-
             oConverter.selectedSpalteBaby = value;
         }
 
         private void HandleUnchecked(object sender, RoutedEventArgs e) {
             if(counterLow == 1) {
                 counterLow -= 1;
+                resetPreview(single_imageContainer_right);
             }
         }
 
         private void HandleUncheckedHigh(object sender, RoutedEventArgs e) {
             if(counterHigh == 1) {
                 counterHigh -= 1;
+                resetPreview(single_imageContainer_left);
             }
         }
 
         private void setPreview(Image image, string source) {
 
             image.Source = new BitmapImage(new Uri(@"" + source, UriKind.Relative));
+        }
+        private void resetPreview(Image image) {
+            image.Source = null;
         }
 
         private void setBtnImage(Button btn, string source) {

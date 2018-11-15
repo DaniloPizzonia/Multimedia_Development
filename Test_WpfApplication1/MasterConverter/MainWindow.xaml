@@ -97,9 +97,9 @@
                     <StackPanel Grid.ColumnSpan="2" Grid.Row="2">
                         <Button x:Name="oButton_IntKonvertierer" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="22" Width="44"  Click="oButto_intKonvertierer" Content="Open"/>
                     </StackPanel>
-                    <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
+                    <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1" Visibility="Visible">
                         <StackPanel Orientation="Horizontal" Height="50">
-                            <StackPanel x:Name="SP_veryHigh" Orientation="Horizontal" >
+                            <StackPanel x:Name="SP_veryHigh" Orientation="Horizontal" Margin="2" Visibility="Hidden">
                                 <Button x:Name="_bttn_veryHigh_left" Click="oEventClick">
                                     <Image x:Name="_veryHigh_imageContainer_left" 
                                        HorizontalAlignment="Right" 
@@ -115,7 +115,7 @@
                                        Width="32.33" />
                                 </Button>
                             </StackPanel>
-                            <StackPanel x:Name="SP_high" Orientation="Horizontal">
+                            <StackPanel x:Name="SP_high" Orientation="Horizontal" Margin="2" Visibility="Hidden">
                                 <Button x:Name="_bttn_high_left" Click="oEventClick">
                                     <Image x:Name="_high_imageContainer_left" 
                                        HorizontalAlignment="Right" 
@@ -131,7 +131,7 @@
                                        Width="32.33" />
                                 </Button>
                             </StackPanel>
-                            <StackPanel x:Name="SP_medium" Orientation="Horizontal">
+                            <StackPanel x:Name="SP_medium" Orientation="Horizontal" Margin="2" Visibility="Hidden">
                                 <Button x:Name="_bttn_medium_left" Click="oEventClick">
                                     <Image x:Name="_medium_imageContainer_left" 
                                        HorizontalAlignment="Right" 
@@ -147,7 +147,7 @@
                                        Width="32.33" />
                                 </Button>
                             </StackPanel>
-                            <StackPanel x:Name="SP_low" Orientation="Horizontal">
+                            <StackPanel x:Name="SP_low" Orientation="Horizontal" Margin="2">
                                 <Button x:Name="_bttn_low_left" Click="oEventClick">
                                     <Image x:Name="_low_imageContainer_left" 
                                        HorizontalAlignment="Right" 
@@ -165,7 +165,7 @@
                             </StackPanel>
                         </StackPanel>
                         <StackPanel>
-                            <TextBox x:Name="textBox_output" IsReadOnly="True" HorizontalAlignment="Center" Height="100" TextWrapping="Wrap" VerticalAlignment="Center" Width="250" VerticalContentAlignment="Center" FontSize="50"  FontWeight="Bold" Margin="10,37"/>
+                            <TextBox x:Name="textBox_output" IsReadOnly="True" HorizontalAlignment="Center" Height="100" TextWrapping="Wrap" VerticalAlignment="Center" Width="250" VerticalContentAlignment="Center" FontSize="50"  FontWeight="Bold" Margin="0,37"/>
                         </StackPanel>
                       </StackPanel>
                     </Grid>

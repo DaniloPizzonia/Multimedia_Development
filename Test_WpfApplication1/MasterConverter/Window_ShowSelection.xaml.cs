@@ -52,6 +52,16 @@ namespace MasterConverter {
         }
 
         private void oButton_SavePipe_Click(object sender, RoutedEventArgs e) {
+            //oParentWindow.bttn1 = 0;
+            //oParentWindow.bttn1 = 0;
+            if(oConverter.mittlereSpalteBaby == 0) {
+                oParentWindow.SP_medium.Visibility = Visibility.Visible;
+            } else if(oConverter.linkeSpalteBaby == 0) {
+                oParentWindow.SP_high.Visibility = Visibility.Visible;
+            } else if(oConverter.ganzLinkeSpalteBaby == 0) {
+                oParentWindow.SP_veryHigh.Visibility = Visibility.Visible;
+            }
+
             Console.WriteLine(oConverter.babToDec(oConverter.ganzLinkeSpalteBaby, oConverter.linkeSpalteBaby, oConverter.mittlereSpalteBaby, oConverter.rechteSpalteDecBaby));
             oParentWindow.textBox_output.Text = oConverter.babToDec(oConverter.ganzLinkeSpalteBaby, oConverter.linkeSpalteBaby, oConverter.mittlereSpalteBaby, oConverter.rechteSpalteDecBaby).ToString();
             this.Owner.Visibility = Visibility.Visible;
@@ -91,6 +101,10 @@ namespace MasterConverter {
 
 
             var bttn = myButtonList[1];
+            if(oParentWindow.bttn2 == 0) {
+                single_imageContainer_right.Source = null;
+                (bttn.Content as Image).Source = null;
+            }
 
             setBtnImage(bttn, clickedImageSource);
             var stackpanel_name_from_button = (bttn.Parent as StackPanel).Name;
@@ -123,6 +137,10 @@ namespace MasterConverter {
             var clickedImageSource = match.ToString();
 
             var bttn = myButtonList[0];
+            if(oParentWindow.bttn1 == 0) {
+                single_imageContainer_right.Source = null;
+                (bttn.Content as Image).Source = null;
+            }
 
             setBtnImage(bttn, clickedImageSource);
             var stackpanel_name_from_button = (bttn.Parent as StackPanel).Name;
@@ -141,8 +159,6 @@ namespace MasterConverter {
             setPreview(single_imageContainer_left, clickedImageSource);
 
             oConverter.selectedSpalteBaby = value;
-            //MessageBox.Show(value.ToString());
-            var a = 1;
         }
 
         private void HandleUnchecked(object sender, RoutedEventArgs e) {

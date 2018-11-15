@@ -126,8 +126,6 @@
                 </ToggleButton>
             </StackPanel>
         </Border>
-
-
         <Button x:Name="oButton_SavePipe" Content="Speichern" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Top" Width="109" Height="32" Click="oButton_SavePipe_Click"/>
     </Grid>
 </Window>

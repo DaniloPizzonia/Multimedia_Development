@@ -94,9 +94,7 @@
                         <ColumnDefinition Width="163*"/>
                         <ColumnDefinition Width="10*"/>
                     </Grid.ColumnDefinitions>
-                    <StackPanel Grid.ColumnSpan="2" Grid.Row="2">
-                        <Button x:Name="oButton_IntKonvertierer" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="22" Width="44"  Click="oButto_intKonvertierer" Content="Open"/>
-                    </StackPanel>
+                    <StackPanel Grid.ColumnSpan="2" Grid.Row="2"/>
                     <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1" Visibility="Visible">
                         <StackPanel Orientation="Horizontal" Height="50">
                             <StackPanel x:Name="SP_veryHigh" Orientation="Horizontal" Margin="2" Visibility="Hidden">

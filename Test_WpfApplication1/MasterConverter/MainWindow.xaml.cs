@@ -95,6 +95,11 @@ namespace MasterConverter {
             int fetchedUserInput = 0;
             try {
                 fetchedUserInput = Convert.ToInt32(userInput);
+                if(fetchedUserInput > 12959999) {
+                    MessageBox.Show("We do not support symbols over 12959999 yet! Please wait for further updates to cosume operations like that. best regards, your Babylonian Number Converter Team.");
+                    Console.WriteLine("We do not support symbols over 12959999 yet! Please wait for further updates to cosume operations like that. best regards, your Babylonian Number Converter Team.");
+                    return;
+                }
 
                 if(fetchedUserInput < 0) {
                     // handle input and stop user to enter a negatove value
